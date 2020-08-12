@@ -17,4 +17,9 @@ class Cemetery extends Model
     {
         return $this->belongsTo(User::class);
     }
+    
+    public function plots()
+    {
+        return $this->hasMany(Plot::class);    
+    }
 }
