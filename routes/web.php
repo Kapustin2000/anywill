@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+$user = \App\Models\User::find(1);
+dd($user->contacts()->create(['phone' => '0636729232', 'platform' => 'telegram']));
+
 Route::get('/', function () {
     return view('welcome');
 });
