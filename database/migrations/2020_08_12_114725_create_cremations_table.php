@@ -14,7 +14,7 @@ class CreateCremationsTable extends Migration
     public function up()
     {
         Schema::create('cremations', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

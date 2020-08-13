@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cemetery extends Model
 {
+    //Сделать multi 
     const CLASSES  = [
        'public' => 1,
        'private'  => 2,
