@@ -9,9 +9,9 @@ use App\Services\Interfaces\CemeteryServiceInterface;
 Class CemeteryService implements CemeteryServiceInterface {
 
 
-    public function save(Cemetery $cemetery, CemeteryRequest $request)
+    public function save(CemeteryRequest $request, Cemetery $cemetery = null)
     {
-        return $cemetery->save($request);
+        if($cemetery)  return $cemetery->save($request);
     }
 
 } 

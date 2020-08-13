@@ -76,9 +76,9 @@ class CemeteryController extends Controller
      * @param  \App\Models\Cemetery  $cemetery
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cemetery $cemetery)
+    public function update(CemeteryRequest $request, Cemetery $cemetery)
     {
-        //
+        return $this->service->save($request, $cemetery);
     }
 
     /**
@@ -89,6 +89,6 @@ class CemeteryController extends Controller
      */
     public function destroy(Cemetery $cemetery)
     {
-        //
+        return $cemetery->delete();
     }
 }
