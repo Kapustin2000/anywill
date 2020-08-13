@@ -42,4 +42,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Cemetery::class);
     }
+    
+    public function addresses()
+    {
+        return $this->hasMany(Address::class);
+    }
+
+    public function contacts()
+    {
+        return $this->hasMany(Contact::class);
+    }
 }
