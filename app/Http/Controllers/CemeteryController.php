@@ -4,16 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CemeteryRequest;
 use App\Models\Cemetery;
+use App\Repositories\Interfaces\CemeteryRepositoryInterface;
 use App\Services\Interfaces\CemeteryServiceInterface;
 use Illuminate\Http\Request;
 
 class CemeteryController extends Controller
 {
-    protected $service; 
+    protected $service, $repo; 
     
-    public function __construct(CemeteryServiceInterface $service)
+    public function __construct(CemeteryServiceInterface $service, CemeteryRepositoryInterface $repo)
     {
-       $this->service = $service;    
+        $this->service = $service; 
+        $this->repo = $repo;
     }
 
     /**
@@ -23,7 +25,7 @@ class CemeteryController extends Controller
      */
     public function index()
     {
-        //
+        return $this->repo->all();
     }
 
     /**
@@ -55,7 +57,7 @@ class CemeteryController extends Controller
      */
     public function show(Cemetery $cemetery)
     {
-        //
+        return $cemetery;
     }
 
     /**

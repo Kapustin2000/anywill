@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
-use App\Services\CemeteryService;
+use App\Repositories\CemeteryRepository;
+use App\Repositories\Interfaces\CemeteryRepositoryInterface;
+ use App\Services\CemeteryService;
 use App\Services\Interfaces\CemeteryServiceInterface;
 use Illuminate\Support\ServiceProvider;
 
@@ -18,6 +20,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             CemeteryServiceInterface::class,
             CemeteryService::class
+        );
+
+        $this->app->bind(
+            CemeteryRepositoryInterface::class,
+            CemeteryRepository::class
         );
     }
 
