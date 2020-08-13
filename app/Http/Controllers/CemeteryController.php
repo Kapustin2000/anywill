@@ -2,11 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CemeteryRequest;
 use App\Models\Cemetery;
+use App\Repositories\Interfaces\CemeteryRepositoryInterface;
+use App\Services\Interfaces\CemeteryServiceInterface;
 use Illuminate\Http\Request;
 
 class CemeteryController extends Controller
 {
+    protected $service, $repo; 
+    
+    public function __construct(CemeteryServiceInterface $service, CemeteryRepositoryInterface $repo)
+    {
+        $this->service = $service; 
+        $this->repo = $repo;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +25,7 @@ class CemeteryController extends Controller
      */
     public function index()
     {
-        //
+        return $this->repo->all();
     }
 
     /**
@@ -33,9 +44,9 @@ class CemeteryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CemeteryRequest $request)
     {
-        //
+        return $this->service->save($request);
     }
 
     /**
@@ -46,7 +57,7 @@ class CemeteryController extends Controller
      */
     public function show(Cemetery $cemetery)
     {
-        //
+        return $cemetery;
     }
 
     /**
@@ -67,9 +78,9 @@ class CemeteryController extends Controller
      * @param  \App\Models\Cemetery  $cemetery
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cemetery $cemetery)
+    public function update(CemeteryRequest $request, Cemetery $cemetery)
     {
-        //
+        return $this->service->save($request, $cemetery);
     }
 
     /**
@@ -80,6 +91,6 @@ class CemeteryController extends Controller
      */
     public function destroy(Cemetery $cemetery)
     {
-        //
+        return $cemetery->delete();
     }
 }
