@@ -22,4 +22,9 @@ class Cemetery extends Model
     {
         return $this->hasMany(Plot::class);    
     }
+
+    public function coordinates()
+    {
+        return $this->morphOne(Coordinate::class, 'entity');
+    }
 }

@@ -10,4 +10,9 @@ class Cremation extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function coordinates()
+    {
+        return $this->morphOne(Coordinate::class, 'entity');
+    }
 }
