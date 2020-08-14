@@ -16,6 +16,6 @@ class Plot extends Model
 
     public function types()
     {
-        return $this->hasMany(PlotTypes::class);
+        return $this->belongsToMany(PlotTypes::class, 'plot_type');
     }
 }
