@@ -13,4 +13,9 @@ class Plot extends Model
     {
         return $this->belongsTo(Cemetery::class);
     }
+
+    public function types()
+    {
+        return $this->hasMany(PlotTypes::class);
+    }
 }

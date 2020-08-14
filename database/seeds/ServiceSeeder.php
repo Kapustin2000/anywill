@@ -71,13 +71,5 @@ class ServiceSeeder extends Seeder
         ]);
 
 
-
-        DB::table('services')->insert(
-            [
-                'name' => 'Transfer via mail'
-            ]
-        );
-
-
     }
 }

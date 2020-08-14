@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Plot::class, function (Faker $faker) {
     return [
-        'user_id' => function() {
+        'cemetery_id' => function() {
             return factory(App\Models\Cemetery::class)->create()->id;
         },
     ];

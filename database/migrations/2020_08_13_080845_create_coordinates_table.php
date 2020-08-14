@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCremationsTable extends Migration
+class CreateCoordinatesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCremationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('cremations', function (Blueprint $table) {
+        Schema::create('coordinates', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateCremationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cremations');
+        Schema::dropIfExists('coordinates');
     }
 }
