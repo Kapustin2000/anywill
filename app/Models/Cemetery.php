@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cemetery extends Model
 {
-    const CLASSES  = [
+    const TYPES  = [
        'public' => 1,
        'private'  => 2,
        'state' => 3,
