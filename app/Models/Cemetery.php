@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cemetery extends Model
 {
-    const TYPES  = [
+    const CLASSES  = [
        'public' => 1,
        'private'  => 2,
        'state' => 3,
@@ -31,10 +31,5 @@ class Cemetery extends Model
     public function classifications()
     {
         return $this->belongsToMany(Classification::class);
-    }
-
-    public function services()
-    {
-        return $this->belongsToMany(Service::class);
     }
 }

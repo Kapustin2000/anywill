@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Pivots\CemeteryService;
 use Illuminate\Database\Eloquent\Model;
 
 class Service extends Model
@@ -30,6 +31,12 @@ class Service extends Model
     public function cremations()
     {
         return $this->belongsToMany(Cremation::class);
+    }
+    
+    
+    public function media()
+    {
+        return $this->hasManyThrough(CemeteryService::class, Cemetery::class);
     }
 
 
