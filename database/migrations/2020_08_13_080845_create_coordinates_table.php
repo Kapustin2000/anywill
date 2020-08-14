@@ -15,7 +15,7 @@ class CreateCoordinatesTable extends Migration
     {
         Schema::create('coordinates', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->morphs('entity');
             $table->timestamps();
         });
     }
