@@ -6,8 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cemetery extends Model
 {
-    //Сделать multi 
-    const CLASSES  = [
+    const TYPES  = [
        'public' => 1,
        'private'  => 2,
        'state' => 3,
@@ -27,5 +26,10 @@ class Cemetery extends Model
     public function coordinates()
     {
         return $this->morphOne(Coordinate::class, 'entity');
+    }
+
+    public function classifications()
+    {
+        return $this->belongsToMany(Classification::class);
     }
 }

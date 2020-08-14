@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PlotTypesSeeder::class);
         $this->call(PlotSeeder::class);
         $this->call(ServiceSeeder::class);
+        $this->call(ClassificationSeeder::class);
     }
 }

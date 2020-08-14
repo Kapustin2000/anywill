@@ -26,7 +26,7 @@ class CemeteryRequest extends FormRequest
     public function rules()
     {
         return [
-            'type' => ['integer', 'required', 'max:255',  Rule::in(0, count(Cemetery::CLASSES)) ],
+            'type' => ['integer', 'required', 'max:255',  Rule::in(0, count(Cemetery::TYPES)) ],
         ];
     }
 }

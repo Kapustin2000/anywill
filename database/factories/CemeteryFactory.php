@@ -11,6 +11,6 @@ $factory->define(Cemetery::class, function (Faker $faker) {
         'user_id' => function() {
             return factory(App\Models\User::class)->create()->id;
         },
-        'type' => rand(1, count(Cemetery::CLASSES))
+        'type' => rand(1, count(Cemetery::TYPES))
     ];
 });
