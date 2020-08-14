@@ -16,7 +16,6 @@ class CreatePlotTypesTable extends Migration
         Schema::create('plot_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->timestamps();
         });
 
         Schema::create('plot_type', function (Blueprint $table) {
