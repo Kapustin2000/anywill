@@ -32,4 +32,9 @@ class Cemetery extends Model
     {
         return $this->belongsToMany(Classification::class);
     }
+
+    public function services()
+    {
+        return $this->belongsToMany(Service::class);
+    }
 }

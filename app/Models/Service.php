@@ -21,6 +21,16 @@ class Service extends Model
     {
         return $this->hasMany(self::class, 'parent_id');
     }
+    
+    public function cemeteries()
+    {
+        return $this->belongsToMany(Cemetery::class);
+    }
+
+    public function cremations()
+    {
+        return $this->belongsToMany(Cremation::class);
+    }
 
 
 }

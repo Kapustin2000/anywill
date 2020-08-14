@@ -15,4 +15,9 @@ class Cremation extends Model
     {
         return $this->morphOne(Coordinate::class, 'entity');
     }
+
+    public function services()
+    {
+        return $this->belongsToMany(Service::class);
+    }
 }
