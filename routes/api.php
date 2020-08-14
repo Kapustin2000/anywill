@@ -28,3 +28,7 @@ Route::group([
         Route::get('user', 'API\AuthController@user');
     });
 });
+
+
+
+Route::post('services', 'ServiceController@store');

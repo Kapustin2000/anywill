@@ -6,8 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Service extends Model
 {
+    protected $fillable = ['name', 'entity_id', 'parent_id'];
     const ENTITIES  = [
         'cemetery' => 1,
         'cremation'  => 2
     ];
+
+    public function parent()
+    {
+        return $this->belongsTo(self::class, 'parent_id');
+    }
+
+    public function sub()
+    {
+        return $this->hasMany(self::class, 'parent_id');
+    }
+
+
 }

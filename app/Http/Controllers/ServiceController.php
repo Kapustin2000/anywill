@@ -3,10 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Service;
+use App\Services\ServicesService;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
+    protected $service;
+    
+    function __construct(ServicesService $service)
+    {
+        $this->service = $service;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -35,7 +43,7 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $this->service->save($request);
     }
 
     /**
