@@ -16,9 +16,8 @@ class CreateServicesTable extends Migration
         Schema::create('services', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->unsignedInteger('entity_id')->nullable();
-            $table->unsignedBigInteger('parent_id')->nullable();
-            $table->foreign('parent_id')->references('id')->on('services')->onDelete('cascade');
+            $table->unsignedInteger('entity_id');
+            $table->unsignedInteger('input_type_id');
             $table->timestamps();
         });
 
@@ -41,6 +40,19 @@ class CreateServicesTable extends Migration
             $table->foreign('cemetery_id')->references('id')->on('cemeteries')->onDelete('cascade');
             $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
         });
+
+
+        Schema::create('service_options', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name');
+            $table->bigInteger('service_id')->unsigned();
+            $table->timestamps();
+        });
+
+        Schema::table('service_options', function($table) {
+            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
+
+        });
     }
 
     /**
@@ -53,5 +65,6 @@ class CreateServicesTable extends Migration
         Schema::dropIfExists('cremation_services');
         Schema::dropIfExists('cemetery_services');
         Schema::dropIfExists('services');
+        Schema::dropIfExists('service_options');
     }
 }

@@ -8,19 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Service extends Model
 {
     protected $fillable = ['name', 'entity_id', 'parent_id'];
+
     const ENTITIES  = [
         'cemetery' => 1,
         'cremation'  => 2
     ];
 
-    public function parent()
+    public function getTypeAttribute()
     {
-        return $this->belongsTo(self::class, 'parent_id');
+        return config('inputs')[$this->input_type_id];
     }
 
-    public function sub()
+    public function options()
     {
-        return $this->hasMany(self::class, 'parent_id');
+        return $this->hasMany(ServiceOptions::class);
     }
     
     public function cemeteries()
