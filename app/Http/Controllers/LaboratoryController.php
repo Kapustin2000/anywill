@@ -3,10 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Laboratory;
+use App\Services\Interfaces\LaboratoryServiceInterface;
 use Illuminate\Http\Request;
 
 class LaboratoryController extends Controller
 {
+    protected $service, $repo;
+
+    function __construct(LaboratoryServiceInterface $service, ServiceRepositoryInterface $repo)
+    {
+        $this->service = $service;
+        $this->repo = $repo;
+    }
     /**
      * Display a listing of the resource.
      *
