@@ -32,3 +32,6 @@ Route::group([
 
 Route::get('services', 'ServiceController@index');
 Route::post('services', 'ServiceController@store');
+
+
+Route::post('orders', 'OrderController@store');
