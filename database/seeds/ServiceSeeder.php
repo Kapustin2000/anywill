@@ -15,7 +15,7 @@ class ServiceSeeder extends Seeder
         DB::table('services')->insert(
             [
                 'name'=>'Material of vase',
-                'entity_id' => \App\Models\Service::ENTITIES['cremation'],
+                'entity_id' => 0,
                 'input_type_id' => 0
             ]
         );

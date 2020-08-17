@@ -11,13 +11,6 @@ class Service extends Model
     protected $appends = ['entity', 'type'];
     protected $hidden = ['input_type_id', 'entity_id'];
 
-
-    const ENTITIES  = [
-        'cemetery',
-        'cremation',
-        'laboratory'
-    ];
-
     public function getTypeAttribute()
     {
         return config('inputs')[$this->input_type_id];
