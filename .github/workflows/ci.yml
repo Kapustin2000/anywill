@@ -1,0 +1,33 @@
+name: ci
+
+on: 
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: SSH COPY
+        uses: easingthemes/ssh-deploy@v2.0.8
+        env:
+          SSH_PRIVATE_KEY: >
+            ${{ secrets.PROD_SSH_KEY }}
+          REMOTE_HOST: ${{ secrets.PROD_HOST }}
+          REMOTE_USER: ${{ secrets.PROD_USER }}
+          REMOTE_PORT: 22
+          SOURCE: ""
+          ARGS: "-rltgoDzvO --delete"
+          TARGET: "app"
+      - name: UPDATE DOCKER
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.PROD_HOST }}
+          username: ${{ secrets.PROD_USER }}
+          key: ${{ secrets.PROD_SSH_KEY }}
+          command_timeout: 20m
+          port: 22
+          script: sh .extcd/run.sh prod
