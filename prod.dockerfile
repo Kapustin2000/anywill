@@ -56,5 +56,6 @@ RUN composer dump-autoload --no-scripts --optimize
 # RUN php artisan cache:clear
 
 CMD php artisan migrate --force \
+  && chown -R www-data:www-data storage
   && php artisan passport:install \
   && php-fpm
