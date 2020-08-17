@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Laboratory;
+use App\Repositories\Interfaces\LaboratoryRepositoryInterface;
 use App\Services\Interfaces\LaboratoryServiceInterface;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,7 @@ class LaboratoryController extends Controller
 {
     protected $service, $repo;
 
-    function __construct(LaboratoryServiceInterface $service, ServiceRepositoryInterface $repo)
+    function __construct(LaboratoryServiceInterface $service, LaboratoryRepositoryInterface $repo)
     {
         $this->service = $service;
         $this->repo = $repo;
