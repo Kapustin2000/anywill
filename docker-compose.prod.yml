@@ -1,0 +1,39 @@
+version: "3"
+
+services:
+
+  mysql:
+    image: mysql:5.7
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - 3306:3306
+    volumes:
+      - ./../.mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: qweQWE123
+      MYSQL_DATABASE: app
+
+  nginx:
+    build: 
+      context: .
+      dockerfile: ./resources/docker/test.nginx.dockerfile
+    restart: always
+    volumes:
+      - ./../.data/files:/var/www/public/files
+    ports:
+      - 443:443
+      - 80:80
+    links:
+      - api:api
+
+  api:
+    restart: always
+    build: 
+      context: .
+      dockerfile: ./resources/docker/test.dockerfile
+    volumes:
+      - ./../.data/files:/var/www/public/files
+    links:
+      - mysql:mysql
+    env_file: .env.test
+      
