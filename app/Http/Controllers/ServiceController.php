@@ -3,16 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Service;
+use App\Repositories\Interfaces\ServiceRepositoryInterface;
 use App\Services\ServicesService;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
-    protected $service;
+    protected $service, $repo;
     
-    function __construct(ServicesService $service)
+    function __construct(ServicesService $service, ServiceRepositoryInterface $repo)
     {
         $this->service = $service;
+        $this->repo = $repo;
     }
 
     /**
@@ -22,52 +24,9 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        //
+        return $this->repo->all();
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        return $this->service->save($request);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Service  $service
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Service $service)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Service  $service
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Service $service)
-    {
-        //
-    }
-
+    
     /**
      * Update the specified resource in storage.
      *
@@ -77,7 +36,7 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-        //
+        return $this->service->save($request);
     }
 
     /**
@@ -88,6 +47,6 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        //
+        return $service->delete();
     }
 }
