@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PlotTypesSeeder::class);
         $this->call(CemeterySeeder::class);
         $this->call(CremationSeeder::class);
+        $this->call(FuneralHomeSeeder::class);
     }
 }
