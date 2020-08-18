@@ -3,10 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Media;
+use App\Services\Interfaces\ImageUploadInterface;
 use Illuminate\Http\Request;
 
 class MediaController extends Controller
 {
+    protected $service;
+
+    public function __construct(ImageUploadInterface $service)
+    {
+        $this->service = $service;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,17 +23,7 @@ class MediaController extends Controller
     public function index()
     {
         //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    } 
 
     /**
      * Store a newly created resource in storage.
@@ -35,41 +33,7 @@ class MediaController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Media  $media
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Media $media)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Media  $media
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Media $media)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Media  $media
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Media $media)
-    {
-        //
+        $this->service->handleImageUpload($request);
     }
 
     /**
@@ -80,6 +44,6 @@ class MediaController extends Controller
      */
     public function destroy(Media $media)
     {
-        //
+        return $media->delete();
     }
 }
