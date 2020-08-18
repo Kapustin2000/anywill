@@ -15,6 +15,8 @@ class CreateFuneralHomesTable extends Migration
     {
         Schema::create('funeral_homes', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->integer('total_capacity')->nullable();
             $table->timestamps();
         });
 
