@@ -14,4 +14,19 @@ class ServiceOptions extends Model
     {
         return $this->belongsTo(Service::class);
     }
+
+    public function cemeteries()
+    {
+        return $this->belongsToMany(Cemetery::class);
+    }
+
+    public function cremations()
+    {
+        return $this->belongsToMany(Cremation::class);
+    }
+
+    public function laboratories()
+    {
+        return $this->belongsToMany(Laboratory::class);
+    }
 }

@@ -17,6 +17,11 @@ class CreateLaboratoriesTable extends Migration
             $table->id();
             $table->timestamps();
         });
+
+        Schema::create('laboratory_services', function (Blueprint $table) {
+            $table->foreignId('laboratory_id')->constrained()->onDelete('cascade');
+            $table->foreignId('service_id')->constrained()->onDelete('cascade');
+        });
     }
 
     /**
@@ -27,5 +32,6 @@ class CreateLaboratoriesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('laboratories');
+        Schema::dropIfExists('laboratory_services');
     }
 }

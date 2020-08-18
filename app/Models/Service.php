@@ -35,6 +35,11 @@ class Service extends Model
     {
         return $this->belongsToMany(Cremation::class);
     }
+
+    public function laboratories()
+    {
+        return $this->belongsToMany(Laboratory::class);
+    }
     
     
     public function media()

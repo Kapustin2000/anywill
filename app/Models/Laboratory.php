@@ -15,4 +15,9 @@ class Laboratory extends Model
     {
         return $this->belongsToMany(Service::class);
     }
+
+    public function options()
+    {
+        return $this->belongsToMany(ServiceOptions::class);
+    }
 }
