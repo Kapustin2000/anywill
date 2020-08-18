@@ -20,4 +20,9 @@ class FuneralHome extends Model
     {
         return $this->belongsToMany(ServiceOptions::class);
     }
+
+    public function rooms()
+    {
+        return $this->hasMany(FuneralHomeRooms::class);
+    }
 }
