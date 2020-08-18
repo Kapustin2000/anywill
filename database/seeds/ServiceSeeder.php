@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\Service;
+use App\Models\ServiceOptions;
 
 class ServiceSeeder extends Seeder
 {
@@ -11,66 +13,15 @@ class ServiceSeeder extends Seeder
      */
     public function run()
     {
-        //Material of vase
-        DB::table('services')->insert(
+
+        $service = Service::create(['name' => 'Material of vase', 'entity_id' => 2, 'input_type_id' => 1]);
+
+        $service->options()->saveMany(
             [
-                'name'=>'Material of vase',
-                'entity_id' => 0,
-                'input_type_id' => 0
+                new ServiceOptions(['name' => 'Tree']),
+                new ServiceOptions(['name' => 'Bronze'])
             ]
         );
-//
-//        DB::table('services')->insert([
-//            [
-//                'name'=>'Sporcelain',
-//                'parent_id' => 1
-//            ],
-//            [
-//                'name'=>'Tree',
-//                'parent_id' => 1
-//            ],
-//            [
-//                'name'=>'Bronze',
-//                'parent_id' => 1
-//            ],
-//            [
-//                'name'=>'Stainless steel',
-//                'parent_id' => 1
-//            ],
-//            [
-//                'name'=>'Ceramics',
-//                'parent_id' => 1
-//            ],
-//            [
-//                'name'=>'Ceramics',
-//                'parent_id' => 1
-//            ],
-//            [
-//                'name'=>'Marble',
-//                'parent_id' => 1
-//            ]
-//        ]);
-//
-//
-//        //If to save a vase
-//        DB::table('services')->insert(
-//            [
-//                'name'=>'Save vase',
-//                'entity_id' => 3
-//            ]
-//        );
-//
-//        DB::table('services')->insert([
-//            [
-//                'name'=>'Separate between members',
-//                'parent_id' => 9
-//            ],
-//            [
-//                'name'=>'Save at once',
-//                'parent_id' => 9
-//            ]
-//        ]);
-
-
+        
     }
 }
