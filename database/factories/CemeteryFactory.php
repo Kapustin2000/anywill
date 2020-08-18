@@ -14,3 +14,10 @@ $factory->define(Cemetery::class, function (Faker $faker) {
         'type' => rand(1, count(Cemetery::TYPES))
     ];
 });
+
+$factory->afterCreating(Cemetery::class, function ($cemetery, $faker) {
+
+    $cemetery->classifications()->sync([1,2]);
+    $cemetery->services()->sync(1);
+    factory(App\Models\Plot::class, 5)->create(['cemetery_id' => $cemetery->id]);
+});

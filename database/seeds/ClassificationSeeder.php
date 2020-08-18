@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\Classification;
 
 class ClassificationSeeder extends Seeder
 {
@@ -11,13 +12,11 @@ class ClassificationSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('classifications')->insert([
+        Classification::insert(
             [
-                'name'=>'All'
-            ],
-            [
-                'name'=>'Christ'
+                ['name'=>'All'],
+                ['name'=>'Christ']
             ]
-        ]);
+        );
     }
 }

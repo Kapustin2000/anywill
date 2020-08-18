@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\PlotTypes;
 
 class PlotTypesSeeder extends Seeder
 {
@@ -11,19 +12,21 @@ class PlotTypesSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('plot_types')->insert([
+        PlotTypes::insert(
             [
-                'name'=>'A place on the lawn'
-            ],
-            [
-                'name'=>'A crypt in the mausoleum'
-            ],
-            [
-                'name'=>'A site for ashes after cremation'
-            ],
-            [
-                'name'=>'A cremation niche' 
+                [
+                    'name'=>'A place on the lawn'
+                ],
+                [
+                    'name'=>'A crypt in the mausoleum'
+                ],
+                [
+                    'name'=>'A site for ashes after cremation'
+                ],
+                [
+                    'name'=>'A cremation niche'
+                ]
             ]
-        ]);
+        );
     }
 }
