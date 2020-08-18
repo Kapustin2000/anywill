@@ -10,5 +10,6 @@ $factory->define(Plot::class, function (Faker $faker) {
         'cemetery_id' => function() {
             return factory(App\Models\Cemetery::class)->create()->id;
         },
+        'square_meters' => '20m'
     ];
 });

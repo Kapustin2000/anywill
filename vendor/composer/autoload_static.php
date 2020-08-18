@@ -598,6 +598,7 @@ class ComposerStaticInit7731c8d20ece076261bae8e61107aa87
         'App\\Models\\Contact' => __DIR__ . '/../..' . '/app/Models/Contact.php',
         'App\\Models\\Coordinate' => __DIR__ . '/../..' . '/app/Models/Coordinate.php',
         'App\\Models\\Cremation' => __DIR__ . '/../..' . '/app/Models/Cremation.php',
+        'App\\Models\\FuneralHome' => __DIR__ . '/../..' . '/app/Models/FuneralHome.php',
         'App\\Models\\Laboratory' => __DIR__ . '/../..' . '/app/Models/Laboratory.php',
         'App\\Models\\Media' => __DIR__ . '/../..' . '/app/Models/Media.php',
         'App\\Models\\Order' => __DIR__ . '/../..' . '/app/Models/Order.php',

@@ -36,6 +36,7 @@ return array(
     'App\\Models\\Contact' => $baseDir . '/app/Models/Contact.php',
     'App\\Models\\Coordinate' => $baseDir . '/app/Models/Coordinate.php',
     'App\\Models\\Cremation' => $baseDir . '/app/Models/Cremation.php',
+    'App\\Models\\FuneralHome' => $baseDir . '/app/Models/FuneralHome.php',
     'App\\Models\\Laboratory' => $baseDir . '/app/Models/Laboratory.php',
     'App\\Models\\Media' => $baseDir . '/app/Models/Media.php',
     'App\\Models\\Order' => $baseDir . '/app/Models/Order.php',
