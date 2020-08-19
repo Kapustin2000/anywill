@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLaboratoriesTable extends Migration
+class CreateEntityOptionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateLaboratoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('laboratories', function (Blueprint $table) {
-            $table->id();
+        Schema::create('entity_options', function (Blueprint $table) {
+            $table->morphs('entity_options');
+            $table->foreignId('service_options_id')->constrained()->onDelete('cascade');
+            $table->integer('commission')->nullable();
             $table->timestamps();
-        }); 
+        });
     }
 
     /**
@@ -26,6 +28,6 @@ class CreateLaboratoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('laboratories'); 
+        Schema::dropIfExists('entity_options');
     }
 }

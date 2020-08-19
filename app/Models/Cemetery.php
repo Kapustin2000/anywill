@@ -19,11 +19,6 @@ class Cemetery extends Model
     {
         return $this->belongsTo(User::class);
     }
-
-    public function services()
-    {
-        return $this->belongsToMany(Service::class);
-    }
     
     public function plots()
     {
@@ -42,6 +37,6 @@ class Cemetery extends Model
 
     public function options()
     {
-        return $this->belongsToMany(ServiceOptions::class);
+        return $this->morphToMany(ServiceOptions::class, 'entity_options');
     }
 }

@@ -28,7 +28,7 @@ class Service extends Model
     
     public function cemeteries()
     {
-        return $this->belongsToMany(Cemetery::class);
+        return $this->morphedByMany(Cemetery::class, 'entity_option');
     }
 
     public function cremations()

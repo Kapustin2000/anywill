@@ -20,21 +20,6 @@ class CreateServicesTable extends Migration
             $table->unsignedInteger('input_type_id');
             $table->timestamps();
         });
-
-        Schema::create('cremation_service', function (Blueprint $table) { 
-            $table->foreignId('cremation_id')->constrained()->onDelete('cascade');
-            $table->foreignId('service_id')->constrained()->onDelete('cascade');
-            $table->integer('commission')->nullable();
-        });
-
-        Schema::create('cemetery_service', function (Blueprint $table) {
-            $table->foreignId('cemetery_id')->constrained()->onDelete('cascade');
-            $table->foreignId('service_id')->constrained()->onDelete('cascade');
-            $table->integer('commission')->nullable();
-        });
-
-
-       
     }
 
     /**
@@ -44,9 +29,6 @@ class CreateServicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cremation_services');
-        Schema::dropIfExists('cemetery_services');
         Schema::dropIfExists('services');
-        Schema::dropIfExists('service_options');
     }
 }

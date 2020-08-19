@@ -14,15 +14,10 @@ class Cremation extends Model
     public function coordinates()
     {
         return $this->morphOne(Coordinate::class, 'entity');
-    }
-
-    public function services()
-    {
-        return $this->belongsToMany(Service::class);
-    }
+    } 
     
     public function options()
     {
-        return $this->belongsToMany(ServiceOptions::class);
+        return $this->morphToMany(ServiceOptions::class, 'entity_options');
     }
 }
