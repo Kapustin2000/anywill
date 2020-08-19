@@ -21,7 +21,7 @@ Class CemeteryRepository implements RepositoryInterface, CemeteryRepositoryInter
 
     public function all()
     {
-        return $this->model->all();
+        return $this->model->with('classifications', 'options', 'coordinates')->get();
     }
     
     public function find($id)

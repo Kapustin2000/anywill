@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ServiceOptions extends Model
 {
     protected $table = 'service_options';
+    protected $hidden = ['pivot'];
 
     protected $fillable = ['name'];
 

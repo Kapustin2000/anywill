@@ -37,6 +37,8 @@ Route::post('services', 'ServiceController@store');
 Route::post('orders', 'OrderController@store');
 
 
+Route::get('/cemeteries', 'CemeteryController@index');
+Route::get('/cemeteries/{cemetery}', 'CemeteryController@show');
 Route::post('/cemeteries', 'CemeteryController@store');
 Route::put('/cemeteries/{cemetery}', 'CemeteryController@update');
 Route::delete('/cemeteries/{cemetery}', 'CemeteryController@destroy');
