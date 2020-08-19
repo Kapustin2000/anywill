@@ -13,26 +13,26 @@ class ServiceOptions extends Model
 
     public function service()
     {
-        return $this->belongsTo(Service::class);
+        return $this->morphedByMany(Service::class, 'entity_option');
     }
 
     public function cemeteries()
     {
-        return $this->belongsToMany(Cemetery::class);
+        return $this->morphedByMany(Cemetery::class, 'entity_option');
     }
 
     public function cremations()
     {
-        return $this->belongsToMany(Cremation::class);
+        return $this->morphedByMany(Cremation::class, 'entity_option');
     }
 
     public function laboratories()
     {
-        return $this->belongsToMany(Laboratory::class);
+        return $this->morphedByMany(Laboratory::class, 'entity_option');
     }
 
     public function funeral_home()
     {
-        return $this->belongsToMany(FuneralHome::class);
+        return $this->morphedByMany(FuneralHome::class, 'entity_option');
     }
 }
