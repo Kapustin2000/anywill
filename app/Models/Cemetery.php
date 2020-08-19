@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cemetery extends Model
 {
+    protected $fillable = ['name','type'];
+
     const TYPES  = [
        'public' => 1,
        'private'  => 2,

@@ -24,11 +24,13 @@ class CreateServicesTable extends Migration
         Schema::create('cremation_service', function (Blueprint $table) { 
             $table->foreignId('cremation_id')->constrained()->onDelete('cascade');
             $table->foreignId('service_id')->constrained()->onDelete('cascade');
+            $table->integer('commission')->nullable();
         });
 
         Schema::create('cemetery_service', function (Blueprint $table) {
             $table->foreignId('cemetery_id')->constrained()->onDelete('cascade');
             $table->foreignId('service_id')->constrained()->onDelete('cascade');
+            $table->integer('commission')->nullable();
         });
 
 
