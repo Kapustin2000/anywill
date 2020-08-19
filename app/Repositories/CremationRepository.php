@@ -4,21 +4,23 @@ namespace App\Repositories;
 
 use App\Http\Requests\CemeteryRequest;
 use App\Models\Cemetery;
+use App\Models\Cremation;
 use App\Models\Laboratory;
 use App\Repositories\Interfaces\CemeteryRepositoryInterface;
+use App\Repositories\Interfaces\CremationRepositoryInterface;
 use App\Repositories\Interfaces\LaboratoryRepositoryInterface;
 use App\Repositories\Interfaces\RepositoryInterface;
 use App\Services\Interfaces\CemeteryServiceInterface;
  
 
 
-Class LaboratoryRepository implements RepositoryInterface, LaboratoryRepositoryInterface {
+Class CremationRepository implements RepositoryInterface, CremationRepositoryInterface {
 
     protected $model;
     
     function __construct()
     {
-        $this->model = (new Laboratory())->with('options');
+        $this->model = (new Cremation())->with('options');
     }
 
     public function all()

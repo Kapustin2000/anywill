@@ -3,10 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cremation;
+use App\Repositories\Interfaces\CremationRepositoryInterface;
+use App\Services\Interfaces\CremationServiceInterface;
 use Illuminate\Http\Request;
 
 class CremationController extends Controller
 {
+    protected $service, $repo;
+
+    function __construct(CremationServiceInterface $service, CremationRepositoryInterface $repo)
+    {
+        $this->service = $service;
+        $this->repo = $repo;
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -14,17 +24,7 @@ class CremationController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return $this->repo->all();
     }
 
     /**
@@ -35,51 +35,40 @@ class CremationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $this->service->save($request);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Cremation  $cremation
+     * @param  \App\Models\Laboratory  $laboratory
      * @return \Illuminate\Http\Response
      */
     public function show(Cremation $cremation)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Cremation  $cremation
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Cremation $cremation)
-    {
-        //
+        return $cremation->load('options');
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Cremation  $cremation
+     * @param  \App\Models\Laboratory  $laboratory
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Cremation $cremation)
     {
-        //
+        return $this->service->save($request, $cremation);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Cremation  $cremation
+     * @param  \App\Models\Laboratory  $laboratory
      * @return \Illuminate\Http\Response
      */
     public function destroy(Cremation $cremation)
     {
-        //
+        return $cremation->delete();
     }
 }

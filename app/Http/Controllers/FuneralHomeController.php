@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class FuneralHomeController extends Controller
 {
+    protected $service, $repo;
+
+    function __construct(LaboratoryServiceInterface $service, LaboratoryRepositoryInterface $repo)
+    {
+        $this->service = $service;
+        $this->repo = $repo;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,17 +21,7 @@ class FuneralHomeController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return $this->repo->all();
     }
 
     /**
@@ -35,51 +32,40 @@ class FuneralHomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $this->service->save($request);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\FuneralHome  $funeralHome
+     * @param  \App\Models\Laboratory  $laboratory
      * @return \Illuminate\Http\Response
      */
-    public function show(FuneralHome $funeralHome)
+    public function show(FuneralHome $home)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\FuneralHome  $funeralHome
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(FuneralHome $funeralHome)
-    {
-        //
+        return $home->load('options');
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\FuneralHome  $funeralHome
+     * @param  \App\Models\Laboratory  $laboratory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, FuneralHome $funeralHome)
+    public function update(Request $request, FuneralHome $home)
     {
-        //
+        return $this->service->save($request, $home);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\FuneralHome  $funeralHome
+     * @param  \App\Models\Laboratory  $laboratory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(FuneralHome $funeralHome)
+    public function destroy(FuneralHome $home)
     {
-        //
+        return $home->delete();
     }
 }

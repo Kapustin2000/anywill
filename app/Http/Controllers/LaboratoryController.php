@@ -23,18 +23,8 @@ class LaboratoryController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+        return $this->repo->all();
+    } 
 
     /**
      * Store a newly created resource in storage.
@@ -44,7 +34,7 @@ class LaboratoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $this->service->save($request);
     }
 
     /**
@@ -55,18 +45,7 @@ class LaboratoryController extends Controller
      */
     public function show(Laboratory $laboratory)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Laboratory  $laboratory
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Laboratory $laboratory)
-    {
-        //
+        return $laboratory->load('options');
     }
 
     /**
@@ -78,7 +57,7 @@ class LaboratoryController extends Controller
      */
     public function update(Request $request, Laboratory $laboratory)
     {
-        //
+        return $this->service->save($request, $laboratory);
     }
 
     /**
@@ -89,6 +68,6 @@ class LaboratoryController extends Controller
      */
     public function destroy(Laboratory $laboratory)
     {
-        //
+        return $laboratory->delete();
     }
 }
