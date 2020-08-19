@@ -18,12 +18,17 @@ Class ServiceRepository implements RepositoryInterface, ServiceRepositoryInterfa
     
     function __construct()
     {
-        $this->model = new Service();
+        $this->model = (new Service())->with('options');
     }
 
     public function all()
     {
-        return $this->model->with('options')->get();
+        return [
+          'cemetery' => $this->model->where('entity_id', 1)->get(),
+          'crematory'  => $this->model->where('entity_id', 2)->get(),
+          'laboratory'  => $this->model->where('entity_id', 3)->get(),
+          'general'  => $this->model->where('entity_id', null)->get()
+        ];
     }
     
     public function find($id)
