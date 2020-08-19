@@ -19,16 +19,6 @@ class CreateFuneralHomesTable extends Migration
             $table->integer('total_capacity')->nullable();
             $table->timestamps();
         });
-
-        Schema::create('funeral_home_services', function (Blueprint $table) {
-            $table->foreignId('funeral_home_id')->constrained()->onDelete('cascade');
-            $table->foreignId('service_id')->constrained()->onDelete('cascade');
-        });
-
-        Schema::create('funeral_home_options', function (Blueprint $table) {
-            $table->foreignId('funeral_home_id')->constrained()->onDelete('cascade');
-            $table->foreignId('service_options_id')->constrained()->onDelete('cascade');
-        });
     }
 
     /**
