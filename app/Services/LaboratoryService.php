@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 Class LaboratoryService implements LaboratoryServiceInterface {
 
 
-    public function save(Request $request, Laboratory $laboratory = null)
+    public function save(Request $request, Laboratory $laboratory = null) : Laboratory
     {
         if($laboratory) {
             $laboratory->save($request->all());

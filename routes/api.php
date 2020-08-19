@@ -28,17 +28,13 @@ Route::group([
         Route::get('user', 'API\AuthController@user');
     });
 });
+ 
 
+    Route::resource('cemeteries', 'CemeteryController')->only('index', 'show', 'store', 'update', 'destroy');
+    Route::resource('laboratories', 'LaboratoryController')->only('index', 'show', 'store', 'update', 'destroy');
+    Route::resource('cremations', 'CremationController')->only('index', 'show', 'store', 'update', 'destroy');
+    Route::resource('funeral-home', 'FuneralHomeController')->only('index', 'show', 'store', 'update', 'destroy');
+    Route::resource('services', 'ServiceController')->only('index', 'show', 'store', 'update', 'destroy');
+    Route::resource('orders', 'OrderController')->only('index', 'show', 'store', 'update', 'destroy');
+ 
 
-Route::get('services', 'ServiceController@index');
-Route::post('services', 'ServiceController@store');
-
-
-Route::post('orders', 'OrderController@store');
-
-
-Route::get('/cemeteries', 'CemeteryController@index');
-Route::get('/cemeteries/{cemetery}', 'CemeteryController@show');
-Route::post('/cemeteries', 'CemeteryController@store');
-Route::put('/cemeteries/{cemetery}', 'CemeteryController@update');
-Route::delete('/cemeteries/{cemetery}', 'CemeteryController@destroy');

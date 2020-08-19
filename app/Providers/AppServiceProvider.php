@@ -7,7 +7,9 @@ use App\Repositories\FuneralHomeRepository;
 use App\Repositories\Interfaces\CemeteryRepositoryInterface;
 use App\Repositories\Interfaces\CremationRepositoryInterface;
 use App\Repositories\Interfaces\FuneralHomeRepositoryInterface;
+use App\Repositories\Interfaces\LaboratoryRepositoryInterface;
 use App\Repositories\Interfaces\ServiceRepositoryInterface;
+use App\Repositories\LaboratoryRepository;
 use App\Repositories\ServiceRepository;
 use App\Services\CemeteryService;
 use App\Services\CremationService;
@@ -15,6 +17,8 @@ use App\Services\FuneralHomeService;
 use App\Services\Interfaces\CemeteryServiceInterface;
 use App\Services\Interfaces\CremationServiceInterface;
 use App\Services\Interfaces\FuneralHomeServiceInterface;
+use App\Services\Interfaces\LaboratoryServiceInterface;
+use App\Services\LaboratoryService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -26,40 +30,36 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(
-            CemeteryServiceInterface::class,
-            CemeteryService::class
-        );
+        $repositories = [
+            'Cemetery',
+            'Laboratory',
+            'Cremation',
+            'FuneralHome',
+            'Service'
+        ];
 
-        $this->app->bind(
-            CemeteryRepositoryInterface::class,
-            CemeteryRepository::class
-        );
+        foreach ($repositories as $repo) {
+            $this->app->bind(
+                'App\Repositories\Interfaces\\'.$repo.'RepositoryInterface',
+                'App\Repositories\\'.$repo.'Repository'
+            );
+        }
 
-        $this->app->bind(
-            ServiceRepositoryInterface::class,
-            ServiceRepository::class
-        );
 
-        $this->app->bind(
-            CremationRepositoryInterface::class,
-            CemeteryRepository::class
-        );
-        
-        $this->app->bind(
-            CremationServiceInterface::class,
-            CremationService::class
-        );
+        $services = [
+            'Cemetery',
+            'Laboratory',
+            'Cremation',
+            'FuneralHome',
+            'Service'
+        ];
 
-        $this->app->bind(
-            FuneralHomeRepositoryInterface::class,
-            FuneralHomeRepository::class
-        );
-
-        $this->app->bind(
-            FuneralHomeServiceInterface::class,
-            FuneralHomeService::class
-        );
+        foreach ($services as $service) {
+            $this->app->bind(
+                'App\Services\Interfaces\\'.$service.'ServiceInterface',
+                'App\Services\\'.$service.'Service'
+            );
+        } 
     }
 
     /**
