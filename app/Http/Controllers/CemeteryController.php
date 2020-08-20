@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CemeteryRequest;
 use App\Models\Cemetery;
 use App\Repositories\Interfaces\CemeteryRepositoryInterface;
+use App\Services\Dto\CemeteryDto;
 use App\Services\Interfaces\CemeteryServiceInterface;
 use Illuminate\Http\Request;
 
@@ -44,9 +45,12 @@ class CemeteryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CemeteryRequest $request)
+    public function store(Request $request)
     {
-        return $this->service->save($request);
+        $dto = new CemeteryDto($request->all());
+        dd(var_dump($dto->data));
+        dd(var_dump());
+        return $this->service->save(new CemeteryDto($request->all()));
     }
 
     /**

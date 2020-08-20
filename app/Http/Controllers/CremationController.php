@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cremation;
 use App\Repositories\Interfaces\CremationRepositoryInterface;
+use App\Services\Dto\CremationDto;
 use App\Services\Interfaces\CremationServiceInterface;
 use Illuminate\Http\Request;
 
@@ -35,7 +36,7 @@ class CremationController extends Controller
      */
     public function store(Request $request)
     {
-        return $this->service->save($request);
+        return $this->service->save(new CremationDto($request->all()));
     }
 
     /**
@@ -58,7 +59,7 @@ class CremationController extends Controller
      */
     public function update(Request $request, Cremation $cremation)
     {
-        return $this->service->save($request, $cremation);
+        return $this->service->save(new CremationDto($request->all()), $cremation);
     }
 
     /**
