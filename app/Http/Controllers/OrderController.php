@@ -3,10 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Repositories\Interfaces\OrderRepositoryInterface;
+use App\Services\Dto\OrderDto;
+use App\Services\Interfaces\OrderServiceInterface;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
+    protected $service, $repo;
+
+    function __construct(OrderServiceInterface $service, OrderRepositoryInterface $repo)
+    {
+        $this->service = $service;
+        $this->repo = $repo;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,17 +24,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return $this->repo->all();
     }
 
     /**
@@ -35,19 +35,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        /**
-         We need such structure
-         [
-          entity_id : 4,
-          services: [
-              { service_id : 1, option_id : 2, value (optional) : ...},
-              { service_id : 1, option_id : 2, value (optional) : ...},
-         ]
-         */
-
-
-
-        return Order::create(['data' => json_encode($request->input('data'))]);
+       return $this->service->save(new OrderDto($request->all()));
     }
 
     /**
@@ -58,18 +46,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Order $order)
-    {
-        //
+        return $order;
     }
 
     /**
@@ -81,7 +58,7 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        //
+        return $this->service->save(new OrderDto($request->all()), $order);
     }
 
     /**
@@ -92,6 +69,6 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+        return $order->delete();
     }
 }

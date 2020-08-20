@@ -36,6 +36,7 @@ class AppServiceProvider extends ServiceProvider
             'Cremation',
             'FuneralHome',
             'Service',
+            'Order'
         ];
 
         foreach ($repositories as $repo) {
@@ -52,7 +53,8 @@ class AppServiceProvider extends ServiceProvider
             'Cremation',
             'FuneralHome',
             'Service',
-            'ImageUpload'
+            'ImageUpload',
+            'Order'
         ];
 
         foreach ($services as $service) {
