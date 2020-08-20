@@ -6,6 +6,7 @@ use App\Http\Requests\CemeteryRequest;
 use App\Models\Cemetery;
 use App\Models\Cremation;
 use App\Models\FuneralHome;
+use App\Services\Dto\FuneralHomeDto;
 use App\Services\Interfaces\CemeteryServiceInterface;
 use App\Services\Interfaces\CremationServiceInterface;
 use App\Services\Interfaces\FuneralHomeServiceInterface;
@@ -14,17 +15,17 @@ use Illuminate\Http\Request;
 Class FuneralHomeService implements FuneralHomeServiceInterface
 {
     
-    public function save(Request $request, FuneralHome $funeralHome = null) : FuneralHome
+    public function save(FuneralHomeDto $dto, FuneralHome $funeralHome = null) : FuneralHome
     {
         
         if ($funeralHome) {
-            $funeralHome->update($request->all());
+            $funeralHome->update($dto->data);
         } else {
-            $funeralHome = FuneralHome::create($request->all());
+            $funeralHome = FuneralHome::create($dto->data);
         }
 
 
-        $funeralHome->options()->sync($request->input('options'));
+        $funeralHome->options()->sync($dto->options);
         
         return $funeralHome;
     }

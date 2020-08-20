@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Laboratory;
 use App\Repositories\Interfaces\LaboratoryRepositoryInterface;
+use App\Services\Dto\LaboratoryDto;
 use App\Services\Interfaces\LaboratoryServiceInterface;
 use Illuminate\Http\Request;
 
@@ -34,7 +35,7 @@ class LaboratoryController extends Controller
      */
     public function store(Request $request)
     {
-        return $this->service->save($request);
+        return $this->service->save(new LaboratoryDto($request->all()));
     }
 
     /**
@@ -57,7 +58,7 @@ class LaboratoryController extends Controller
      */
     public function update(Request $request, Laboratory $laboratory)
     {
-        return $this->service->save($request, $laboratory);
+        return $this->service->save(new LaboratoryDto($request->all()), $laboratory);
     }
 
     /**

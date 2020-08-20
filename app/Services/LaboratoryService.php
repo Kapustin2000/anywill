@@ -3,21 +3,22 @@
 namespace App\Services;
 
 use App\Models\Laboratory;
+use App\Services\Dto\LaboratoryDto;
 use App\Services\Interfaces\LaboratoryServiceInterface;
 use Illuminate\Http\Request;
 
 Class LaboratoryService implements LaboratoryServiceInterface {
 
 
-    public function save(Request $request, Laboratory $laboratory = null) : Laboratory
+    public function save(LaboratoryDto $dto, Laboratory $laboratory = null) : Laboratory
     {
         if($laboratory) {
-            $laboratory->save($request->all());
+            $laboratory->save($dto->data);
         }else {
-            $laboratory = Laboratory::create($request->all());
+            $laboratory = Laboratory::create($dto->data);
         }
         
-        $laboratory->services()->sync($request->input('services'));
+        $laboratory->options()->sync($dto->options);
         
         return $laboratory;
     }
