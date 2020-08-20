@@ -16,9 +16,9 @@ Class OrderService implements  OrderServiceInterface{
     public function save(OrderDto $dto, Order $order = null)  : Order
     {
         if($order) {
-            $order->save($dto->data);
+            $order->save($dto->order);
         }else {
-            $order = Order::create($dto->data);
+            $order = Order::create($dto->order);
         }
         
         return $order;

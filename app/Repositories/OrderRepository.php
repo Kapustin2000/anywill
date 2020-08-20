@@ -6,12 +6,13 @@ use App\Http\Requests\CemeteryRequest;
 use App\Models\Cemetery;
 use App\Models\Order;
 use App\Repositories\Interfaces\CemeteryRepositoryInterface;
+use App\Repositories\Interfaces\OrderRepositoryInterface;
 use App\Repositories\Interfaces\RepositoryInterface;
 use App\Services\Interfaces\CemeteryServiceInterface;
  
 
 
-Class OrderRepository implements RepositoryInterface, CemeteryRepositoryInterface {
+Class OrderRepository implements RepositoryInterface, OrderRepositoryInterface {
 
     protected $model;
     
