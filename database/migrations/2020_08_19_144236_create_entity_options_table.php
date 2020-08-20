@@ -17,6 +17,7 @@ class CreateEntityOptionsTable extends Migration
             $table->morphs('entity_options');
             $table->foreignId('service_options_id')->constrained()->onDelete('cascade');
             $table->integer('commission')->nullable();
+            $table->json('media')->nullable();
             $table->timestamps();
         });
     }
