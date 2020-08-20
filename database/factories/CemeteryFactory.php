@@ -18,6 +18,6 @@ $factory->define(Cemetery::class, function (Faker $faker) {
 $factory->afterCreating(Cemetery::class, function ($cemetery, $faker) {
 
     $cemetery->classifications()->sync([1,2]);
-    $cemetery->services()->sync(1);
+    $cemetery->options()->sync(1);
     factory(App\Models\Plot::class, 5)->create(['cemetery_id' => $cemetery->id]);
 });
