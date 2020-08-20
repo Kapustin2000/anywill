@@ -47,11 +47,11 @@ return [
             'driver' => 'local',
             'root' => storage_path('app'),
         ],
-
+        
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'root' => public_path('files'),
+            'url' => env('APP_URL').'/files',
             'visibility' => 'public',
         ],
 
@@ -63,6 +63,16 @@ return [
             'bucket' => env('AWS_BUCKET'),
             'url' => env('AWS_URL'),
             'endpoint' => env('AWS_ENDPOINT'),
+        ],
+        
+        'oci' => [
+            'driver' => 's3',
+            'key' => env('OCI_ACCESS_KEY_ID'),
+            'secret' => env('OCI_SECRET_ACCESS_KEY'),
+            'region' => env('OCI_DEFAULT_REGION'),
+            'bucket' => env('OCI_BUCKET'),
+            'url' => env('OCI_URL') .  '/'.  env('OCI_BUCKET'),
+            'visibility' => 'public',
         ],
 
     ],
