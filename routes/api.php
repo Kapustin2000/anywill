@@ -36,5 +36,6 @@ Route::group([
     Route::resource('funeral-home', 'FuneralHomeController')->only('index', 'show', 'store', 'update', 'destroy');
     Route::resource('services', 'ServiceController')->only('index', 'show', 'store', 'update', 'destroy');
     Route::resource('orders', 'OrderController')->only('index', 'show', 'store', 'update', 'destroy');
+    Route::resource('media', 'MediaController')->only('index', 'show', 'store', 'update', 'destroy');
  
 

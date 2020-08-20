@@ -1,6 +1,6 @@
 <?php
 namespace App\Services\Interfaces;
 
-interface ImageUploadInterface{
+interface ImageUploadServiceInterface {
     public function handleImageUpload($image);
 }

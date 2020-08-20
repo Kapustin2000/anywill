@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Media;
-use App\Services\Interfaces\ImageUploadInterface;
+use App\Services\Interfaces\ImageUploadServiceInterface;
 use Illuminate\Http\Request;
 
 class MediaController extends Controller
 {
     protected $service;
 
-    public function __construct(ImageUploadInterface $service)
+    public function __construct(ImageUploadServiceInterface $service)
     {
         $this->service = $service;
     }
@@ -33,7 +33,7 @@ class MediaController extends Controller
      */
     public function store(Request $request)
     {
-        $this->service->handleImageUpload($request);
+        return $this->service->handleImageUpload($request->file('file'));
     }
 
     /**

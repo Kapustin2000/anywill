@@ -2,38 +2,37 @@
 
 namespace App\Services;
 
-use App\Http\Requests\CemeteryRequest;
-use App\Models\Cemetery;
-use App\Services\Interfaces\CemeteryServiceInterface;
-use App\Services\Interfaces\ImageUploadInterface;
+use App\Services\Interfaces\ImageUploadServiceInterface;
 use Illuminate\Support\Facades\Storage;
 
-Class ImageUploadService implements ImageUploadInterface {
+Class ImageUploadService implements ImageUploadServiceInterface {
 
+    protected $images = array();
 
-    protected $image;
-
-    public function handleImageUpload($image)
+    public function handleImageUpload($images)
     {
-        $this->image =$image;
 
-        if($this->canHandleImage()){
-            return $this->save();
+        foreach ($images as $image) {
+
+            if($this->canHandleImage($image)) {
+                array_push($this->images, $this->save($image));
+            }
+
         }
 
-        return '';
+        return $this->images;
     }
 
 
-    protected function canHandleImage()
+    protected function canHandleImage($image)
     {
-        return $this->image !== null;
+        return $image !== null;
     }
 
 
-    protected function save(){
+    protected function save($image){
         $filePath = '/1';
 
-        return Storage::disk('images')->put($filePath, $this->image);
+        return Storage::disk('public')->put($filePath, $image);
     }
 } 

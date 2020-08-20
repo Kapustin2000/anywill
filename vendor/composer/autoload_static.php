@@ -673,7 +673,7 @@ class ComposerStaticInit7731c8d20ece076261bae8e61107aa87
         'App\\Services\\Interfaces\\CemeteryServiceInterface' => __DIR__ . '/../..' . '/app/Services/Interfaces/CemeteryServiceInterface.php',
         'App\\Services\\Interfaces\\CremationServiceInterface' => __DIR__ . '/../..' . '/app/Services/Interfaces/CremationServiceInterface.php',
         'App\\Services\\Interfaces\\FuneralHomeServiceInterface' => __DIR__ . '/../..' . '/app/Services/Interfaces/FuneralHomeServiceInterface.php',
-        'App\\Services\\Interfaces\\ImageUploadInterface' => __DIR__ . '/../..' . '/app/Services/Interfaces/ImageUploadInterface.php',
+        'App\\Services\\Interfaces\\ImageUploadInterface' => __DIR__ . '/../..',
         'App\\Services\\Interfaces\\LaboratoryServiceInterface' => __DIR__ . '/../..' . '/app/Services/Interfaces/LaboratoryServiceInterface.php',
         'App\\Services\\LaboratoryService' => __DIR__ . '/../..' . '/app/Services/LaboratoryService.php',
         'App\\Services\\ServicesService' => __DIR__ . '/../..' . '/app/Services/ServicesService.php',

@@ -75,7 +75,7 @@ return array(
     'App\\Services\\Interfaces\\CemeteryServiceInterface' => $baseDir . '/app/Services/Interfaces/CemeteryServiceInterface.php',
     'App\\Services\\Interfaces\\CremationServiceInterface' => $baseDir . '/app/Services/Interfaces/CremationServiceInterface.php',
     'App\\Services\\Interfaces\\FuneralHomeServiceInterface' => $baseDir . '/app/Services/Interfaces/FuneralHomeServiceInterface.php',
-    'App\\Services\\Interfaces\\ImageUploadInterface' => $baseDir . '/app/Services/Interfaces/ImageUploadInterface.php',
+    'App\\Services\\Interfaces\\ImageUploadInterface' => $baseDir . '/app/Services/Interfaces/ImageUploadServiceInterface.php',
     'App\\Services\\Interfaces\\LaboratoryServiceInterface' => $baseDir . '/app/Services/Interfaces/LaboratoryServiceInterface.php',
     'App\\Services\\LaboratoryService' => $baseDir . '/app/Services/LaboratoryService.php',
     'App\\Services\\ServicesService' => $baseDir . '/app/Services/ServicesService.php',
