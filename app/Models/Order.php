@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    protected $fillable = ['data'];
+    protected $fillable = ['data', 'count_options'];
 }

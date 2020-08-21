@@ -4,7 +4,7 @@ class OrderDto extends AbstractDto implements DtoInterface
 {
 
     /* @var string */
-    public $order;
+    public $order, $count_options = 0;
     /* @return array */
     protected function configureValidatorRules(): array
     {
@@ -40,7 +40,15 @@ class OrderDto extends AbstractDto implements DtoInterface
      */
     protected function map(array $data): bool
     {
-        $this->order = array('data' => json_encode($this->data));
+        foreach (config('entities') as $entity) {
+            if(isset($this->data[$entity]['options'])) $this->count_options+= count($this->data[$entity]['options']);
+        }
+        
+        $this->order = array(
+            'data' => json_encode($this->data),
+            'count_options' => $this->count_options
+        );
+        
         return true;
     }
 }

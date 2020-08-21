@@ -20,6 +20,7 @@ class MatchMaking {
     public function __construct(Order $order)
     {
         $this->order = json_decode($order->data, true);
+        $this->matches['count_options'] = $order->count_options;
     }
     
     public function find()

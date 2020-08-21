@@ -16,6 +16,7 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->json('data');
+            $table->integer('count_options');
             $table->boolean('ready')->default(0);
             $table->timestamps();
         });
