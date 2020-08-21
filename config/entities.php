@@ -3,5 +3,6 @@
 return [
   'cemetery',
   'cremation',
-  'laboratory'
+  'laboratory',
+  'funeral_home'
 ];
