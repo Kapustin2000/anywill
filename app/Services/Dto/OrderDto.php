@@ -40,7 +40,7 @@ class OrderDto extends AbstractDto implements DtoInterface
      */
     protected function map(array $data): bool
     {
-        $this->order = array('order' => json_encode($this->data));
+        $this->order = array('data' => json_encode($this->data));
         return true;
     }
 }

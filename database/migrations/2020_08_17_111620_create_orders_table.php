@@ -15,7 +15,7 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->json('order');
+            $table->json('data');
             $table->boolean('ready')->default(0);
             $table->timestamps();
         });

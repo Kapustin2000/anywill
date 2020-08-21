@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+$matching = new \App\Components\MatchMaking(\App\Models\Order::find(4));
+$results = $matching->find();
+
+dd($results);
+
+
+
 Route::get('/', function () {
     return view('welcome');
 });
