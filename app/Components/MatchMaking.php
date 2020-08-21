@@ -10,12 +10,6 @@ use Illuminate\Database\Eloquent\Model;
 class MatchMaking {
     protected $order;
     protected $matches = [];
-    protected $entities = [
-      'cemetery' => 'App\Models\Cemetery',
-      'cremation' => 'App\Models\Cremation',
-      'funeral_home' => 'App\Models\FuneralHome',
-      'laboratory' => 'App\Models\Laboratory'
-    ];
 
     public function __construct(Order $order)
     {
@@ -25,8 +19,8 @@ class MatchMaking {
     
     public function find()
     {
-        foreach ($this->entities as $key=>$entity) {
-            $this->searchMatching($key);
+        foreach (config('entities') as $entity) {
+            $this->searchMatching($entity);
         }
         
         return $this->matches;
@@ -36,7 +30,7 @@ class MatchMaking {
     {
         if(isset($this->order[$entity])) {
 
-            $model = resolve($this->entities[$entity]);
+            $model = resolve('App\Models\\'.ucfirst(trans($entity)));
 
             $ids = array_column($this->order[$entity]['options'], 'option_id');
             $matching = $model::withCount(['options' => function($q) use ($ids) {
