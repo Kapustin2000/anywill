@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Service;
 use App\Repositories\Interfaces\ServiceRepositoryInterface;
+use App\Services\Dto\OrderDto;
+use App\Services\Dto\ServiceDto;
 use App\Services\ServicesService;
 use Illuminate\Http\Request;
 
@@ -26,7 +28,13 @@ class ServiceController extends Controller
     {
         return $this->repo->all();
     }
-    
+
+
+    public function store(Request $request)
+    {
+        return $this->service->save(new ServiceDto($request->all()));
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -36,7 +44,7 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-        return $this->service->save($request);
+        return $this->service->save(new ServiceDto($request->all()));
     }
 
     /**
