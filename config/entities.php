@@ -1,6 +1,7 @@
 <?php
 
 return [
+  'general',  
   'cemetery',
   'cremation',
   'laboratory',

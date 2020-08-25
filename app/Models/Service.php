@@ -13,12 +13,12 @@ class Service extends Model
 
     public function getTypeAttribute()
     {
-        return config('inputs')[$this->input_type_id];
+        return config('inputs')[$this->input_type_id ?? 0];
     }
 
     public function getEntityAttribute()
     {
-        return config('entities')[$this->entity_id];
+        return config('entities')[$this->entity_id ?? 0];
     }
 
     public function options()
@@ -47,10 +47,10 @@ class Service extends Model
     }
     
     
-    public function media()
-    {
-        return $this->hasManyThrough(CemeteryService::class, Cemetery::class);
-    }
+//    public function media()
+//    {
+//        return $this->hasManyThrough(CemeteryService::class, Cemetery::class);
+//    }
 
 
 }
