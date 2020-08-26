@@ -30,16 +30,6 @@ class CemeteryController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -47,9 +37,6 @@ class CemeteryController extends Controller
      */
     public function store(Request $request)
     {
-        $dto = new CemeteryDto($request->all());
-        dd(var_dump($dto->data));
-        dd(var_dump());
         return $this->service->save(new CemeteryDto($request->all()));
     }
 
@@ -65,17 +52,6 @@ class CemeteryController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Cemetery  $cemetery
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Cemetery $cemetery)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -84,7 +60,7 @@ class CemeteryController extends Controller
      */
     public function update(CemeteryRequest $request, Cemetery $cemetery)
     {
-        return $this->service->save($request, $cemetery);
+        return $this->service->save(new CemeteryDto($request->all()), $cemetery);
     }
 
     /**

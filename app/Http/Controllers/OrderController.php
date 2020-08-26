@@ -35,18 +35,6 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-                 /*
-                  {
-              "laboratory" : {
-                  "options" : {
-                      "0": {"value": ""},
-                      "1": {"value": ""},
-                      "2": {"value": ""},
-                      "3": {"value": ""}
-                  }
-              },
-              }
-                  */ 
        return $this->service->save(new OrderDto($request->all()));
     }
 

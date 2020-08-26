@@ -13,17 +13,17 @@ use Illuminate\Http\Request;
 Class CremationService implements CremationServiceInterface
 {
     
-    public function save(CremationDto $data, Cremation $cremation = null) : Cremation
+    public function save(CremationDto $dto, Cremation $cremation = null) : Cremation
     {
         
         if ($cremation) {
-            $cremation->update($data->toArray());
+            $cremation->update($dto->data);
         } else {
-            $cremation = Cemetery::create($data->toArray());
+            $cremation = Cemetery::create($dto->data);
         }
         
 
-        $cremation->options()->sync($data->options);
+        $cremation->options()->sync($dto->options);
         
         return $cremation;
     }
