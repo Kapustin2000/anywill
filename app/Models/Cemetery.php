@@ -9,10 +9,10 @@ class Cemetery extends Model
     protected $fillable = ['name','type'];
 
     const TYPES  = [
-       'public' => 1,
-       'private'  => 2,
-       'state' => 3,
-       'veteran' => 4
+       'public',
+       'private',
+       'state',
+       'veteran'
     ];
 
     public function user()

@@ -37,5 +37,13 @@ Route::group([
     Route::resource('services', 'ServiceController')->only('index', 'show', 'store', 'update', 'destroy');
     Route::resource('orders', 'OrderController')->only('index', 'show', 'store', 'update', 'destroy');
     Route::resource('media', 'MediaController')->only('index', 'show', 'store', 'update', 'destroy');
+
+
+Route::get('/cemetery-types', function (){
+    return \App\Models\Cemetery::TYPES;
+});
+Route::get('/cemetery-classifications', function (){
+    return \App\Models\Classification::all();
+});
  
 
