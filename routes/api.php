@@ -45,5 +45,7 @@ Route::get('/cemetery-types', function (){
 Route::get('/cemetery-classifications', function (){
     return \App\Models\Classification::all();
 });
- 
+
+
+Route::get('/orders/{order}/matching', 'OrderMatchingController');
 

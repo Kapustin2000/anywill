@@ -32,7 +32,7 @@ class MatchMaking {
 
             $model = resolve('App\Models\\'.ucfirst(trans($entity)));
 
-            $ids = array_column($this->order[$entity]['options'], 'option_id');
+            $ids = array_column($this->order[$entity]['options'], 'id');
             $matching = $model::withCount(['options' => function($q) use ($ids) {
                 $q->whereIn('id', $ids);
             }])->having('options_count', '>', 0)->orderByDesc('options_count')->with('options')->get();
