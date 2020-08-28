@@ -19,9 +19,9 @@ Class FuneralHomeRepository implements RepositoryInterface, CremationRepositoryI
 
     protected $model;
     
-    function __construct()
+    function __construct(FuneralHome $funeralHome)
     {
-        $this->model = (new FuneralHome())->with('options');
+        $this->model = $funeralHome->with('options');
     }
 
     public function all()

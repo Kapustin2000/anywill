@@ -16,9 +16,9 @@ Class LaboratoryRepository implements RepositoryInterface, LaboratoryRepositoryI
 
     protected $model;
     
-    function __construct()
+    function __construct(Laboratory $model)
     {
-        $this->model = (new Laboratory())->with('options');
+        $this->model = $model->with('options');
     }
 
     public function all()

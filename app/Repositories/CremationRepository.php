@@ -18,9 +18,9 @@ Class CremationRepository implements RepositoryInterface, CremationRepositoryInt
 
     protected $model;
     
-    function __construct()
+    function __construct(Cremation $model)
     {
-        $this->model = (new Cremation())->with('options');
+        $this->model = $model->with('options');
     }
 
     public function all()

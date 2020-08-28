@@ -16,9 +16,9 @@ Class ServiceRepository implements RepositoryInterface, ServiceRepositoryInterfa
 
     protected $model;
     
-    function __construct()
+    function __construct(Service $model)
     {
-        $this->model = (new Service())->with('options');
+        $this->model = $model->with('options');
     }
 
     public function all()

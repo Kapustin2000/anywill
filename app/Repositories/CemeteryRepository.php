@@ -14,14 +14,14 @@ Class CemeteryRepository implements RepositoryInterface, CemeteryRepositoryInter
 
     protected $model;
     
-    function __construct()
+    function __construct(Cemetery $model)
     {
-        $this->model = new Cemetery();
+        $this->model = $model->with('classifications', 'options', 'coordinates');
     }
 
     public function all()
     {
-        return $this->model->with('classifications', 'options', 'coordinates')->get();
+        return $this->model->get();
     }
     
     public function find($id)

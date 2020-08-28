@@ -16,9 +16,9 @@ Class OrderRepository implements RepositoryInterface, OrderRepositoryInterface {
 
     protected $model;
     
-    function __construct()
+    function __construct(Order $model)
     {
-        $this->model = new Order();
+        $this->model = $model;
     }
 
     public function all()
