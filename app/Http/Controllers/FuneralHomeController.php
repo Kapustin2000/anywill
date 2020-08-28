@@ -34,7 +34,7 @@ class FuneralHomeController extends Controller
      */
     public function store(Request $request)
     {
-        return $this->service->save(new FuneralHomeDto($request->all()));
+        return $this->service->transaction(new FuneralHomeDto($request->all()));
     }
 
     /**
@@ -57,7 +57,7 @@ class FuneralHomeController extends Controller
      */
     public function update(Request $request, FuneralHome $home)
     {
-        return $this->service->save( new FuneralHomeDto($request->all()), $home);
+        return $this->service->transaction( new FuneralHomeDto($request->all()), $home);
     }
 
     /**

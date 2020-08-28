@@ -7,7 +7,7 @@ use App\Models\Cemetery;
 use App\Services\Dto\CemeteryDto;
 use App\Services\Interfaces\CemeteryServiceInterface;
 
-Class CemeteryService implements CemeteryServiceInterface
+Class CemeteryService extends TransactionAbstractService implements CemeteryServiceInterface
 {
 
     protected $cemetery;

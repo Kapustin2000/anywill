@@ -10,7 +10,7 @@ use App\Services\Interfaces\CemeteryServiceInterface;
 use App\Services\Interfaces\CremationServiceInterface;
 use Illuminate\Http\Request;
 
-Class CremationService implements CremationServiceInterface
+Class CremationService extends TransactionAbstractService implements CremationServiceInterface
 {
     
     public function save(CremationDto $dto, Cremation $cremation = null) : Cremation

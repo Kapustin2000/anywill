@@ -7,7 +7,7 @@ use App\Services\Dto\LaboratoryDto;
 use App\Services\Interfaces\LaboratoryServiceInterface;
 use Illuminate\Http\Request;
 
-Class LaboratoryService implements LaboratoryServiceInterface {
+Class LaboratoryService extends TransactionAbstractService implements LaboratoryServiceInterface {
 
 
     public function save(LaboratoryDto $dto, Laboratory $laboratory = null) : Laboratory

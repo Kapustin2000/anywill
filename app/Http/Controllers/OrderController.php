@@ -35,7 +35,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-       return $this->service->save(new OrderDto($request->all()));
+       return $this->service->transaction(new OrderDto($request->all()));
     }
 
     /**
@@ -58,7 +58,7 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        return $this->service->save(new OrderDto($request->all()), $order);
+        return $this->service->transaction(new OrderDto($request->all()), $order);
     }
 
     /**

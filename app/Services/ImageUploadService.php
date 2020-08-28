@@ -5,7 +5,7 @@ namespace App\Services;
 use App\Services\Interfaces\ImageUploadServiceInterface;
 use Illuminate\Support\Facades\Storage;
 
-Class ImageUploadService implements ImageUploadServiceInterface {
+Class ImageUploadService extends TransactionAbstractService implements ImageUploadServiceInterface {
 
     protected $images = array();
 

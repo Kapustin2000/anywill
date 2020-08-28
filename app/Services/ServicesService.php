@@ -9,7 +9,7 @@ use App\Services\Dto\ServiceDto;
 use App\Services\Interfaces\CemeteryServiceInterface;
 use Illuminate\Http\Request;
 
-Class ServicesService {
+Class ServicesService extends TransactionAbstractService {
 
     protected $services_array = [];
 

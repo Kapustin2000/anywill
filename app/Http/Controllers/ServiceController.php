@@ -8,6 +8,7 @@ use App\Services\Dto\OrderDto;
 use App\Services\Dto\ServiceDto;
 use App\Services\ServicesService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ServiceController extends Controller
 {
@@ -17,6 +18,14 @@ class ServiceController extends Controller
     {
         $this->service = $service;
         $this->repo = $repo;
+    }
+
+    public static function boot() {
+        parent::boot();
+
+        static::deleting(function($service) {
+            $service->options()->delete();
+        });
     }
 
     /**
@@ -32,7 +41,7 @@ class ServiceController extends Controller
 
     public function store(Request $request)
     {
-        return $this->service->save(new ServiceDto($request->all()));
+        return $this->service->transaction(new ServiceDto($request->all()));
     }
 
     /**
@@ -44,7 +53,7 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-        return $this->service->save(new ServiceDto($request->all()));
+        return $this->service->transaction(new ServiceDto($request->all()));
     }
 
     /**

@@ -37,7 +37,7 @@ class CemeteryController extends Controller
      */
     public function store(Request $request)
     {
-        return $this->service->save(new CemeteryDto($request->all()));
+        return $this->service->transaction(new CemeteryDto($request->all()));
     }
 
     /**
@@ -60,7 +60,7 @@ class CemeteryController extends Controller
      */
     public function update(CemeteryRequest $request, Cemetery $cemetery)
     {
-        return $this->service->save(new CemeteryDto($request->all()), $cemetery);
+        return $this->service->transaction(new CemeteryDto($request->all()), $cemetery);
     }
 
     /**

@@ -36,7 +36,7 @@ class CremationController extends Controller
      */
     public function store(Request $request)
     {
-        return $this->service->save(new CremationDto($request->all()));
+        return $this->service->transaction(new CremationDto($request->all()));
     }
 
     /**
@@ -59,7 +59,7 @@ class CremationController extends Controller
      */
     public function update(Request $request, Cremation $cremation)
     {
-        return $this->service->save(new CremationDto($request->all()), $cremation);
+        return $this->service->transaction(new CremationDto($request->all()), $cremation);
     }
 
     /**

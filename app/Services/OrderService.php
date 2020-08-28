@@ -11,7 +11,7 @@ use App\Services\Interfaces\CemeteryServiceInterface;
 use App\Services\Interfaces\OrderServiceInterface;
 use Illuminate\Http\Request;
 
-Class OrderService implements  OrderServiceInterface{
+Class OrderService extends TransactionAbstractService implements  OrderServiceInterface{
     
     public function save(OrderDto $dto, Order $order = null)  : Order
     {

@@ -12,7 +12,7 @@ use App\Services\Interfaces\CremationServiceInterface;
 use App\Services\Interfaces\FuneralHomeServiceInterface;
 use Illuminate\Http\Request;
 
-Class FuneralHomeService implements FuneralHomeServiceInterface
+Class FuneralHomeService extends TransactionAbstractService implements FuneralHomeServiceInterface
 {
     
     public function save(FuneralHomeDto $dto, FuneralHome $funeralHome = null) : FuneralHome

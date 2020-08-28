@@ -35,7 +35,7 @@ class LaboratoryController extends Controller
      */
     public function store(Request $request)
     {
-        return $this->service->save(new LaboratoryDto($request->all()));
+        return $this->service->transaction(new LaboratoryDto($request->all()));
     }
 
     /**
@@ -58,7 +58,7 @@ class LaboratoryController extends Controller
      */
     public function update(Request $request, Laboratory $laboratory)
     {
-        return $this->service->save(new LaboratoryDto($request->all()), $laboratory);
+        return $this->service->transaction(new LaboratoryDto($request->all()), $laboratory);
     }
 
     /**
