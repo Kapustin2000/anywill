@@ -20,14 +20,6 @@ class ServiceController extends Controller
         $this->repo = $repo;
     }
 
-    public static function boot() {
-        parent::boot();
-
-        static::deleting(function($service) {
-            $service->options()->delete();
-        });
-    }
-
     /**
      * Display a listing of the resource.
      *
