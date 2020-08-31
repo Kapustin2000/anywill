@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Validator;
 use InvalidArgumentException;
 abstract class TransactionAbstractService
 {
+    
     public function transaction($data)
     {
         return DB::transaction(function () use ($data){
