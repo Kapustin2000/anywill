@@ -45,7 +45,11 @@ Route::get('/cemetery-types', function (){
 Route::get('/cemetery-classifications', function (){
     return \App\Models\Classification::all();
 });
-
-
+Route::get('/entities', function (){
+    return config('entities');
+});
+Route::get('/input-types', function (){
+    return config('inputs');
+});
 Route::get('/orders/{order}/matching', 'OrderMatchingController');
 
