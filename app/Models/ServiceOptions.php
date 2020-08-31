@@ -8,6 +8,7 @@ class ServiceOptions extends Model
 {
     protected $table = 'service_options';
     protected $hidden = ['pivot'];
+    public $timestamps = false;
 
     protected $fillable = ['name'];
 
