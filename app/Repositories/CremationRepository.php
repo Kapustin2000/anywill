@@ -25,7 +25,7 @@ Class CremationRepository implements RepositoryInterface, CremationRepositoryInt
 
     public function all()
     {
-        return $this->model->all();
+        return $this->model->get();
     }
     
     public function find($id)
