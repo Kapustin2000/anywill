@@ -18,7 +18,6 @@ class CreateEntityOptionsTable extends Migration
             $table->foreignId('service_options_id')->constrained()->onDelete('cascade');
             $table->integer('commission')->nullable();
             $table->json('media')->nullable();
-            $table->timestamps();
         });
     }
 

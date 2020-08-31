@@ -17,7 +17,6 @@ class CreateServiceOptionsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name'); 
             $table->foreignId('service_id')->unsigned()->constrained()->onDelete('cascade');
-            $table->timestamps();
         });
     }
 

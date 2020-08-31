@@ -17,7 +17,6 @@ class CreateMediaTable extends Migration
             $table->id();
             $table->morphs('media_able');
             $table->string('path');
-            $table->timestamps();
         });
     }
 
