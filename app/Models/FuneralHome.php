@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class FuneralHome extends Model
 {
+    protected $fillable = ['name', 'total_capacity'];
+
     public function user()
     {
         return $this->belongsTo(User::class);
