@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\FuneralHome;
+use App\Repositories\Interfaces\FuneralHomeRepositoryInterface;
 use App\Services\Dto\FuneralHomeDto;
 use App\Services\Interfaces\FuneralHomeServiceInterface;
 use Illuminate\Http\Request;
@@ -11,7 +12,7 @@ class FuneralHomeController extends Controller
 {
     protected $service, $repo;
 
-    function __construct(FuneralHomeServiceInterface $service, FuneralHomeServiceInterface $repo)
+    function __construct(FuneralHomeServiceInterface $service, FuneralHomeRepositoryInterface $repo)
     {
         $this->service = $service;
         $this->repo = $repo;
