@@ -12,25 +12,32 @@ Class CemeteryService extends TransactionAbstractService implements CemeteryServ
 
     protected $cemetery;
 
-    public function save(CemeteryDto $dto, Cemetery $cemetery = null) : Cemetery
+    public function save(CemeteryDto $dto) : Cemetery
     {
-        
-        if ($cemetery) {
-            $cemetery->update($dto->data);
-        } else {
-            $cemetery = Cemetery::create($dto->data);
-        }
 
-        $cemetery->classifications()->sync($dto->classifications);
+        $this->cemetery = $cemetery = Cemetery::create($dto->data);
+        return $this->persistCemetery($dto);
+    }
 
-        $cemetery->coordinates()->updateOrCreate($dto->coordinates);
+    public function update(CemeteryDto $dto, Cemetery $cemetery) : Cemetery
+    {
+        $this->cemetery = $cemetery->update($dto->data);
 
-        $cemetery->options()->sync($dto->options);
+        return $this->persistCemetery($dto);
+    }
+
+    protected function persistCemetery(CemeteryDto $dto) : Cemetery
+    {
+        $this->cemetery->classifications()->sync($dto->classifications);
+
+        $this->cemetery->coordinates()->updateOrCreate($dto->coordinates);
+
+        $this->cemetery->options()->sync($dto->options);
 
         //Maybe later
         //$cemetery->plots()->create($request->input('plots'));
 
-        return $cemetery;
+        return $this->cemetery;
     }
 
 } 
