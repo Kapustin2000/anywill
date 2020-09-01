@@ -2,13 +2,10 @@
 
 namespace App\Services;
 
-use App\Http\Requests\CemeteryRequest;
-use App\Models\Cemetery;
+
 use App\Models\Cremation;
 use App\Services\Dto\CremationDto;
-use App\Services\Interfaces\CemeteryServiceInterface;
 use App\Services\Interfaces\CremationServiceInterface;
-use Illuminate\Http\Request;
 
 Class CremationService extends TransactionAbstractService implements CremationServiceInterface
 {
@@ -16,7 +13,7 @@ Class CremationService extends TransactionAbstractService implements CremationSe
     
     public function save(CremationDto $dto) : Cremation
     {
-        $this->cremation = Cemetery::create($dto->data);
+        $this->cremation = Cremation::create($dto->data);
         
         return $this->persistCremation($dto);
     }

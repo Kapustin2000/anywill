@@ -5,7 +5,6 @@ namespace App\Services;
 use App\Models\Laboratory;
 use App\Services\Dto\LaboratoryDto;
 use App\Services\Interfaces\LaboratoryServiceInterface;
-use Illuminate\Http\Request;
 
 Class LaboratoryService extends TransactionAbstractService implements LaboratoryServiceInterface {
     

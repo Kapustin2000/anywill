@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Http\Requests\CemeteryRequest;
 use App\Models\Cemetery;
 use App\Services\Dto\CemeteryDto;
 use App\Services\Interfaces\CemeteryServiceInterface;

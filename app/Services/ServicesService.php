@@ -2,12 +2,9 @@
 
 namespace App\Services;
 
-use App\Http\Requests\CemeteryRequest;
-use App\Models\Cemetery;
+
 use App\Models\Service;
 use App\Services\Dto\ServiceDto;
-use App\Services\Interfaces\CemeteryServiceInterface;
-use Illuminate\Http\Request;
 
 Class ServicesService extends TransactionAbstractService {
 

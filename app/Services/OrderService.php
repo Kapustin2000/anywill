@@ -2,14 +2,9 @@
 
 namespace App\Services;
 
-use App\Http\Requests\CemeteryRequest;
-use App\Models\Cemetery;
 use App\Models\Order;
-use App\Models\Service;
 use App\Services\Dto\OrderDto;
-use App\Services\Interfaces\CemeteryServiceInterface;
 use App\Services\Interfaces\OrderServiceInterface;
-use Illuminate\Http\Request;
 
 Class OrderService extends TransactionAbstractService implements  OrderServiceInterface{
     
