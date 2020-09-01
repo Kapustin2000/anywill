@@ -14,24 +14,34 @@ use Illuminate\Http\Request;
 
 Class FuneralHomeService extends TransactionAbstractService implements FuneralHomeServiceInterface
 {
-    
-    public function save(FuneralHomeDto $dto, FuneralHome $funeralHome = null) : FuneralHome
+    protected $funeralHome;
+
+    public function save(FuneralHomeDto $dto) : FuneralHome
     {
+        $this->funeralHome =  FuneralHome::create($dto->data);
         
-        if ($funeralHome) {
-            $funeralHome->update($dto->data);
-        } else {
-            $funeralHome = FuneralHome::create($dto->data);
-        }
+        return $this->persistFuneralHome($dto);
+    }
+
+    public function update(FuneralHomeDto $dto, FuneralHome $funeralHome)
+    {
+        $this->funeralHome = $funeralHome;
+
+        $this->funeralHome->update($dto->data);
+
+        return $this->persistFuneralHome($dto);
+    }
 
 
-        $funeralHome->options()->sync($dto->options);
+    protected function persistFuneralHome(FuneralHomeDto $dto)
+    {
+        $this->funeralHome->options()->sync($dto->options);
 
         foreach($dto->rooms as $room) {
-            $funeralHome->rooms()->updateOrCreate($room);
+            $this->funeralHome->rooms()->updateOrCreate($room);
         }
-        
-        return $funeralHome;
+
+        return $this->funeralHome;
     }
 
 } 

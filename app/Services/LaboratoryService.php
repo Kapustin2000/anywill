@@ -8,19 +8,32 @@ use App\Services\Interfaces\LaboratoryServiceInterface;
 use Illuminate\Http\Request;
 
 Class LaboratoryService extends TransactionAbstractService implements LaboratoryServiceInterface {
-
-
+    
+    protected $laboratory;
+    
     public function save(LaboratoryDto $dto, Laboratory $laboratory = null) : Laboratory
     {
-        if($laboratory) {
-            $laboratory->save($dto->data);
-        }else {
-            $laboratory = Laboratory::create($dto->data);
-        }
-        
-        $laboratory->options()->sync($dto->options);
-        
+        $this->laboratory = Laboratory::create($dto->data);
+        $this->persistLaboratory($dto);
+
+
         return $laboratory;
+    }
+    
+    public function update(LaboratoryDto $dto, Laboratory $laboratory = null) : Laboratory
+    {
+        $this->laboratory = $laboratory;
+        
+        $this->laboratory->update($dto->data);
+        
+        $this->persistLaboratory($dto);
+    }
+    
+    protected function persistLaboratory(LaboratoryDto $dto)
+    {
+        $this->laboratory->options()->sync($dto->options);
+        
+        return  $this->laboratory;
     }
 
 } 
