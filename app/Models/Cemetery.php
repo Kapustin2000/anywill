@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\UsesUuid;
 use Illuminate\Database\Eloquent\Model;
 
 class Cemetery extends Model
 {
+    use UsesUuid;
+
     protected $fillable = ['name','type'];
 
     const TYPES  = [
@@ -14,6 +17,7 @@ class Cemetery extends Model
        'state',
        'veteran'
     ];
+
 
     public function user()
     {

@@ -91,6 +91,7 @@ return array(
     'App\\Services\\OrderService' => $baseDir . '/app/Services/OrderService.php',
     'App\\Services\\ServicesService' => $baseDir . '/app/Services/ServicesService.php',
     'App\\Services\\TransactionAbstractService' => $baseDir . '/app/Services/TransactionAbstractService.php',
+    'App\\Traits\\UsesUuid' => $baseDir . '/app/Traits/UsesUuid.php',
     'App\\User' => $baseDir . '/app/User.php',
     'ArithmeticError' => $vendorDir . '/symfony/polyfill-php70/Resources/stubs/ArithmeticError.php',
     'Asm89\\Stack\\Cors' => $vendorDir . '/asm89/stack-cors/src/Cors.php',

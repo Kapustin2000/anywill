@@ -15,7 +15,8 @@ class CreatePlotsTable extends Migration
     {
         Schema::create('plots', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('cemetery_id')->constrained()->onDelete('cascade');
+            $table->uuid('cemetery_id')->nullable();
+            $table->foreign('cemetery_id')->references('id')->on('cemeteries')->onDelete('cascade');
             $table->string('square_meters');
             $table->softDeletes();
             $table->timestamps();

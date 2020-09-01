@@ -14,7 +14,7 @@ class CreateEntityOptionsTable extends Migration
     public function up()
     {
         Schema::create('entity_options', function (Blueprint $table) {
-            $table->morphs('entity_options');
+            $table->uuidMorphs('entity_options');
             $table->foreignId('service_options_id')->constrained()->onDelete('cascade');
             $table->integer('commission')->nullable();
             $table->json('media')->nullable();

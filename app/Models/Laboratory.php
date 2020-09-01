@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\UsesUuid;
 use Illuminate\Database\Eloquent\Model;
 
 class Laboratory extends Model
 {
+    use UsesUuid;
+    
     protected $fillable = ['name'];
     
     public function user()

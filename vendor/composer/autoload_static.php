@@ -690,6 +690,7 @@ class ComposerStaticInit7731c8d20ece076261bae8e61107aa87
         'App\\Services\\OrderService' => __DIR__ . '/../..' . '/app/Services/OrderService.php',
         'App\\Services\\ServicesService' => __DIR__ . '/../..' . '/app/Services/ServicesService.php',
         'App\\Services\\TransactionAbstractService' => __DIR__ . '/../..' . '/app/Services/TransactionAbstractService.php',
+        'App\\Traits\\UsesUuid' => __DIR__ . '/../..' . '/app/Traits/UsesUuid.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'ArithmeticError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/ArithmeticError.php',
         'Asm89\\Stack\\Cors' => __DIR__ . '/..' . '/asm89/stack-cors/src/Cors.php',

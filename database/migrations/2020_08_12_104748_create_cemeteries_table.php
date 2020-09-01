@@ -14,7 +14,7 @@ class CreateCemeteriesTable extends Migration
     public function up()
     {
         Schema::create('cemeteries', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->uuid('id')->primary();
             $table->string('name');
             $table->unsignedInteger('type');
             $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');

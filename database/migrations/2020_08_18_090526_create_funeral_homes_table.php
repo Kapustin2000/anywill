@@ -14,7 +14,7 @@ class CreateFuneralHomesTable extends Migration
     public function up()
     {
         Schema::create('funeral_homes', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('name');
             $table->integer('total_capacity')->nullable();
             $table->timestamps();
