@@ -28,10 +28,8 @@ class FuneralHomeDto extends AbstractDto implements DtoInterface
 
         $this->rooms = $data['rooms'];
 
-        foreach($data['options'] as $option) {
-            $this->options[(int) $option['option_id']] = array('commission' => $option['commission']);
-        }
-        
+        $this->options = compactOptions($data['options']);
+
         return true;
     }
 }

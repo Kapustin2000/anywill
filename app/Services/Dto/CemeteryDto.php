@@ -24,7 +24,7 @@ class CemeteryDto extends AbstractDto implements DtoInterface
         $this->user_id = $data['user_id'] ?? 123;
         $this->classifications = $data['classifications'];
         $this->coordinates = ['coordinates' => json_encode($data['coordinates'])];
-        $this->options = $data['options'];
+        $this->options = compactOptions($data['options']);
 
 
         return true;

@@ -11,13 +11,11 @@ Class LaboratoryService extends TransactionAbstractService implements Laboratory
     
     protected $laboratory;
     
-    public function save(LaboratoryDto $dto, Laboratory $laboratory = null) : Laboratory
+    public function save(LaboratoryDto $dto) : Laboratory
     {
         $this->laboratory = Laboratory::create($dto->data);
-        $this->persistLaboratory($dto);
 
-
-        return $laboratory;
+        return $this->persistLaboratory($dto);
     }
     
     public function update(LaboratoryDto $dto, Laboratory $laboratory = null) : Laboratory
@@ -26,7 +24,7 @@ Class LaboratoryService extends TransactionAbstractService implements Laboratory
         
         $this->laboratory->update($dto->data);
         
-        $this->persistLaboratory($dto);
+        return $this->persistLaboratory($dto);
     }
     
     protected function persistLaboratory(LaboratoryDto $dto)

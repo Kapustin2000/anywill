@@ -10,7 +10,7 @@ class CremationDto extends AbstractDto implements DtoInterface
     protected function configureValidatorRules(): array
     {
         return [
-
+            'user_id' => 'sometimes'
         ];
     }
 
@@ -20,7 +20,7 @@ class CremationDto extends AbstractDto implements DtoInterface
     protected function map(array $data): bool
     { 
         $this->user_id = $data['user_id'] ?? null;
-        $this->options = $data['options'];
+        $this->options = compactOptions($data['options']);
 
 
         return true;

@@ -6,7 +6,7 @@ use InvalidArgumentException;
 abstract class TransactionAbstractService
 {
     
-    public function transaction($data, $entity)
+    public function transaction($data, $entity = null)
     {
         return DB::transaction(function () use ($data, $entity){
             if($entity) {

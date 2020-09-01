@@ -10,7 +10,7 @@ class LaboratoryDto extends AbstractDto implements DtoInterface
     protected function configureValidatorRules(): array
     {
         return [
-
+            'name' => 'required'
         ];
     }
 
@@ -19,7 +19,7 @@ class LaboratoryDto extends AbstractDto implements DtoInterface
      */
     protected function map(array $data): bool
     { 
-        $this->options = $data['options'];
+        $this->options = compactOptions($data['options']);
         
         return true;
     }
