@@ -23,7 +23,7 @@ Class FuneralHomeService extends TransactionAbstractService implements FuneralHo
         return $this->persistFuneralHome($dto);
     }
 
-    public function update(FuneralHomeDto $dto, FuneralHome $funeralHome)
+    public function update(FuneralHomeDto $dto, FuneralHome $funeralHome) : FuneralHome
     {
         $this->funeralHome = $funeralHome;
 

@@ -33,7 +33,7 @@ Route::group([
     Route::resource('cemeteries', 'CemeteryController')->only('index', 'show', 'store', 'update', 'destroy');
     Route::resource('laboratories', 'LaboratoryController')->only('index', 'show', 'store', 'update', 'destroy');
     Route::resource('cremations', 'CremationController')->only('index', 'show', 'store', 'update', 'destroy');
-    Route::resource('funeral-homes', 'FuneralHomeController')->only('index', 'show', 'store', 'update', 'destroy');
+//    Route::resource('funeral-homes', 'FuneralHomeController')->only('index', 'show', 'store', 'update', 'destroy');
     Route::resource('services', 'ServiceController')->only('index', 'show', 'store', 'update', 'destroy');
     Route::resource('orders', 'OrderController')->only('index', 'show', 'store', 'update', 'destroy');
     Route::resource('media', 'MediaController')->only('index', 'show', 'store', 'update', 'destroy');
@@ -53,3 +53,10 @@ Route::get('/input-types', function (){
 });
 Route::get('/orders/{order}/matching', 'OrderMatchingController');
 
+Route::prefix('funeral-homes')->group(function () {
+    Route::get('/', 'FuneralHomeController@index');
+    Route::get('/{home}', 'FuneralHomeController@show');
+    Route::put('/{home}', 'FuneralHomeController@update');
+    Route::delete('/{home}', 'FuneralHomeController@update');
+    Route::post('/', 'FuneralHomeController@store');
+});
