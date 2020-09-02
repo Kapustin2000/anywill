@@ -2,12 +2,18 @@
 
 namespace App\Services;
 
+use App\Models\Media;
 use App\Services\Interfaces\ImageUploadServiceInterface;
 use Illuminate\Support\Facades\Storage;
 
 Class ImageUploadService extends TransactionAbstractService implements ImageUploadServiceInterface {
 
-    protected $images = array();
+    protected $model,$images = array();
+
+    function __construct(Media $media)
+    {
+        $this->model = $media;
+    }
 
     public function handleImageUpload($images)
     {
@@ -15,7 +21,12 @@ Class ImageUploadService extends TransactionAbstractService implements ImageUplo
         foreach ($images as $image) {
 
             if($this->canHandleImage($image)) {
-                array_push($this->images, $this->save($image));
+
+                $image_id = $this->model->create(
+                    ['path' => $this->save($image)]
+                )->id;
+
+                array_push($this->images, $image_id );
             }
 
         }

@@ -16,16 +16,6 @@ class MediaController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    } 
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -33,7 +23,7 @@ class MediaController extends Controller
      */
     public function store(Request $request)
     {
-        return $this->service->handleImageUpload($request->file('file'));
+        return $this->service->handleImageUpload($request->file('files'));
     }
 
     /**

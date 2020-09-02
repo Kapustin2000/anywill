@@ -12,9 +12,4 @@ class FuneralHomeRooms extends Model
     {
         return $this->belongsTo(FuneralHome::class);
     }
-
-    public function media()
-    {
-        return $this->morphMany(Media::class, 'media_able');
-    }
 }
