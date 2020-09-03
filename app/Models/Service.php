@@ -21,6 +21,11 @@ class Service extends Model
         return config('entities')[$this->entity_id ?? 0];
     }
 
+    public function dependencies()
+    {
+        return $this->belongsToMany(ServiceOptions::class, 'service_dependencies');
+    }
+
     public function options()
     {
         return $this->hasMany(ServiceOptions::class);

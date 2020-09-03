@@ -18,6 +18,13 @@ class CreateServiceOptionsTable extends Migration
             $table->string('name'); 
             $table->foreignId('service_id')->unsigned()->constrained()->onDelete('cascade');
         });
+
+
+        Schema::create('service_dependencies', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('service_id')->unsigned()->constrained()->onDelete('cascade');
+            $table->foreignId('service_options_id')->constrained()->onDelete('cascade');
+        });
     }
 
     /**

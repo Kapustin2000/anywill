@@ -27,6 +27,32 @@ class ServiceController extends Controller
      */
     public function index()
     {
+        DB::enableQueryLog(); // Enable query log
+        $idList = [1,2];
+
+        $services = Service::whereIn('id', function ($query) use ($idList) {
+             $query->selectRaw('sd1.service_id')
+                 ->whereIn('sd1.service_options_id', $idList)
+                 ->from('service_dependencies as sd1')
+                 ->join('service_dependencies as sd2', 'sd1.service_id', 'sd2.service_id')
+                 ->havingRaw('COUNT(sd1.service_id) = COUNT(sd2.service_id)')
+                 ->groupBy('sd1.service_id', 'sd2.service_id');
+        })->get();
+//        dd(DB::getQueryLog()); // Show results of log
+
+        dd($services);
+
+        $services = Service::with('dependencies')
+            ->whereHas('dependencies', function ($q){
+                $idList = [1,2];
+                $q->whereIn('service_options_id', $idList)
+                    ->havingRaw('COUNT(service_id) = 2')
+                    ->join('contacts', 'users.id', '=', 'contacts.user_id')
+                    ->groupBy('service_dependencies.service_id, service_dependencies.service_options_id ');
+            })->get();
+        dd(DB::getQueryLog()); // Show results of log
+
+        dd($services);
         return $this->repo->all();
     }
 
