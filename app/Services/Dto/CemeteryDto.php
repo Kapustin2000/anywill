@@ -4,7 +4,7 @@ class CemeteryDto extends AbstractDto implements DtoInterface
 {
 
     /* @var string */
-    public  $name, $type, $user_id , $classifications, $coordinates, $options; 
+    public  $classifications, $coordinates, $options, $media;
 
     /* @return array */
     protected function configureValidatorRules(): array
@@ -19,9 +19,13 @@ class CemeteryDto extends AbstractDto implements DtoInterface
      */
     protected function map(array $data): bool
     {
-        $this->name = $data['name'];
-        $this->type = $data['type'];
-        $this->user_id = $data['user_id'] ?? 123;
+        $this->data = [
+            'name' => $data['name'],
+            'type' => $data['type'],
+            'user_id' => $data['user_id'] ?? 1,
+            'media' => json_encode($data['media'])
+        ];
+
         $this->classifications = $data['classifications'];
         $this->coordinates = ['coordinates' => json_encode($data['coordinates'])];
         $this->options = compactOptions($data['options']);

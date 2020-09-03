@@ -18,6 +18,7 @@ class CreateCemeteriesTable extends Migration
             $table->string('name');
             $table->unsignedInteger('type');
             $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
+            $table->json('media')->nullable();
             $table->timestamps();
         });
     }
