@@ -1,15 +1,9 @@
 <?php
 
 namespace App\Repositories;
-
-use App\Http\Requests\CemeteryRequest;
-use App\Models\Cemetery;
 use App\Models\Service;
-use App\Repositories\Interfaces\CemeteryRepositoryInterface;
 use App\Repositories\Interfaces\RepositoryInterface;
 use App\Repositories\Interfaces\ServiceRepositoryInterface;
-use App\Services\Interfaces\CemeteryServiceInterface;
- 
 
 
 Class ServiceRepository implements RepositoryInterface, ServiceRepositoryInterface {
@@ -23,12 +17,25 @@ Class ServiceRepository implements RepositoryInterface, ServiceRepositoryInterfa
 
     public function all()
     {
-        return [
-          'cemetery' => $this->model->where('entity_id', 1)->get(),
-          'crematory'  => $this->model->where('entity_id', 2)->get(),
-          'laboratory'  => $this->model->where('entity_id', 3)->get(),
-          'general'  => $this->model->where('entity_id', null)->get()
-        ];
+        $this->model->when(($entity_id = request('entity_id')) !== null, function ($q) use ($entity_id){
+          return   $q->whereIn('entity_id', $entity_id);
+        });
+
+        $this->model->when(request('options') === null, function ($q){
+            return $q->whereDoesntHave('dependencies');
+        });
+
+        $this->model->when(($options = request('options')) !== null, function ($q) use ($options){
+            return $q->getWithDependencyCheck(array_column($options, 'option_id'));
+        });
+
+
+        $this->model->when(($ids = request('IDs')) !== null, function ($q) use ($ids){
+           return $q->whereNotIn('id', $ids);     
+        });
+        
+
+        return $this->model->get();
     }
     
     public function find($id)

@@ -50,12 +50,17 @@ class Service extends Model
     {
         return $this->belongsToMany(FuneralHome::class);
     }
-    
-    
-//    public function media()
-//    {
-//        return $this->hasManyThrough(CemeteryService::class, Cemetery::class);
-//    }
+
+    public function scopeGetWithDependencyCheck($q, $options)
+    {
+        return $q->whereIn('id', function ($query) use ($options){
+            $query->selectRaw('sd1.service_id')
+                ->whereIn('sd1.service_options_id', $options)
+                ->from('service_dependencies as sd1')
+                ->havingRaw('COUNT(sd1.service_id) = services.dependencies_count')
+                ->groupBy('sd1.service_id');
+        });
+    }
 
 
 }
