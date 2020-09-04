@@ -34,11 +34,10 @@ class ServiceController extends Controller
              $query->selectRaw('sd1.service_id')
                  ->whereIn('sd1.service_options_id', $idList)
                  ->from('service_dependencies as sd1')
-                 ->join('service_dependencies as sd2', 'sd1.service_id', 'sd2.service_id')
-                 ->havingRaw('COUNT(sd1.service_id) = COUNT(sd2.service_id)')
-                 ->groupBy('sd1.service_id', 'sd2.service_id');
+                 ->havingRaw('COUNT(sd1.service_id) = services.dependencies_count')
+                 ->groupBy('sd1.service_id');
         })->get();
-//        dd(DB::getQueryLog()); // Show results of log
+        dd(DB::getQueryLog()); // Show results of log
 
         dd($services);
 
