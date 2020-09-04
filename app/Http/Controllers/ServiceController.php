@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Service;
 use App\Repositories\Interfaces\ServiceRepositoryInterface;
-use App\Services\Dto\OrderDto;
 use App\Services\Dto\ServiceDto;
 use App\Services\ServicesService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class ServiceController extends Controller
 {
@@ -27,7 +25,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        return $this->repo->all();
+        $services = $this->repo->all();
+        return ['services' => $services, 'IDs' => $services->pluck('id')];
     }
 
 
@@ -45,7 +44,7 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-        return $this->service->transaction(new ServiceDto($request->all()));
+        return $this->service->transaction(new ServiceDto($request->all()), $service);
     }
 
     /**
