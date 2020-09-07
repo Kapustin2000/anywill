@@ -18,6 +18,7 @@ class CreateServicesTable extends Migration
             $table->string('name');
             $table->unsignedInteger('entity_id')->nullable();
             $table->unsignedInteger('input_type_id')->default(1);
+            $table->integer('dependencies_count')->default(0);
             $table->timestamps();
         });
     }
