@@ -33,6 +33,6 @@ class FuneralHome extends Model
 
     public function address()
     {
-        return $this->morphTo(Address::class, 'addressable');
+        return $this->morphOne(Address::class, 'addressable');
     }
 }

@@ -32,4 +32,9 @@ class Organization extends Model
     {
         return $this->morphMany(Cremation::class, 'owner');
     }
+
+    public function address()
+    {
+        return $this->morphOne(Address::class, 'addressable');
+    }
 }
