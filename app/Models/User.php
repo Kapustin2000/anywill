@@ -57,4 +57,9 @@ class User extends Authenticatable
     {
         return $this->morphMany(Address::class, 'addressable');
     }
+
+    public function permissions()
+    {
+        return $this->belongsTo(Permission::class);
+    }
 }
