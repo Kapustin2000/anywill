@@ -29,9 +29,7 @@ Route::group([
     });
 });
 
-Route::group([
-    'middleware' => 'cors'
-], function () {
+
     Route::resource('cemeteries', 'CemeteryController')->only('index', 'show', 'store', 'update', 'destroy');
     Route::resource('laboratories', 'LaboratoryController')->only('index', 'show', 'store', 'update', 'destroy');
     Route::resource('cremations', 'CremationController')->only('index', 'show', 'store', 'update', 'destroy');
@@ -62,5 +60,4 @@ Route::group([
         Route::delete('/{home}', 'FuneralHomeController@update');
         Route::post('/', 'FuneralHomeController@store');
     });
-});
  
