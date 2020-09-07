@@ -14,7 +14,7 @@ class Cemetery extends Model
         'media' => 'array',
     ];
 
-    protected $fillable = ['name','type', 'user_id', 'media'];
+    protected $fillable = ['name','description','type', 'user_id', 'media'];
 
     const TYPES  = [
        'public',

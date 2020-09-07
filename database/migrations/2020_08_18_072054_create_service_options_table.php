@@ -15,7 +15,8 @@ class CreateServiceOptionsTable extends Migration
     {
         Schema::create('service_options', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name'); 
+            $table->string('name');
+            $table->text('description')->nullable();
             $table->foreignId('service_id')->unsigned()->constrained()->onDelete('cascade');
         });
 

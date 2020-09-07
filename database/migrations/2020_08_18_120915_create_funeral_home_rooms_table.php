@@ -16,6 +16,7 @@ class CreateFuneralHomeRoomsTable extends Migration
         Schema::create('funeral_home_rooms', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->text('description')->nullable();
             $table->integer('capacity');
             $table->uuid('funeral_home_id')->nullable();
             $table->foreign('funeral_home_id')->references('id')->on('funeral_homes')->onDelete('cascade');

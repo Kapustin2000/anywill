@@ -18,6 +18,7 @@ class CreatePlotsTable extends Migration
             $table->uuid('cemetery_id')->nullable();
             $table->foreign('cemetery_id')->references('id')->on('cemeteries')->onDelete('cascade');
             $table->string('square_meters');
+            $table->text('description')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

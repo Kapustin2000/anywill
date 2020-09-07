@@ -9,7 +9,7 @@ class Cremation extends Model
 {
     use UsesUuid;
     
-    protected $fillable = ['user_id', 'name'];
+    protected $fillable = ['user_id', 'description', 'name'];
     
     public function user()
     {

@@ -9,7 +9,7 @@ class Laboratory extends Model
 {
     use UsesUuid;
     
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'description'];
     
     public function user()
     {

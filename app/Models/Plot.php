@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Plot extends Model
 {
+    protected $fillable = ['square_meters', 'description'];
+    
     use SoftDeletes;
 
     public function cemetery()

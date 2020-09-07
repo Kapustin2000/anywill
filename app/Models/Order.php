@@ -9,5 +9,5 @@ class Order extends Model
 {
     use UsesUuid;
     
-    protected $fillable = ['data', 'count_options'];
+    protected $fillable = ['data', 'description', 'count_options'];
 }

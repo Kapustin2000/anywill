@@ -9,7 +9,7 @@ class FuneralHome extends Model
 {
     use UsesUuid;
     
-    protected $fillable = ['name', 'total_capacity'];
+    protected $fillable = ['name', 'description', 'total_capacity'];
 
     public function user()
     {

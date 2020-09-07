@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class FuneralHomeRooms extends Model
 {
-    protected $fillable = ['name', 'capacity'];
+    protected $fillable = ['name', 'description', 'capacity'];
     
     public function funeral_home()
     {

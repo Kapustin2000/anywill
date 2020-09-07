@@ -10,7 +10,7 @@ class ServiceOptions extends Model
     protected $hidden = ['pivot'];
     public $timestamps = false;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'description'];
 
     public function service()
     {
