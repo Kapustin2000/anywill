@@ -36,16 +36,30 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
+
+    public function organizations()
+    {
+        return $this->hasMany(Organization::class);
+    }
     
     public function cemeteries()
     {
-        return $this->hasMany(Cemetery::class);
+        return $this->morphMany(Cemetery::class, 'owner');
     }
-    
-    public function addresses()
+
+    public function laboratories()
     {
-        return $this->hasMany(Address::class);
+        return $this->morphMany(Laboratory::class, 'owner');
+    }
+
+    public function funeral_homes()
+    {
+        return $this->morphMany(FuneralHome::class, 'owner');
+    }
+
+    public function cremations()
+    {
+        return $this->morphMany(Cremation::class, 'owner');
     }
 
     public function contacts()
@@ -53,7 +67,7 @@ class User extends Authenticatable
         return $this->hasMany(Contact::class);
     }
 
-    public function address()
+    public function addresses()
     {
         return $this->morphMany(Address::class, 'addressable');
     }

@@ -10,6 +10,11 @@ class Laboratory extends Model
     use UsesUuid;
     
     protected $fillable = ['name', 'description'];
+
+    public function owner()
+    {
+        return $this->morphTo();
+    }
     
     public function user()
     {

@@ -23,6 +23,11 @@ class Cemetery extends Model
        'veteran'
     ];
 
+    public function owner()
+    {
+        return $this->morphTo();
+    }
+
 
     public function user()
     {
@@ -52,5 +57,20 @@ class Cemetery extends Model
     public function address()
     {
         return $this->morphOne(Address::class, 'addressable');
+    }
+
+    public function laboratories()
+    {
+        return $this->morphMany(Laboratory::class, 'owner');
+    }
+
+    public function funeral_homes()
+    {
+        return $this->morphMany(FuneralHome::class, 'owner');
+    }
+
+    public function cremations()
+    {
+        return $this->morphMany(Cremation::class, 'owner');
     }
 }

@@ -10,6 +10,11 @@ class Cremation extends Model
     use UsesUuid;
     
     protected $fillable = ['user_id', 'description', 'name'];
+
+    public function owner()
+    {
+        return $this->morphTo();
+    }
     
     public function user()
     {

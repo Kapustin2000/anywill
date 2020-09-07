@@ -15,9 +15,9 @@ class CreateCremationsTable extends Migration
     {
         Schema::create('cremations', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->morphs('owner');
             $table->string('name');
             $table->text('description')->nullable();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -11,6 +11,11 @@ class FuneralHome extends Model
     
     protected $fillable = ['name', 'description', 'total_capacity'];
 
+    public function owner()
+    {
+        return $this->morphTo();
+    }
+    
     public function user()
     {
         return $this->belongsTo(User::class);
