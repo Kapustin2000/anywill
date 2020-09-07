@@ -52,4 +52,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Contact::class);
     }
+
+    public function address()
+    {
+        return $this->morphMany(Address::class, 'addressable');
+    }
 }

@@ -20,4 +20,9 @@ class Laboratory extends Model
     {
         return $this->morphToMany(ServiceOptions::class, 'entity_options');
     }
+
+    public function address()
+    {
+        return $this->morphTo(Address::class, 'addressable');
+    }
 }

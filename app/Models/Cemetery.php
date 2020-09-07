@@ -48,4 +48,9 @@ class Cemetery extends Model
     {
         return $this->morphToMany(ServiceOptions::class, 'entity_options');
     }
+
+    public function address()
+    {
+        return $this->morphOne(Address::class, 'addressable');
+    }
 }

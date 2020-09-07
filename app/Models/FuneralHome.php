@@ -25,4 +25,9 @@ class FuneralHome extends Model
     {
         return $this->hasMany(FuneralHomeRooms::class);
     }
+
+    public function address()
+    {
+        return $this->morphTo(Address::class, 'addressable');
+    }
 }

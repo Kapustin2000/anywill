@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Address extends Model
 {
     protected $fillable = ['user_id', 'address'];
-    
-    public function user()
+
+    public function addressable()
     {
-       return $this->belongsTo(User::class);    
+        return $this->morphTo();
     }
 }
