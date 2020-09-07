@@ -15,10 +15,11 @@ class CreateAddressesTable extends Migration
     {
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
+            $table->morphs('addressable');
             $table->unsignedInteger('county_id');
             $table->unsignedInteger('region_id');
             $table->string('address');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->integer('zip');
             $table->timestamps();
             $table->softDeletes();
         });
