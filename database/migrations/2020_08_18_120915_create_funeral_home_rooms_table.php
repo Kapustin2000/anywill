@@ -18,8 +18,7 @@ class CreateFuneralHomeRoomsTable extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->integer('capacity');
-            $table->uuid('funeral_home_id')->nullable();
-            $table->foreign('funeral_home_id')->references('id')->on('funeral_homes')->onDelete('cascade');
+            $table->foreignId('funeral_home_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

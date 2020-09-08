@@ -14,7 +14,7 @@ class CreateOrdersTable extends Migration
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->string('private_id',5)->unique();
             $table->json('data');
             $table->text('description')->nullable();
             $table->integer('count_options');

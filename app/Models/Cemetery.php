@@ -3,16 +3,19 @@
 namespace App\Models;
 
 use App\Traits\HasMedia;
+use App\Traits\UsesPrivateid;
 use App\Traits\UsesUuid;
 use Illuminate\Database\Eloquent\Model;
 
 class Cemetery extends Model
 {
-    use UsesUuid;
+    use UsesPrivateid;
 
     protected $casts = [
         'media' => 'array',
     ];
+
+    protected $hidden = ['id'];
 
     protected $fillable = ['name','description','type', 'user_id', 'media'];
 

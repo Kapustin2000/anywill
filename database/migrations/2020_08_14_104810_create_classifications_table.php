@@ -19,8 +19,7 @@ class CreateClassificationsTable extends Migration
         }); 
 
         Schema::create('cemetery_classification', function (Blueprint $table) {
-            $table->uuid('cemetery_id')->nullable();
-            $table->foreign('cemetery_id')->references('id')->on('cemeteries')->onDelete('cascade');
+            $table->foreignId('cemetery_id')->constrained()->onDelete('cascade');	
             $table->foreignId('classification_id')->constrained()->onDelete('cascade');
         });
     }

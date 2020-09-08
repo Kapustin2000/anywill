@@ -15,7 +15,7 @@ class CreateCoordinatesTable extends Migration
     {
         Schema::create('coordinates', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->uuidMorphs('entity');
+            $table->Morphs('entity');
             $table->json('coordinates');
             $table->timestamps();
         });

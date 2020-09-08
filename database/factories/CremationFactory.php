@@ -8,7 +8,8 @@ use Faker\Generator as Faker;
 $factory->define(Cremation::class, function (Faker $faker) {
     return [
         'name' => $faker->text,
-        'user_id' => function() {
+        'owner_type' => App\Models\User::class,
+        'owner_id' => function() {
             return factory(App\Models\User::class)->create()->id;
         },
     ];

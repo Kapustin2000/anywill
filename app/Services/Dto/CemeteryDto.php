@@ -1,5 +1,7 @@
 <?php
 namespace App\Services\Dto;
+use App\Models\User;
+
 class CemeteryDto extends AbstractDto implements DtoInterface
 {
 
@@ -22,7 +24,8 @@ class CemeteryDto extends AbstractDto implements DtoInterface
         $this->data = [
             'name' => $data['name'],
             'type' => $data['type'],
-            'user_id' => $data['user_id'] ?? 1,
+            'owner_type' => User::class,
+            'owner_id' => 1,
             'media' => json_encode($data['media'])
         ];
 

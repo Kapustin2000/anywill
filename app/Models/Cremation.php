@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use App\Traits\UsesUuid;
+use App\Traits\UsesPrivateid;
 use Illuminate\Database\Eloquent\Model;
 
 class Cremation extends Model
 {
-    use UsesUuid;
+    use UsesPrivateid;
     
     protected $fillable = ['user_id', 'description', 'name'];
 
