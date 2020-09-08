@@ -1,5 +1,7 @@
 <?php
 namespace App\Services\Dto;
+use App\User;
+
 class CremationDto extends AbstractDto implements DtoInterface
 {
 
@@ -19,8 +21,14 @@ class CremationDto extends AbstractDto implements DtoInterface
      * @inheritDoc
      */
     protected function map(array $data): bool
-    { 
-        $this->user_id = $data['user_id'] ?? null;
+    {
+        $this->data = [
+            'name' => $data['name'],
+            'description' => $data['description'],
+            'owner_type' => User::class,
+            'owner_id' => 1
+        ];
+        
         $this->options = compactOptions($data['options']);
 
 

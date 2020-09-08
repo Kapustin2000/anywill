@@ -1,5 +1,7 @@
 <?php
 namespace App\Services\Dto;
+use App\Models\User;
+
 class FuneralHomeDto extends AbstractDto implements DtoInterface
 {
 
@@ -10,7 +12,8 @@ class FuneralHomeDto extends AbstractDto implements DtoInterface
     protected function configureValidatorRules(): array
     {
         return [
-            'name' => 'required'
+            'name' => 'required',
+            'description' => 'required'
         ];
     }
 
@@ -23,7 +26,10 @@ class FuneralHomeDto extends AbstractDto implements DtoInterface
 
         $this->data = [
             'name' => $data['name'],
-            'total_capacity' => $total_capacity
+            'total_capacity' => $total_capacity,
+            'owner_type' => User::class,
+            'owner_id' => 1,
+            'description' => $data['description']
         ];
 
         $this->rooms = $data['rooms'];
