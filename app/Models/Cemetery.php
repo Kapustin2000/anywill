@@ -14,9 +14,7 @@ class Cemetery extends Model
     protected $casts = [
         'media' => 'array',
     ];
-
-    protected $hidden = ['id'];
-
+    
     protected $fillable = ['name','description','type', 'user_id', 'media'];
 
     const TYPES  = [

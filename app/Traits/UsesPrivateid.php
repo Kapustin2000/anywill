@@ -4,6 +4,14 @@ use Illuminate\Support\Str;
 
 trait UsesPrivateid
 {
+    protected function getArrayableItems(array $values)
+    {
+        if(!in_array('id', $this->hidden)){
+            $this->hidden[] = 'id';
+        }
+        return parent::getArrayableItems($values);
+    }
+
     public function getRouteKeyName()
     {
         return 'private_id';
