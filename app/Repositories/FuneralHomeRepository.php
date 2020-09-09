@@ -26,7 +26,7 @@ Class FuneralHomeRepository implements RepositoryInterface, CremationRepositoryI
 
     public function all()
     {
-        return $this->model->get();
+        return $this->model->paginate(FuneralHome::POSTS_PER_PAGE);
     }
     
     public function find($id)

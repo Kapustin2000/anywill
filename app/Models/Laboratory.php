@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Laboratory extends Model
 {
     use UsesPrivateid;
-    
+
+    const POSTS_PER_PAGE = 10;
+
+
     protected $fillable = ['name', 'description'];
 
     public function owner()

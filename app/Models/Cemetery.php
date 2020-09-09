@@ -11,10 +11,12 @@ class Cemetery extends Model
 {
     use UsesPrivateid;
 
+    const POSTS_PER_PAGE = 10;
+
     protected $casts = [
         'media' => 'array',
     ];
-    
+
     protected $fillable = ['name','description','type', 'user_id', 'media'];
 
     const TYPES  = [

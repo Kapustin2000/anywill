@@ -23,7 +23,7 @@ Class LaboratoryRepository implements RepositoryInterface, LaboratoryRepositoryI
 
     public function all()
     {
-        return $this->model->get();
+        return $this->model->paginate(Laboratory::POSTS_PER_PAGE);
     }
     
     public function find($id)

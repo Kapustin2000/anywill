@@ -21,7 +21,7 @@ Class CemeteryRepository implements RepositoryInterface, CemeteryRepositoryInter
 
     public function all()
     {
-        return $this->model->get();
+        return $this->model->paginate(Cemetery::POSTS_PER_PAGE);
     }
     
     public function find($id)

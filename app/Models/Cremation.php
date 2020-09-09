@@ -3,11 +3,14 @@
 namespace App\Models;
 
 use App\Traits\UsesPrivateid;
+use App\Traits\UsesUuid;
 use Illuminate\Database\Eloquent\Model;
 
 class Cremation extends Model
 {
     use UsesPrivateid;
+
+    const POSTS_PER_PAGE = 10;
     
     protected $fillable = ['user_id', 'description', 'name'];
 
