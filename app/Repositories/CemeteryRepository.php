@@ -7,7 +7,7 @@ use App\Models\Cemetery;
 use App\Repositories\Interfaces\CemeteryRepositoryInterface;
 use App\Repositories\Interfaces\RepositoryInterface;
 use App\Services\Interfaces\CemeteryServiceInterface;
- 
+
 
 
 Class CemeteryRepository implements RepositoryInterface, CemeteryRepositoryInterface {
@@ -21,6 +21,11 @@ Class CemeteryRepository implements RepositoryInterface, CemeteryRepositoryInter
 
     public function all()
     {
+        $this->model->when($search = request('search'), function ($q) use ($search) {
+            return $q->where('private_id', 'like' , '%'.$search.'%')
+                     ->orWhere('name', 'like' , '%'.$search.'%');
+        });
+
         return $this->model->paginate(Cemetery::POSTS_PER_PAGE);
     }
     

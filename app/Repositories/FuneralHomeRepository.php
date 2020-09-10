@@ -26,6 +26,11 @@ Class FuneralHomeRepository implements RepositoryInterface, CremationRepositoryI
 
     public function all()
     {
+        $this->model->when($search = request('search'), function ($q) use ($search) {
+            return $q->where('private_id', 'like' , '%'.$search.'%')
+                ->orWhere('name', 'like' , '%'.$search.'%');
+        });
+        
         return $this->model->paginate(FuneralHome::POSTS_PER_PAGE);
     }
     
