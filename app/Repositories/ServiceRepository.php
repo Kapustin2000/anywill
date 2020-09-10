@@ -12,11 +12,31 @@ Class ServiceRepository implements RepositoryInterface, ServiceRepositoryInterfa
     
     function __construct(Service $model)
     {
-        $this->model = $model->with('options');
+        $this->model = $model;
     }
 
     public function all()
     {
+//        if($search = request('search')) {
+//            $this->model = $this->model->with(['options' => function($query) use ($search){
+//                $q = clone $query;
+//
+//                $q->where('name', 'like', '%'.$search.'%');
+//
+//                if($q->count() > 0) {
+//                    return $query->where('name', 'like', '%'.$search.'%');
+//                }
+//            }]);
+//
+//            $this->model->when($search, function ($q) use ($search) {
+//                $q->where('name', 'like', '%'.$search.'%')
+//
+//                    ->orWhereHas('options', function( $query ) use ( $search ){
+//                        $query->where('name', 'like' ,'%'.$search.'%' ); //how to load only matches, no
+//                    });
+//            });
+//        }
+
         $this->model->when(($entity_id = request('entity_id')) !== null, function ($q) use ($entity_id){
           return   $q->whereIn('entity_id', $entity_id);
         });
@@ -31,7 +51,7 @@ Class ServiceRepository implements RepositoryInterface, ServiceRepositoryInterfa
 
 
         $this->model->when(($ids = request('IDs')) !== null, function ($q) use ($ids){
-           return $q->whereNotIn('id', $ids);     
+           return $q->whereNotIn('id', $ids);
         });
         
 
