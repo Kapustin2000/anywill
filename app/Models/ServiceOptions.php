@@ -36,4 +36,12 @@ class ServiceOptions extends Model
     {
         return $this->morphedByMany(FuneralHome::class, 'entity_option');
     }
+
+    public function parent() {
+        return $this->belongsTo(static::class, 'parent_id');
+    }
+
+    public function children() {
+        return $this->hasMany(static::class, 'parent_id');
+    }
 }
