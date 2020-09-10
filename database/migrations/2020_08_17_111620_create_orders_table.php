@@ -19,6 +19,8 @@ class CreateOrdersTable extends Migration
             $table->text('description')->nullable();
             $table->integer('count_options');
             $table->boolean('ready')->default(0);
+            $table->boolean('display_wishes_field')->default(1);
+            $table->text('wishes')->nullable();
             $table->timestamps();
         });
     }
