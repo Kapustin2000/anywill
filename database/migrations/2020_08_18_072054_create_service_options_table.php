@@ -21,6 +21,9 @@ class CreateServiceOptionsTable extends Migration
             $table->foreign('parent_id')->references('id')->on('service_options')->onDelete('cascade');
             $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
             $table->text('description')->nullable();
+            $table->unsignedInteger('input_type_id')->nullable();
+            $table->unsignedBigInteger('meta_data_id')->nullable();
+            $table->foreign('meta_data_id')->references('id')->on('meta_data')->onDelete('cascade');
         });
 
 
