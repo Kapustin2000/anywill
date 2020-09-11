@@ -44,4 +44,8 @@ class ServiceOptions extends Model
     public function children() {
         return $this->hasMany(static::class, 'parent_id');
     }
+    
+    public function meta() {
+        return $this->belongsTo(MetaData::class, 'meta_data_id');
+    }
 }
