@@ -11,6 +11,6 @@ class CremationSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Models\Cremation::class, 1)->create();
+        factory(App\Models\Cremation::class, 100)->create();
     }
 }

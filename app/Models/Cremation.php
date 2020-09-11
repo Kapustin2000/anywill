@@ -10,7 +10,7 @@ class Cremation extends Model
 {
     use UsesPrivateid;
 
-    const POSTS_PER_PAGE = 10;
+    const POSTS_PER_PAGE = 15;
     
     protected $fillable = ['user_id', 'description', 'name'];
 

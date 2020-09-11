@@ -9,7 +9,7 @@ class Organization extends Model
 {
     use UsesPrivateid;
 
-    const POSTS_PER_PAGE = 10;
+    const POSTS_PER_PAGE = 15;
     
     protected $fillable = ['name', 'description', 'user_id'];
 

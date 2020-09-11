@@ -11,6 +11,6 @@ class CemeterySeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Models\Cemetery::class, 5)->create();
+        factory(App\Models\Cemetery::class, 100)->create();
     }
 }

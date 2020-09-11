@@ -11,7 +11,7 @@ class FuneralHome extends Model
     
     protected $fillable = ['name', 'description', 'total_capacity'];
 
-    const POSTS_PER_PAGE = 10;
+    const POSTS_PER_PAGE = 15;
     
     public function owner()
     {

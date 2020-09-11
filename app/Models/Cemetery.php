@@ -11,7 +11,7 @@ class Cemetery extends Model
 {
     use UsesPrivateid;
 
-    const POSTS_PER_PAGE = 10;
+    const POSTS_PER_PAGE = 15;
 
     protected $casts = [
         'media' => 'array',
