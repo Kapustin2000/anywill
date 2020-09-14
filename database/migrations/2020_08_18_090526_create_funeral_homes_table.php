@@ -21,6 +21,8 @@ class CreateFuneralHomesTable extends Migration
             $table->text('description')->nullable();
             $table->integer('total_capacity')->nullable();
             $table->timestamps();
+
+            $table->index(['owner_id', 'owner_type']);
         });
     }
 

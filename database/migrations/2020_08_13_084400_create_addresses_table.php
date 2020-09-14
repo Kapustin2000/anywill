@@ -22,6 +22,8 @@ class CreateAddressesTable extends Migration
             $table->integer('zip');
             $table->timestamps();
             $table->softDeletes();
+
+            $table->index(['addressable_id', 'addressable_type']);
         });
     }
 

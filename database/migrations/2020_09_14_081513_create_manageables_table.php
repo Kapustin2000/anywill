@@ -17,6 +17,8 @@ class CreateManageablesTable extends Migration
             $table->morphs('manageable');
             $table->unsignedBigInteger('manager_id')->nullable();
             $table->foreign('manager_id')->references('id')->on('users')->onDelete('cascade');
+
+            $table->index(['manageable_id', 'manageable_type']);
         });
     }
 

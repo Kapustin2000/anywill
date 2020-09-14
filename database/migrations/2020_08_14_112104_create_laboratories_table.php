@@ -20,6 +20,9 @@ class CreateLaboratoriesTable extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->timestamps();
+
+            $table->index(['owner_id', 'owner_type']);
+
         }); 
     }
 

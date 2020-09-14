@@ -21,6 +21,8 @@ class CreateCemeteriesTable extends Migration
             $table->unsignedInteger('type');
             $table->json('media')->nullable();
             $table->timestamps();
+
+            $table->index(['owner_id', 'owner_type']);
         });
     }
 
