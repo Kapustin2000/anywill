@@ -76,4 +76,9 @@ class Cemetery extends Model
     {
         return $this->morphMany(Cremation::class, 'owner');
     }
+
+    public function managers()
+    {
+        return $this->morphToMany(Manager::class, 'manageable');
+    }
 }

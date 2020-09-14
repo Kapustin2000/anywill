@@ -42,4 +42,9 @@ class Organization extends Model
     {
         return $this->morphOne(Address::class, 'addressable');
     }
+
+    public function managers()
+    {
+        return $this->morphToMany(Manager::class, 'manageable');
+    }
 }

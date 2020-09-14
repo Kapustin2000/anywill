@@ -33,4 +33,9 @@ class Laboratory extends Model
     {
         return $this->morphTo(Address::class, 'addressable');
     }
+
+    public function managers()
+    {
+        return $this->morphToMany(Manager::class, 'manageable');
+    }
 }

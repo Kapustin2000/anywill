@@ -38,4 +38,9 @@ class Cremation extends Model
     {
         return $this->morphOne(Address::class, 'addressable');
     }
+
+    public function managers()
+    {
+        return $this->morphedByMany(Manager::class, 'manageable');
+    }
 }
