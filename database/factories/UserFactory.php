@@ -26,3 +26,7 @@ $factory->define(User::class, function (Faker $faker) {
         'remember_token' => Str::random(10),
     ];
 });
+
+$factory->afterCreating(User::class, function ($user) {
+    factory(App\Models\Manager::class, 3)->create(['director_id' => $user->id]);
+});

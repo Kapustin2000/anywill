@@ -82,6 +82,6 @@ class User extends Authenticatable
     }
 
     public function managers() {
-        return $this->hasMany(static::class, 'parent_id');
+        return $this->hasMany(Manager::class, 'director_id');
     }
 }
