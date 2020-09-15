@@ -63,6 +63,17 @@ Route::group([
 
 
     Route::prefix('admin')->group(function () {
+        Route::prefix('funeral-homes')->group(function () {
+            Route::get('/', 'FuneralHomeController@index');
+            Route::get('/{home}', 'FuneralHomeController@show');
+            Route::put('/{home}', 'FuneralHomeController@update');
+            Route::delete('/{home}', 'FuneralHomeController@update');
+            Route::post('/', 'FuneralHomeController@store');
+        });
+
+        Route::resource('cemeteries', 'CemeteryController')->only('index', 'show', 'store', 'update', 'destroy');
+        Route::resource('laboratories', 'LaboratoryController')->only('index', 'show', 'store', 'update', 'destroy');
+        Route::resource('cremations', 'CremationController')->only('index', 'show', 'store', 'update', 'destroy');
         Route::resource('services', 'Admin\ServiceController')->only('index', 'show', 'store', 'update', 'destroy');
     });
  
