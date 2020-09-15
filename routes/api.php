@@ -60,4 +60,9 @@ Route::group([
         Route::delete('/{home}', 'FuneralHomeController@update');
         Route::post('/', 'FuneralHomeController@store');
     });
+
+
+    Route::prefix('admin')->group(function () {
+        Route::resource('services', 'Admin\ServiceController')->only('index', 'show', 'store', 'update', 'destroy');
+    });
  
