@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEntityOptionsTable extends Migration
+class CreateOptionablesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateEntityOptionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('entity_options', function (Blueprint $table) {
-            $table->morphs('entity_options');
+        Schema::create('optionables', function (Blueprint $table) {
+            $table->morphs('optionable');
             $table->foreignId('service_options_id')->constrained()->onDelete('cascade');
             $table->integer('commission')->nullable();
             $table->json('media')->nullable();
 
-            $table->index(['entity_options_id', 'entity_options_type']);
+            $table->index(['optionable_id', 'optionable_type']);
         });
     }
 
@@ -30,6 +30,6 @@ class CreateEntityOptionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('entity_options');
+        Schema::dropIfExists('optionables');
     }
 }

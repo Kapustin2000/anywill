@@ -31,7 +31,7 @@ class Cremation extends Model
     
     public function options()
     {
-        return $this->morphToMany(ServiceOptions::class, 'entity_options');
+        return $this->morphToMany(ServiceOptions::class, 'optionable');
     }
 
     public function address()
