@@ -12,7 +12,6 @@ class CremationDto extends AbstractDto implements DtoInterface
     protected function configureValidatorRules(): array
     {
         return [
-            'user_id' => 'sometimes',
             'name' => 'required'
         ];
     }
