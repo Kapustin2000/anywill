@@ -34,9 +34,9 @@ class FuneralHomeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, FuneralHome $funeralHome)
+    public function store(Request $request)
     {
-        return $this->service->transaction(new FuneralHomeDto($request->all()), $funeralHome);
+        return $this->service->transaction(new FuneralHomeDto($request->all()));
     }
 
     /**

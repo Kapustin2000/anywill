@@ -9,7 +9,7 @@ class FuneralHome extends Model
 {
     use UsesPrivateid;
     
-    protected $fillable = ['name', 'description', 'total_capacity'];
+    protected $fillable = ['name', 'description', 'total_capacity', 'owner_type', 'owner_id'];
 
     const POSTS_PER_PAGE = 15;
     
