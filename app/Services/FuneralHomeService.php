@@ -31,10 +31,21 @@ Class FuneralHomeService extends TransactionAbstractService implements FuneralHo
     {
         $this->funeralHome->options()->sync($dto->options);
 
-        $this->updateRelation($this->funeralHome->rooms(), $dto->rooms);
-        
-        foreach($dto->rooms as $room) {
-            $this->funeralHome->rooms()->updateOrCreate($room);
+        $this->persistRooms($dto->rooms);
+
+        return $this->funeralHome;
+    }
+
+    protected function persistRooms($rooms)
+    {
+        if($rooms) {
+            $needsUpdate = array_column($rooms, 'id');
+
+            $this->funeralHome->rooms()->whereNotIn('id', $needsUpdate)->delete();
+
+            foreach($rooms as $room) {
+                $this->funeralHome->rooms()->updateOrCreate(['id' => $room['id'] ?? null], $room);
+            }
         }
 
         return $this->funeralHome;
