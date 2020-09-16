@@ -20,10 +20,10 @@ class Cemetery extends Model
     protected $fillable = ['name','description','type', 'user_id', 'media'];
 
     const TYPES  = [
-       'public',
-       'private',
-       'state',
-       'veteran'
+       ['ID'=> 1, 'name' => 'public'],
+       ['ID'=> 2, 'name' => 'private'],
+       ['ID'=> 3, 'name' => 'state'],
+       ['ID'=> 4, 'name' => 'veteran'],
     ];
 
     public function owner()
