@@ -15,4 +15,14 @@ abstract class TransactionAbstractService
             return $this->save($data);
         });
     }
+
+    protected function updateRelation($relation, $data, $match = null) {
+        $needsUpdate = array_column($data, 'id');
+
+        foreach($data as $item) {
+            $relation->updateOrCreate(['id' => $item[$match] ?? null], $item);
+        }
+        
+        return $relation->whereNotIn('id', $needsUpdate)->delete();
+    }
 }

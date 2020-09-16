@@ -21,7 +21,7 @@ trait UsesPrivateid
     {
         parent::boot();
         static::saving(function ($model) {
-            $model->private_id =  substr((string) Str::uuid(), 0, 5);
+            $model->private_id =  $model->private_id ?? substr((string) Str::uuid(), 0, 5);
         });
     }
 }

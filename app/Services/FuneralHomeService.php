@@ -31,6 +31,8 @@ Class FuneralHomeService extends TransactionAbstractService implements FuneralHo
     {
         $this->funeralHome->options()->sync($dto->options);
 
+        $this->updateRelation($this->funeralHome->rooms(), $dto->rooms);
+        
         foreach($dto->rooms as $room) {
             $this->funeralHome->rooms()->updateOrCreate($room);
         }
