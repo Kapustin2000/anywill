@@ -37,7 +37,7 @@ Class ServiceRepository implements RepositoryInterface, ServiceRepositoryInterfa
             });
         }
         
-        return $this->model->get();
+        return $this->model->paginate(Service::POSTS_PER_PAGE);
     }
     
     public function find($id)
