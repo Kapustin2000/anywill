@@ -9,12 +9,13 @@ class ServiceDto extends AbstractDto implements DtoInterface
     protected function configureValidatorRules(): array
     {
         return [
-            'services.*.id' => 'sometimes|exists:services',
-            'services.*.name' => 'string|required',
-            'services.*.options' => 'required_without:services.*.id',
-            'services.*.options.*' => 'required_with:services.*.options',
-            'services.*.options.*.id' => 'sometimes|exists:service_options'
+            'services.*.name' => 'required'
         ];
+
+        //            'services.*.name' => 'string|required',
+//            'services.*.options' => 'required_without:services.*.id',
+//            'services.*.options.*' => 'required_with:services.*.options',
+//            'services.*.options.*.id' => 'sometimes|exists:service_options'
     }
 
     /**

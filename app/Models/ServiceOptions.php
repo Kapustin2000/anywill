@@ -11,7 +11,7 @@ class ServiceOptions extends Model
     protected $hidden = ['pivot'];
     public $timestamps = false;
 
-    protected $fillable = ['name', 'description', 'meta_data_id', 'input_type_id'];
+    protected $fillable = ['name', 'description', 'service_id', 'meta_data_id', 'input_type_id'];
 
     public function optionable()
     {
