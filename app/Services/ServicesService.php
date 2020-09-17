@@ -25,16 +25,11 @@ Class ServicesService extends TransactionAbstractService {
 
     protected function persistService($data, $id = null)
     {
-        if($id) {
-            $service = Service::find($id);
-            $service->update(['name'=> $data['name']]);
-        }else{
-            $service = Service::create($data);
-            $id = $service->id;
-        }
+        $service = Service::updateOrCreate(['id' => $id],$data);
+        $id = $service->id;
 
         if(isset($data['options'])) {
-            $service->options()->whereNotIn('id', array_column($data['options'], 'id'))->delete();
+            $service->options()->whereNotIn('service_options.id', array_column($data['options'], 'id'))->delete();
             $this->persistOptions($data['options'], $id);
         }
 
@@ -57,7 +52,7 @@ Class ServicesService extends TransactionAbstractService {
             );
 
             if(isset($option['services'])) {
-                $service_option->services()->whereNotIn('id', array_column($option['services'], 'id'))->delete();
+                $service_option->services()->whereNotIn('services.id', array_column($option['services'], 'id'))->delete();
                 foreach($option['services'] as $service) {
                     $service_option->services()->attach($this->persistService($service, $service['id'] ?? false)->id);
                 }
