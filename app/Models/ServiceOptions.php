@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ServiceOptions extends Model
 {
+    protected $with = ['parent', 'children'];
     protected $table = 'service_options';
     protected $hidden = ['pivot'];
     public $timestamps = false;
@@ -21,6 +22,8 @@ class ServiceOptions extends Model
     {
         return $this->belongsTo(Service::class);
     }
+    
+
 
     public function parent() {
         return $this->belongsTo(static::class, 'parent_id');
