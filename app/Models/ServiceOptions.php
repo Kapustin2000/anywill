@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ServiceOptions extends Model
 {
-    protected $with = ['parent', 'children'];
+    protected $with = ['options', 'services'];
     protected $table = 'service_options';
     protected $hidden = ['pivot'];
     public $timestamps = false;
@@ -23,13 +23,16 @@ class ServiceOptions extends Model
         return $this->belongsTo(Service::class);
     }
     
-
+    public function services()
+    {
+        return $this->belongsToMany(Service::class, 'option_services', 'option_id', 'service_id');
+    }
 
     public function parent() {
         return $this->belongsTo(static::class, 'parent_id');
     }
 
-    public function children() {
+    public function options() {
         return $this->hasMany(static::class, 'parent_id');
     }
     

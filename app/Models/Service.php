@@ -32,6 +32,11 @@ class Service extends Model
     {
         return $this->hasMany(ServiceOptions::class);
     }
+
+    public function option()
+    {
+        return $this->belongsToMany(ServiceOptions::class, 'option_services', 'option_id', 'service_id');
+    }
     
     public function cemeteries()
     {
