@@ -26,7 +26,7 @@ class CemeteryDto extends AbstractDto implements DtoInterface
             'type' => $data['type'],
             'owner_type' => User::class,
             'owner_id' => 1,
-            'media' => json_encode($data['media'])
+            'media' => json_encode($data['media'] ?? null)
         ];
 
         $this->classifications = $data['classifications'];

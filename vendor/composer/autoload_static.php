@@ -704,6 +704,7 @@ class ComposerStaticInit7731c8d20ece076261bae8e61107aa87
         'App\\Services\\OrderService' => __DIR__ . '/../..' . '/app/Services/OrderService.php',
         'App\\Services\\ServicesService' => __DIR__ . '/../..' . '/app/Services/ServicesService.php',
         'App\\Services\\TransactionAbstractService' => __DIR__ . '/../..' . '/app/Services/TransactionAbstractService.php',
+        'App\\Traits\\HasMedia' => __DIR__ . '/../..' . '/app/Traits/HasMedia.php',
         'App\\Traits\\UsesPrivateid' => __DIR__ . '/../..' . '/app/Traits/UsesPrivateid.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'ArithmeticError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/ArithmeticError.php',

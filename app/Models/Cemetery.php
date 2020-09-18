@@ -4,12 +4,11 @@ namespace App\Models;
 
 use App\Traits\HasMedia;
 use App\Traits\UsesPrivateid;
-use App\Traits\UsesUuid;
 use Illuminate\Database\Eloquent\Model;
 
 class Cemetery extends Model
 {
-    use UsesPrivateid;
+    use UsesPrivateid, HasMedia;
 
     const POSTS_PER_PAGE = 15;
 
@@ -17,7 +16,7 @@ class Cemetery extends Model
         'media' => 'array',
     ];
 
-    protected $fillable = ['name','description','type', 'user_id', 'media'];
+    protected $fillable = ['name','description','type', 'owner_type', 'owner_id', 'media'];
 
     const TYPES  = [
        ['ID'=> 1, 'name' => 'public'],
