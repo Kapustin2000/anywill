@@ -54,7 +54,7 @@ Class ServicesService extends TransactionAbstractService {
             if(isset($option['services'])) {
                 $service_option->services()->whereNotIn('services.id', array_column($option['services'], 'id'))->delete();
                 foreach($option['services'] as $service) {
-                    $service_option->services()->attach($this->persistService($service, $service['id'] ?? false)->id);
+                    $service_option->services()->associate($this->persistService($service, $service['id'] ?? false)->id);
                 }
             }
         }
