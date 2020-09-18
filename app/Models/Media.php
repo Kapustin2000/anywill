@@ -8,14 +8,14 @@ use Illuminate\Support\Str;
 
 class Media extends Model
 {
-    protected $fillable = ['name','meta','path'];
+    protected $fillable = ['name', 'url','meta','path'];
     public $timestamps = false;
     protected $casts = [
         'meta' => 'array',
     ];
 
 
-    public function cp($path, $prefix)
+    public function cp($path, $prefix = '')
     {
         $dir = preg_replace("/^\/|\/$/", '', $path);
         $prefix = preg_replace("/_$/", '', $prefix);

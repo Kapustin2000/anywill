@@ -21,12 +21,12 @@ class CemeteryDto extends AbstractDto implements DtoInterface
      */
     protected function map(array $data): bool
     {
-        $this->data = [
+         $this->data = [
             'name' => $data['name'],
             'type' => $data['type'],
             'owner_type' => User::class,
             'owner_id' => 1,
-            'media' => json_encode($data['media'] ?? null)
+            'media' => $data['media'] ?? null
         ];
 
         $this->classifications = $data['classifications'];
