@@ -17,7 +17,7 @@ class CreateMediaTable extends Migration
             $table->id();
             $table->string('name');
             $table->json('meta');
-            $table->string('url');
+            $table->string('url')->nullable();
             $table->string('path');
         });
     }

@@ -1,9 +1,7 @@
 <?php
 namespace App\Traits;
-use App\Models\Cemetery;
 use App\Models\Media;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 trait HasMedia
 {
@@ -11,16 +9,16 @@ trait HasMedia
     {
         static::saved(function ($model) {
 
-            $media_files = Media::whereIn('id', $model->media)->get();
+            if(!$model->media) return;
+
+            $media_files = Media::whereIn('id', $model->media)->whereNull('url')->get();
 
             $model_name = strtolower((new \ReflectionClass($model))->getShortName());
 
             foreach ($media_files as $media) {
 
-                if($media->url) continue;
-
                 $media->update(
-                    $media->cp($model_name.'/'.$model->id)
+                    $media->cp($model_name.'/'.($model->private_id ?? $model->id))
                 );
 
             }
@@ -28,7 +26,21 @@ trait HasMedia
 
 
         static::deleted(function ($model){
+
+            if(!$model->media) return;
+
             Media::whereIn('id', $model->media)->delete();
+
+            $model_name = strtolower((new \ReflectionClass($model))->getShortName());
+            
+            Storage::deleteDirectory($model_name.'/'.($model->private_id ?? $model->id));
+
+//            $media_files = Media::whereIn('id', $model->media)->get();
+//
+//            foreach ($media_files as $media) {
+//                $media->deleteFile();
+//                $media->delete();
+//           }
         });
     }
 }
