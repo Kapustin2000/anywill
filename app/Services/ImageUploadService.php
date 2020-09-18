@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Media;
 use App\Services\Interfaces\ImageUploadServiceInterface;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 Class ImageUploadService extends TransactionAbstractService implements ImageUploadServiceInterface {
 
@@ -17,13 +18,19 @@ Class ImageUploadService extends TransactionAbstractService implements ImageUplo
 
     public function handleImageUpload($images)
     {
-
         foreach ($images as $image) {
-
             if($this->canHandleImage($image)) {
 
                 $image_id = $this->model->create(
-                    ['path' => $this->save($image)]
+                    [
+                        'name' => $image->getClientOriginalName(),
+                        'meta' => [
+                            'mimetype' => $image->getClientMimeType(),
+                            'ext' => $image->guessClientExtension(),
+                            'size' => $image->getSize(),
+                        ],
+                        'path' => $this->save($image),
+                    ]
                 )->id;
 
                 array_push($this->images, $image_id );
@@ -42,8 +49,8 @@ Class ImageUploadService extends TransactionAbstractService implements ImageUplo
 
 
     protected function save($image){
-        $filePath = '/1';
+        $name = Str::random(64);
 
-        return Storage::disk('public')->put($filePath, $image);
+        return Storage::putFileAs('tmp', $image, $name);
     }
 } 
