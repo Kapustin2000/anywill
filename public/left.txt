@@ -1,0 +1,7 @@
+1) CRUD Managers
+2) Middleware для проверки пермиссинов
+3) Проверить как избавиться от массива с айдишниками
+4) Бронирование комнат funneral home
+5) Броинрвание plots
+6) Покупка plots
+7) Place plots on map

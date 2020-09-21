@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use AjCastro\EagerLoadPivotRelations\EagerLoadPivotTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class ServiceOptions extends Model
 {
+    use EagerLoadPivotTrait;
     protected $with = ['options', 'services'];
     protected $table = 'service_options';
     protected $hidden = ['pivot'];

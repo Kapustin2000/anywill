@@ -96,4 +96,5 @@ return array(
     'Aws\\' => array($vendorDir . '/aws/aws-sdk-php/src'),
     'Asm89\\Stack\\' => array($vendorDir . '/asm89/stack-cors/src'),
     'App\\' => array($baseDir . '/app'),
+    'AjCastro\\EagerLoadPivotRelations\\' => array($vendorDir . '/ajcastro/eager-load-pivot-relations/src'),
 );

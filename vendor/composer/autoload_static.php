@@ -214,6 +214,7 @@ class ComposerStaticInit7731c8d20ece076261bae8e61107aa87
             'Aws\\' => 4,
             'Asm89\\Stack\\' => 12,
             'App\\' => 4,
+            'AjCastro\\EagerLoadPivotRelations\\' => 33,
         ),
     );
 
@@ -581,6 +582,10 @@ class ComposerStaticInit7731c8d20ece076261bae8e61107aa87
         array (
             0 => __DIR__ . '/../..' . '/app',
         ),
+        'AjCastro\\EagerLoadPivotRelations\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ajcastro/eager-load-pivot-relations/src',
+        ),
     );
 
     public static $prefixesPsr0 = array (
@@ -605,6 +610,8 @@ class ComposerStaticInit7731c8d20ece076261bae8e61107aa87
     );
 
     public static $classMap = array (
+        'AjCastro\\EagerLoadPivotRelations\\EagerLoadPivotBuilder' => __DIR__ . '/..' . '/ajcastro/eager-load-pivot-relations/src/EagerLoadPivotBuilder.php',
+        'AjCastro\\EagerLoadPivotRelations\\EagerLoadPivotTrait' => __DIR__ . '/..' . '/ajcastro/eager-load-pivot-relations/src/EagerLoadPivotTrait.php',
         'App\\Components\\MatchMaking' => __DIR__ . '/../..' . '/app/Components/MatchMaking.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
@@ -657,6 +664,7 @@ class ComposerStaticInit7731c8d20ece076261bae8e61107aa87
         'App\\Models\\Order' => __DIR__ . '/../..' . '/app/Models/Order.php',
         'App\\Models\\Organization' => __DIR__ . '/../..' . '/app/Models/Organization.php',
         'App\\Models\\Permission' => __DIR__ . '/../..' . '/app/Models/Permission.php',
+        'App\\Models\\Pivot\\OptionAble' => __DIR__ . '/../..' . '/app/Models/Pivot/Optionable.php',
         'App\\Models\\Plot' => __DIR__ . '/../..' . '/app/Models/Plot.php',
         'App\\Models\\PlotTypes' => __DIR__ . '/../..' . '/app/Models/PlotTypes.php',
         'App\\Models\\Service' => __DIR__ . '/../..' . '/app/Models/Service.php',

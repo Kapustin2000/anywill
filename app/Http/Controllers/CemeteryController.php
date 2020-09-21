@@ -8,6 +8,7 @@ use App\Repositories\Interfaces\CemeteryRepositoryInterface;
 use App\Services\Dto\CemeteryDto;
 use App\Services\Interfaces\CemeteryServiceInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CemeteryController extends Controller
 {
@@ -15,7 +16,7 @@ class CemeteryController extends Controller
     
     public function __construct(CemeteryServiceInterface $service, CemeteryRepositoryInterface $repo)
     {
-        $this->service = $service; 
+        $this->service = $service;
         $this->repo = $repo;
     }
 
@@ -26,6 +27,16 @@ class CemeteryController extends Controller
      */
     public function index()
     {
+        DB::enableQueryLog();
+        $cemetery = Cemetery::find(100);
+
+        dd($cemetery->load('options.pivot.media'));
+
+        $cemetery->options->first();
+//        $cemetery->load('options')->first()->pivot->load('media');
+
+        dd(DB::getQueryLog());
+
         return $this->repo->all();
     }
 

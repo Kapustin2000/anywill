@@ -14,6 +14,11 @@ class Media extends Model
         'meta' => 'array',
     ];
 
+    public function mediable()
+    {
+        return $this->morphTo();
+    }
+
 
     public function cp($path, $prefix = '')
     {

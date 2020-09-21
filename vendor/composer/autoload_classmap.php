@@ -6,6 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AjCastro\\EagerLoadPivotRelations\\EagerLoadPivotBuilder' => $vendorDir . '/ajcastro/eager-load-pivot-relations/src/EagerLoadPivotBuilder.php',
+    'AjCastro\\EagerLoadPivotRelations\\EagerLoadPivotTrait' => $vendorDir . '/ajcastro/eager-load-pivot-relations/src/EagerLoadPivotTrait.php',
     'App\\Components\\MatchMaking' => $baseDir . '/app/Components/MatchMaking.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
@@ -58,6 +60,7 @@ return array(
     'App\\Models\\Order' => $baseDir . '/app/Models/Order.php',
     'App\\Models\\Organization' => $baseDir . '/app/Models/Organization.php',
     'App\\Models\\Permission' => $baseDir . '/app/Models/Permission.php',
+    'App\\Models\\Pivot\\OptionAble' => $baseDir . '/app/Models/Pivot/Optionable.php',
     'App\\Models\\Plot' => $baseDir . '/app/Models/Plot.php',
     'App\\Models\\PlotTypes' => $baseDir . '/app/Models/PlotTypes.php',
     'App\\Models\\Service' => $baseDir . '/app/Models/Service.php',

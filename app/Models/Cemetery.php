@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Pivot\OptionAble;
 use App\Traits\HasMedia;
 use App\Traits\UsesPrivateid;
 use Illuminate\Database\Eloquent\Model;
@@ -53,7 +54,8 @@ class Cemetery extends Model
 
     public function options()
     {
-        return $this->morphToMany(ServiceOptions::class, 'optionable');
+        return $this->morphToMany(ServiceOptions::class, 'optionable')
+            ->using(OptionAble::class)->withPivot('id');
     }
 
     public function address()

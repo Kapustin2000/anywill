@@ -1,5 +1,49 @@
 [
     {
+        "name": "ajcastro/eager-load-pivot-relations",
+        "version": "v0.2.2",
+        "version_normalized": "0.2.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ajcastro/eager-load-pivot-relations.git",
+            "reference": "55ffe9423d538aa5a0d35ddbb335556f6fe3fdfa"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ajcastro/eager-load-pivot-relations/zipball/55ffe9423d538aa5a0d35ddbb335556f6fe3fdfa",
+            "reference": "55ffe9423d538aa5a0d35ddbb335556f6fe3fdfa",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.6.0"
+        },
+        "time": "2019-09-25T00:08:16+00:00",
+        "type": "library",
+        "extra": {
+            "laravel": {
+                "providers": [],
+                "aliases": []
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "AjCastro\\EagerLoadPivotRelations\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Arjon Jason Castro",
+                "email": "ajcastro29@gmail.com"
+            }
+        ],
+        "description": "Eager load pivot relations for Laravel Eloquent's BelongsToMany relation."
+    },
+    {
         "name": "asm89/stack-cors",
         "version": "v2.0.1",
         "version_normalized": "2.0.1.0",
