@@ -61,6 +61,9 @@ Route::group([
         Route::post('/', 'FuneralHomeController@store');
     });
 
+    Route::resource('users', 'UserController')->only('show','update', 'destroy');
+
+
 
     Route::prefix('admin')->group(function () {
         Route::prefix('funeral-homes')->group(function () {
@@ -69,6 +72,7 @@ Route::group([
             Route::put('/{home}', 'FuneralHomeController@update');
             Route::delete('/{home}', 'FuneralHomeController@update');
             Route::post('/', 'FuneralHomeController@store');
+            Route::resource('users', 'Admin/UserController')->only('index', 'show', 'store', 'update', 'destroy');
         });
 
         Route::resource('cemeteries', 'CemeteryController')->only('index', 'show', 'store', 'update', 'destroy');

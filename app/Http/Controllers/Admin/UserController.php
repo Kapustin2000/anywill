@@ -5,13 +5,15 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Repositories\Admin\UserRepository;
+use App\Services\Dto\UserDto;
+use App\Services\UserService;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
     protected $service, $repo;
 
-    function __construct(ServicesService $service, UserRepository $repo)
+    function __construct(UserService $service, UserRepository $repo)
     {
         $this->service = $service;
         $this->repo = $repo;
@@ -34,7 +36,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        return $this->service->transaction($request->all());
+        return $this->service->transaction(new UserDto($request->all()));
     }
 
     /**
@@ -55,9 +57,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        return $this->repo->save($id);
+        return $this->service->transaction(new UserDto($request->all()), $user);
     }
 
     /**
