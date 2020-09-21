@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Organization;
 use App\Repositories\OrganizationRepository;
 use App\Services\Dto\OrganizationDto;
@@ -25,7 +26,7 @@ class OrganizationController extends Controller
      */
     public function index()
     {
-        return auth()->user()->organizations;
+        return $this->repo->all();
     }
 
     /**
@@ -47,7 +48,7 @@ class OrganizationController extends Controller
      */
     public function show(Organization $organization)
     {
-        return $organization;
+        return $this->repo->find($organization->id);
     }
     /**
      * Update the specified resource in storage.
