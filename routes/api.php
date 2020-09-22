@@ -76,6 +76,7 @@ Route::group([
             Route::resource('users', 'Admin/UserController')->only('index', 'show', 'store', 'update', 'destroy');
         });
 
+        Route::resource('managers', 'Admin\ManagerController')->only('index','show','update', 'destroy');
         Route::resource('cemeteries', 'CemeteryController')->only('index', 'show', 'store', 'update', 'destroy');
         Route::resource('laboratories', 'LaboratoryController')->only('index', 'show', 'store', 'update', 'destroy');
         Route::resource('cremations', 'CremationController')->only('index', 'show', 'store', 'update', 'destroy');
