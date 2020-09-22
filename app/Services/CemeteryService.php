@@ -33,6 +33,10 @@ Class CemeteryService extends TransactionAbstractService implements CemeteryServ
 
         $this->cemetery->options()->sync($dto->options);
 
+        $this->cemetery->managers()->sync($dto->managers);
+
+        $this->cemetery->media()->sync($dto->media);
+
         //Maybe later
         //$cemetery->plots()->create($request->input('plots'));
 
