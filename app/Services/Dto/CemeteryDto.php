@@ -1,5 +1,6 @@
 <?php
 namespace App\Services\Dto;
+use App\Models\Cemetery;
 use App\Models\Organization;
 use App\Models\User;
 
@@ -16,6 +17,10 @@ class CemeteryDto extends AbstractDto implements DtoInterface
             'name' => 'required',
             'user_id' => 'sometimes|exists:users,id',
             'organization_id' => 'sometimes|exists:organizations,id',
+            'type' => 'numeric|between:1,'.(count(Cemetery::TYPES)+1),
+            'classifications.*' => 'exists:classifications,id',
+            'managers.*' => 'exists:managers,id',
+            'media.*' => 'exists:media,id'
         ];
     }
 
@@ -41,8 +46,8 @@ class CemeteryDto extends AbstractDto implements DtoInterface
         $this->classifications = $data['classifications'];
         $this->coordinates = ['coordinates' => json_encode($data['coordinates'])];
         $this->options = compactOptions($data['options']);
-        $this->media = $data['media'];
-        $this->managers = $data['managers'];
+        $this->media = $data['media'] ?? null;
+        $this->managers = $data['managers'] ?? null;
 
         return true;
     }
