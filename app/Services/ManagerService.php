@@ -2,12 +2,8 @@
 
 namespace App\Services;
 
-use App\Models\FuneralHome;
 use App\Models\Manager;
-use App\Services\Dto\FuneralHomeDto;
 use App\Services\Dto\ManagerDto;
-
-; 
 
 Class ManagerService extends TransactionAbstractService
 {
