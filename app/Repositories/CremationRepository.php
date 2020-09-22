@@ -30,7 +30,7 @@ Class CremationRepository implements RepositoryInterface, CremationRepositoryInt
                 ->orWhere('name', 'like' , '%'.$search.'%');
         });
         
-        return $this->model->paginate(request('per_page') ?? Cremation::POSTS_PER_PAGE);
+        return $this->model->paginate((int)request('per_page') ?? Cremation::POSTS_PER_PAGE);
     }
     
     public function find($id)

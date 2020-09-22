@@ -26,7 +26,7 @@ Class OrganizationRepository implements RepositoryInterface {
 
     public function all()
     {
-        return $this->model->paginate(request('per_page') ?? Organization::POSTS_PER_PAGE);
+        return $this->model->paginate( (int) request('per_page') ?? Organization::POSTS_PER_PAGE);
     }
     
     public function find($id)
