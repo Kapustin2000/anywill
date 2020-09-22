@@ -4,10 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Manager;
 use App\Models\User;
+use App\Services\Dto\ManagerDto;
+use App\Services\ManagerService;
 use Illuminate\Http\Request;
 
 class ManagerController extends Controller
 {
+    protected $service;
+
+    public function __construct(ManagerService $service)
+    {
+        $this->service = $service;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,18 +23,7 @@ class ManagerController extends Controller
      */
     public function index()
     {
-        $user = User::find(14);
-        dd($user->organizations);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return auth()->user()->managers;
     }
 
     /**
@@ -37,7 +34,7 @@ class ManagerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $this->service->transaction(new ManagerDto($request->all()));
     }
 
     /**
@@ -48,18 +45,7 @@ class ManagerController extends Controller
      */
     public function show(Manager $manager)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Manager  $manager
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Manager $manager)
-    {
-        //
+        return $manager;
     }
 
     /**
@@ -71,7 +57,7 @@ class ManagerController extends Controller
      */
     public function update(Request $request, Manager $manager)
     {
-        //
+        return $this->service->transaction(new ManagerDto($request->all()), $manager);
     }
 
     /**
@@ -82,6 +68,6 @@ class ManagerController extends Controller
      */
     public function destroy(Manager $manager)
     {
-        //
+        return $manager->delete();
     }
 }
