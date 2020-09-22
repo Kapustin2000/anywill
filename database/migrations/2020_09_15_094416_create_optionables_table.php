@@ -18,7 +18,6 @@ class CreateOptionablesTable extends Migration
             $table->morphs('optionable');
             $table->foreignId('service_options_id')->constrained()->onDelete('cascade');
             $table->integer('commission')->nullable();
-            $table->json('media')->nullable();
 
             $table->index(['optionable_id', 'optionable_type']);
         });
