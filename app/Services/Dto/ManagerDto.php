@@ -1,18 +1,22 @@
 <?php
 namespace App\Services\Dto;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class ManagerDto extends AbstractDto implements DtoInterface
 {
 
     /* @var string */
-    public  $classifications, $coordinates, $options, $media;
+    public  $permissions;
 
     /* @return array */
     protected function configureValidatorRules(): array
     {
         return [
-            'name' => 'required'
+            'user_id' => 'sometimes|exists:users,id',
+            'name' => 'required',
+            'email' => 'email|unique:users',
+            'password' => 'min:8|confirmed|required'
         ];
     }
 
@@ -22,16 +26,13 @@ class ManagerDto extends AbstractDto implements DtoInterface
     protected function map(array $data): bool
     {
          $this->data = [
-            'name' => $data['name'],
-            'type' => $data['type'],
-            'owner_type' => User::class,
-            'owner_id' => 1,
-            'media' => $data['media'] ?? null
+             'name' => $data['name'],
+             'email'=> $data['email'],
+             'password'=> Hash::make($data['password']),
+             'user_id' => $data['user_id'] ?? auth()->user()->id,
         ];
 
-        $this->classifications = $data['classifications'];
-        $this->coordinates = ['coordinates' => json_encode($data['coordinates'])];
-        $this->options = compactOptions($data['options']);
+       $this->permissions = $data['permissions'];
 
 
         return true;

@@ -1,5 +1,6 @@
 <?php
 namespace App\Services\Dto;
+use App\Models\Organization;
 use App\Models\User;
 
 class FuneralHomeDto extends AbstractDto implements DtoInterface

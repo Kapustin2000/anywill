@@ -11,12 +11,23 @@ Class ManagerService extends TransactionAbstractService
 
     public function save(ManagerDto $dto) : Manager
     {
-        return $this->manager =  Manager::create($dto->data);
+       $this->manager =  Manager::create($dto->data);
+        
+       return $this->persistManager($dto); 
     }
 
     public function update(ManagerDto $dto, Manager $manager) : Manager
     {
-        return $manager->update($dto->data);
+        $manager->update($dto->data);
+
+        return $this->persistManager($dto);
+    }
+    
+    protected function persistManager(ManagerDto $dto)
+    {
+        $this->manager->permissions()->sync($dto->permissions);
+        
+        return $this->manager;
     }
 
 } 
