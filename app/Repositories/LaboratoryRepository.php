@@ -28,7 +28,7 @@ Class LaboratoryRepository implements RepositoryInterface, LaboratoryRepositoryI
                 ->orWhere('name', 'like' , '%'.$search.'%');
         });
         
-        return $this->model->paginate(Laboratory::POSTS_PER_PAGE);
+        return $this->model->paginate(request('per_page') ?? Laboratory::POSTS_PER_PAGE);
     }
     
     public function find($id)

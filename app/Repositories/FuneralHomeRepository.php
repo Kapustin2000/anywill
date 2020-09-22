@@ -31,7 +31,7 @@ Class FuneralHomeRepository implements RepositoryInterface, CremationRepositoryI
                 ->orWhere('name', 'like' , '%'.$search.'%');
         });
         
-        return $this->model->paginate(FuneralHome::POSTS_PER_PAGE);
+        return $this->model->paginate(request('per_page') ?? FuneralHome::POSTS_PER_PAGE);
     }
     
     public function find($id)
