@@ -35,4 +35,9 @@ class Manager extends Model
     {
         return $this->morphToMany(Media::class, 'mediable');
     }
+
+    public function contacts()
+    {
+        return $this->morphMany(Contact::class, 'contactable');
+    }
 }

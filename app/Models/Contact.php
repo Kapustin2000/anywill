@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Contact extends Model
 {
-    protected $fillable = ['user_id', 'phone', 'platform'];
-    
-    public function user()
+    protected $fillable = ['contactable_type', 'contactable_id', 'phone', 'platform'];
+
+    public function contactable()
     {
-        return $this->belongsTo(User::class);
+        return $this->morphTo();
     }
 }

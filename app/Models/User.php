@@ -64,7 +64,7 @@ class User extends Authenticatable
 
     public function contacts()
     {
-        return $this->hasMany(Contact::class);
+        return $this->morphMany(Contact::class, 'contactable');
     }
 
     public function addresses()
