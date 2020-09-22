@@ -16,7 +16,7 @@ class CreateManageablesTable extends Migration
         Schema::create('manageables', function (Blueprint $table) {
             $table->morphs('manageable');
             $table->unsignedBigInteger('manager_id')->nullable();
-            $table->foreign('manager_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('manager_id')->references('id')->on('managers')->onDelete('cascade');
 
             $table->index(['manageable_id', 'manageable_type']);
         });

@@ -41,6 +41,6 @@ class Cremation extends Model
 
     public function managers()
     {
-        return $this->morphedByMany(Manager::class, 'manageable');
+        return $this->morphToMany(Manager::class, 'manageable');
     }
 }
