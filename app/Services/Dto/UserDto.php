@@ -1,12 +1,13 @@
 <?php
 namespace App\Services\Dto;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserDto extends AbstractDto implements DtoInterface
 {
 
     /* @var string */
-    public  $classifications, $coordinates, $options, $media;
+    public  $classifications, $coordinates, $options, $media, $contacts;
 
     /* @return array */
     protected function configureValidatorRules(): array
@@ -23,16 +24,11 @@ class UserDto extends AbstractDto implements DtoInterface
     {
          $this->data = [
             'name' => $data['name'],
-            'type' => $data['type'],
-            'owner_type' => User::class,
-            'owner_id' => 1,
-            'media' => $data['media'] ?? null
+            'email'=> $data['email'],
+            'password'=> Hash::make($data['password'])
         ];
 
-        $this->classifications = $data['classifications'];
-        $this->coordinates = ['coordinates' => json_encode($data['coordinates'])];
-        $this->options = compactOptions($data['options']);
-
+        $this->contacts = $data['contacts'];
 
         return true;
     }
