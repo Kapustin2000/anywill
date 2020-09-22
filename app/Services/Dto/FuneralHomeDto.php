@@ -12,6 +12,8 @@ class FuneralHomeDto extends AbstractDto implements DtoInterface
     protected function configureValidatorRules(): array
     {
         return [
+            'user_id' => 'sometimes|exists:users,id',
+            'organization_id' => 'sometimes|exists:organizations,id',
             'name' => 'required',
             'description' => 'required'
         ];
@@ -22,13 +24,20 @@ class FuneralHomeDto extends AbstractDto implements DtoInterface
      */
     protected function map(array $data): bool
     {
+        if($data['user_id']) {
+            $owner_id = (int) $data['user_id'];
+        } elseif($data['organization_id']) {
+            $owner_type = Organization::class;
+            $owner_id = (int) $data['organization_id'];
+        }
+        
         $total_capacity = array_sum(array_column($data['rooms'], 'capacity'));
 
         $this->data = [
             'name' => $data['name'],
             'total_capacity' => $total_capacity,
-            'owner_type' => User::class,
-            'owner_id' => 1,
+            'owner_type' => $owner_type ?? User::class,
+            'owner_id' => $owner_id ?? auth()->user()->id,
             'description' => $data['description']
         ];
 
