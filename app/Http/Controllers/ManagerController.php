@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Manager;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ManagerController extends Controller
@@ -14,7 +15,8 @@ class ManagerController extends Controller
      */
     public function index()
     {
-        //
+        $user = User::find(14);
+        dd($user->organizations);
     }
 
     /**

@@ -15,13 +15,13 @@ class CreateOrganizationsTable extends Migration
     {
         Schema::create('organizations', function (Blueprint $table) {
             $table->id();
-            $table->morphs('owner');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('private_id',5)->unique();
             $table->string('name');
             $table->text('description');
             $table->timestamps();
 
-            $table->index(['owner_id', 'owner_type']);
+            $table->index(['user_id']);
         });
     }
 

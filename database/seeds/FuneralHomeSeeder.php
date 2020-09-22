@@ -11,6 +11,6 @@ class FuneralHomeSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Models\FuneralHome::class, 100)->create();
+        factory(App\Models\FuneralHome::class, 1)->create();
     }
 }

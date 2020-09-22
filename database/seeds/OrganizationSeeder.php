@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class CremationSeeder extends Seeder
+class OrganizationSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class CremationSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Models\Cremation::class, 1)->create();
+        factory(App\Models\Organization::class, 1)->create();
     }
 }

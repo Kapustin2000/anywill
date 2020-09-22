@@ -62,6 +62,7 @@ Route::group([
     });
 
     Route::resource('users', 'UserController')->only('show','update', 'destroy');
+    Route::resource('managers', 'ManagerController')->only('index','show','update', 'destroy');
 
 
 
