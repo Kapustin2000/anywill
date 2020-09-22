@@ -40,4 +40,9 @@ class Manager extends Model
     {
         return $this->morphMany(Contact::class, 'contactable');
     }
+
+    public function permissions()
+    {
+        return $this->morphMany(Permission::class, 'permissionable');
+    }
 }

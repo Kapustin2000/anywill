@@ -74,7 +74,7 @@ class User extends Authenticatable
 
     public function permissions()
     {
-        return $this->belongsTo(Permission::class);
+        return $this->morphMany(Permission::class, 'permissionable');
     }
 
     public function director() {

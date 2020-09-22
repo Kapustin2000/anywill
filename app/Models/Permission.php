@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Permission extends Model
 {
     protected $fillable = ['name'];
+
+    public function permissionable()
+    {
+        return $this->morphTo();
+    }
     
     public function user()
     {
