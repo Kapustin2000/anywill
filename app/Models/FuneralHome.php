@@ -10,6 +10,7 @@ class FuneralHome extends Model
     use UsesPrivateid;
     
     protected $fillable = ['name', 'description', 'total_capacity', 'owner_type', 'owner_id'];
+    protected $with = ['media'];
 
     const POSTS_PER_PAGE = 15;
     

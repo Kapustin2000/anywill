@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Laboratory extends Model
 {
     use UsesPrivateid;
+    protected $with = ['media'];
 
     const POSTS_PER_PAGE = 15;
 

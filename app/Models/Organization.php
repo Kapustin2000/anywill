@@ -12,6 +12,7 @@ class Organization extends Model
     const POSTS_PER_PAGE = 15;
     
     protected $fillable = ['name', 'description', 'user_id'];
+    protected $with = ['cemeteries','laboratories','funeral_homes','cremations','managers','media'];
 
     public function user()
     {
