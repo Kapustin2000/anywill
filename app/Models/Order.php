@@ -10,4 +10,9 @@ class Order extends Model
     use UsesPrivateid;
     
     protected $fillable = ['data', 'description', 'count_options', 'display_wishes_field', 'wishes'];
+
+    public function media()
+    {
+        return $this->morphToMany(Media::class, 'mediable');
+    }
 }

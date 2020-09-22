@@ -27,16 +27,6 @@ class CemeteryController extends Controller
      */
     public function index()
     {
-        DB::enableQueryLog();
-        $cemetery = Cemetery::find(100);
-
-        dd($cemetery->load('options.pivot.media'));
-
-        $cemetery->options->first();
-//        $cemetery->load('options')->first()->pivot->load('media');
-
-        dd(DB::getQueryLog());
-
         return $this->repo->all();
     }
 

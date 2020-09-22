@@ -8,10 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class ServiceOptions extends Model
 {
     use EagerLoadPivotTrait;
-    protected $with = ['options', 'services'];
+    protected $with = ['pivot.media', 'services'];
     protected $table = 'service_options';
-    protected $hidden = ['pivot'];
-    public $timestamps = false;
+    public $timestamps = false; 
 
     protected $fillable = ['name', 'description', 'service_id', 'meta_data_id', 'input_type_id'];
 

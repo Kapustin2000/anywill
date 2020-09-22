@@ -30,4 +30,9 @@ class Manager extends Model
     {
         return $this->morphedByMany(Organization::class, 'manageable');
     }
+
+    public function media()
+    {
+        return $this->morphToMany(Media::class, 'mediable');
+    }
 }

@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 class Media extends Model
 {
     protected $fillable = ['name', 'url','meta','path'];
+    protected $hidden = ['pivot'];
     public $timestamps = false;
     protected $casts = [
         'meta' => 'array',

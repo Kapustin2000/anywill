@@ -19,6 +19,8 @@ class CreateMediablesTable extends Migration
             $table->unsignedBigInteger('media_id')->nullable();
             $table->foreign('media_id')->references('id')->on('media')->onDelete('cascade'); 
             $table->timestamps();
+
+            $table->index(['mediable_id', 'mediable_type']);
         });
     }
 

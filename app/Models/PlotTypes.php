@@ -10,4 +10,9 @@ class PlotTypes extends Model
     {
         return $this->belongsToMany(Plot::class);
     }
+
+    public function media()
+    {
+        return $this->morphToMany(Media::class, 'mediable');
+    }
 }

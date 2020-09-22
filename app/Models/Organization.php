@@ -47,4 +47,9 @@ class Organization extends Model
     {
         return $this->morphToMany(Manager::class, 'manageable');
     }
+
+    public function media()
+    {
+        return $this->morphToMany(Media::class, 'mediable');
+    }
 }
