@@ -13,24 +13,24 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
-//        DB::statement("SET foreign_key_checks=0");
-//        Permission::truncate();
-//        DB::statement("SET foreign_key_checks=1");
-//        
-//        $permissions = [
-//            'all',
-//            'upload_media',
-//            'delete_media'
-//        ];
-//        
-//        foreach(config('entities') as $entity) {
-//            array_push($permissions,  'create_'.$entity);
-//            array_push($permissions,  'update_'.$entity);
-//            array_push($permissions,  'delete_'.$entity); 
-//        }
-//        
-//        foreach ($permissions as $permission) {
-//            Permission::create(['name' => $permission]);
-//        }
+        DB::statement("SET foreign_key_checks=0");
+        Permission::truncate();
+        DB::statement("SET foreign_key_checks=1");
+        
+        $permissions = [
+            'all',
+            'upload_media',
+            'delete_media'
+        ];
+        
+        foreach(config('entities') as $entity) {
+            array_push($permissions,  'create_'.$entity['name']);
+            array_push($permissions,  'update_'.$entity['name']);
+            array_push($permissions,  'delete_'.$entity['name']);
+        }
+        
+        foreach ($permissions as $permission) {
+            Permission::create(['name' => $permission]);
+        }
     }
 }

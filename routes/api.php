@@ -48,6 +48,9 @@ Route::group([
     Route::get('/entities', function (){
         return config('entities');
     });
+    Route::get('/permissions', function (){
+        return \App\Models\Permission::all();
+    });
     Route::get('/input-types', function (){
         return config('inputs');
     });
