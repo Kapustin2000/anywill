@@ -7,9 +7,10 @@ use Faker\Generator as Faker;
 
 $factory->define(Manager::class, function (Faker $faker) {
     return [
+        'username' => $faker->userName,
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
-        'director_id' => function() {
+        'user_id' => function() {
             return factory(App\Models\User::class)->create()->id;
         },
         'email_verified_at' => now(),

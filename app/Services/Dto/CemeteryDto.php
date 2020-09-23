@@ -15,12 +15,12 @@ class CemeteryDto extends AbstractDto implements DtoInterface
     {
         return [
             'name' => 'required',
-            'user_id' => 'sometimes|exists:users,id',
-            'organization_id' => 'sometimes|exists:organizations,id',
-            'type' => 'numeric|between:1,'.(count(Cemetery::TYPES)+1),
-            'classifications.*' => 'exists:classifications,id',
-            'managers.*' => 'exists:managers,id',
-            'media.*' => 'exists:media,id'
+//            'user_id' => 'sometimes|exists:users,id',
+//            'organization_id' => 'sometimes|exists:organizations,id',
+//            'type' => 'numeric|between:1,'.(count(Cemetery::TYPES)+1),
+//            'classifications.*' => 'exists:classifications,id',
+//            'managers.*' => 'exists:managers,id',
+//            'media.*' => 'exists:media,id'
         ];
     }
 
@@ -45,7 +45,7 @@ class CemeteryDto extends AbstractDto implements DtoInterface
 
         $this->classifications = $data['classifications'];
         $this->coordinates = ['coordinates' => json_encode($data['coordinates'])];
-        $this->options = compactOptions($data['options']);
+        $this->options = $data['options'];
         $this->media = $data['media'] ?? null;
         $this->managers = $data['managers'] ?? null;
 

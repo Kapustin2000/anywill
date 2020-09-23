@@ -1,5 +1,6 @@
 <?php
 namespace App\Services;
+use App\Models\Pivot\OptionAble;
 use Illuminate\Support\Facades\DB;
 
 abstract class AbstractService extends TransactionAbstractService
@@ -15,6 +16,26 @@ abstract class AbstractService extends TransactionAbstractService
                    $relation->updateOrCreate([$key => $object[$key] ?? null], $object);
                }
            }
+    }
+
+    protected function persistOptions($entity, $options)
+    {
+        foreach($options as $option) {
+            $optionAble =  OptionAble::updateOrCreate(
+                               ['cst_id' => $options['id'] ?? null],
+                               [
+                                   'service_options_id' => $option['option_id'],
+                                   'commission' => $option['commission'],
+                                   'optionable_type' => get_class($entity),
+                                   'optionable_id' => $entity->id
+                               ]
+                         );
+
+//            dd(var_dump($optionAble));
+            if($option['media']) $optionAble->media()->sync($option['media']);
+        }
+
+        return $entity;
     }
 
 }

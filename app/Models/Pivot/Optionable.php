@@ -7,8 +7,11 @@ use Illuminate\Database\Eloquent\Relations\MorphPivot;
 
 class OptionAble extends MorphPivot
 {
-    protected $table = 'optioables';
+    protected $fillable = ['id', 'service_options_id', 'optionable_type', 'optionable_id', 'commissions'];
+    protected $table = 'optionables';
     protected $with = ['media'];
+    public $timestamps = false;
+    protected $primaryKey = 'cst_id';
 
     public function media()
     {

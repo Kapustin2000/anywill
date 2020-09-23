@@ -6,15 +6,15 @@ use App\Models\Cemetery;
 use App\Services\Dto\CemeteryDto;
 use App\Services\Interfaces\CemeteryServiceInterface;
 
-Class CemeteryService extends TransactionAbstractService implements CemeteryServiceInterface
+Class CemeteryService extends AbstractService implements CemeteryServiceInterface
 {
 
     protected $cemetery;
 
     public function save(CemeteryDto $dto) : Cemetery
     {
-
         $this->cemetery = $cemetery = Cemetery::create($dto->data);
+
         return $this->persistCemetery($dto);
     }
 
@@ -31,7 +31,7 @@ Class CemeteryService extends TransactionAbstractService implements CemeteryServ
 
         $this->cemetery->coordinates()->updateOrCreate($dto->coordinates);
 
-        $this->cemetery->options()->sync($dto->options);
+        $this->persistOptions($this->cemetery, $dto->options);
 
         $this->cemetery->managers()->sync($dto->managers);
 

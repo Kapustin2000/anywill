@@ -30,9 +30,9 @@ Class CremationService extends TransactionAbstractService implements CremationSe
     
     
     protected function persistCremation(CremationDto $dto) : Cremation
-    {
-        $this->cremation->options()->sync($dto->options);
-        
+    { 
+        $this->persistOptions($this->cremation, $dto->options);
+
         return $this->cremation;
     }
 

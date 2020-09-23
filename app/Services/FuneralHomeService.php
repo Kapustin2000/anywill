@@ -29,7 +29,7 @@ Class FuneralHomeService extends TransactionAbstractService implements FuneralHo
 
     protected function persistFuneralHome(FuneralHomeDto $dto)
     {
-        $this->funeralHome->options()->sync($dto->options);
+        $this->persistOptions($this->funeralHome, $dto->options);
 
         $this->persistRooms($dto->rooms);
 

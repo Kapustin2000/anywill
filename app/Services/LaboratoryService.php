@@ -28,8 +28,8 @@ Class LaboratoryService extends TransactionAbstractService implements Laboratory
     
     protected function persistLaboratory(LaboratoryDto $dto)
     {
-        $this->laboratory->options()->sync($dto->options);
-        
+        $this->persistOptions($this->laboratory, $dto->options);
+
         return  $this->laboratory;
     }
 
