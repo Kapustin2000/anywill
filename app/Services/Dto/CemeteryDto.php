@@ -31,7 +31,7 @@ class CemeteryDto extends AbstractDto implements DtoInterface
     {
         if(isset($data['user_id'])) {
             $owner_id = (int) $data['user_id'];
-        } elseif($data['organization_id']) {
+        } elseif(isset($data['organization_id'])) {
             $owner_type = Organization::class;
             $owner_id = (int) $data['organization_id'];
         }
