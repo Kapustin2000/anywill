@@ -86,4 +86,9 @@ class User extends Authenticatable
     public function managers() {
         return $this->hasMany(Manager::class, 'director_id');
     }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }
