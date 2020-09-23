@@ -29,7 +29,7 @@ class CemeteryDto extends AbstractDto implements DtoInterface
      */
     protected function map(array $data): bool
     {
-        if($data['user_id']) {
+        if(isset($data['user_id'])) {
             $owner_id = (int) $data['user_id'];
         } elseif($data['organization_id']) {
             $owner_type = Organization::class;
