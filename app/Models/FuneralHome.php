@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Pivot\OptionAble;
 use App\Traits\UsesPrivateid;
 use Illuminate\Database\Eloquent\Model;
 
@@ -23,10 +24,11 @@ class FuneralHome extends Model
     {
         return $this->belongsTo(User::class);
     }
- 
+
     public function options()
     {
-        return $this->morphToMany(ServiceOptions::class, 'optionable');
+        return $this->morphToMany(ServiceOptions::class, 'optionable')
+            ->using(OptionAble::class);
     }
 
     public function rooms()

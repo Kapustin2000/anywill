@@ -14,7 +14,7 @@ class CreateOptionablesTable extends Migration
     public function up()
     {
         Schema::create('optionables', function (Blueprint $table) {
-            $table->id();
+            $table->id('id');
             $table->morphs('optionable');
             $table->foreignId('service_options_id')->constrained()->onDelete('cascade');
             $table->integer('commission')->nullable();

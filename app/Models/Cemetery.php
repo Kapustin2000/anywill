@@ -56,7 +56,7 @@ class Cemetery extends Model
     public function options()
     {
         return $this->morphToMany(ServiceOptions::class, 'optionable')
-            ->using(OptionAble::class)->withPivot('id');
+            ->using(OptionAble::class);
     }
 
     public function address()

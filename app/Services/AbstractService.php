@@ -21,8 +21,12 @@ abstract class AbstractService extends TransactionAbstractService
     protected function persistOptions($entity, $options)
     {
         foreach($options as $option) {
-            $optionAble =  OptionAble::updateOrCreate(
-                               ['cst_id' => $options['id'] ?? null],
+             OptionAble::updateOrCreate(
+                               [
+                                 'service_options_id' => $option['option_id'],
+                                 'optionable_type' => get_class($entity),
+                                 'optionable_id' => $entity->id
+                               ],
                                [
                                    'service_options_id' => $option['option_id'],
                                    'commission' => $option['commission'],
@@ -30,9 +34,11 @@ abstract class AbstractService extends TransactionAbstractService
                                    'optionable_id' => $entity->id
                                ]
                          );
+            $optionAble = OptionAble::where('service_options_id', $option['option_id'])
+                ->where( 'optionable_type' , get_class($entity))
+                ->where('optionable_id', $entity->id)->first();
 
-//            dd(var_dump($optionAble));
-            if($option['media']) $optionAble->media()->sync($option['media']);
+            if(isset($option['media'])) $optionAble->media()->sync($option['media'] ?? null);
         }
 
         return $entity;

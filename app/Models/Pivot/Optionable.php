@@ -11,7 +11,6 @@ class OptionAble extends MorphPivot
     protected $table = 'optionables';
     protected $with = ['media'];
     public $timestamps = false;
-    protected $primaryKey = 'cst_id';
 
     public function media()
     {

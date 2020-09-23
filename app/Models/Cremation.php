@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Pivot\OptionAble;
 use App\Traits\UsesPrivateid;
 use App\Traits\UsesUuid;
 use Illuminate\Database\Eloquent\Model;
@@ -29,11 +30,12 @@ class Cremation extends Model
     public function coordinates()
     {
         return $this->morphOne(Coordinate::class, 'entity');
-    } 
-    
+    }
+
     public function options()
     {
-        return $this->morphToMany(ServiceOptions::class, 'optionable');
+        return $this->morphToMany(ServiceOptions::class, 'optionable')
+            ->using(OptionAble::class);
     }
 
     public function address()
