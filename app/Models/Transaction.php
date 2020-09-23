@@ -6,6 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
 {
+    const TYPES = [
+        'replenishment',
+        'transfer',
+        'output'
+    ];
+    
     protected $fillable = ['user_id', 'type', 'details'];
     
     public function user()
