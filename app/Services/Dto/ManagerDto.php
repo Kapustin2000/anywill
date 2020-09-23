@@ -7,7 +7,7 @@ class ManagerDto extends AbstractDto implements DtoInterface
 {
 
     /* @var string */
-    public  $permissions;
+    public  $permissions, $contacts;
 
     /* @return array */
     protected function configureValidatorRules(): array
@@ -33,6 +33,7 @@ class ManagerDto extends AbstractDto implements DtoInterface
         ];
 
        $this->permissions = $data['permissions'];
+        $this->contacts = $data['contacts'];
 
 
         return true;

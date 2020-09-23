@@ -5,7 +5,7 @@ namespace App\Services;
 use App\Models\Manager;
 use App\Services\Dto\ManagerDto;
 
-Class ManagerService extends TransactionAbstractService
+Class ManagerService extends AbstractService
 {
     protected $manager;
 
@@ -26,7 +26,8 @@ Class ManagerService extends TransactionAbstractService
     protected function persistManager(ManagerDto $dto)
     {
         $this->manager->permissions()->sync($dto->permissions);
-        
+        $this->persistRelation($this->manager->contacts(), $dto->contacts);
+
         return $this->manager;
     }
 
