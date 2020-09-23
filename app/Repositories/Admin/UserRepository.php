@@ -7,7 +7,6 @@ use App\Repositories\Interfaces\RepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
 
 
-
 Class UserRepository implements RepositoryInterface, UserRepositoryInterface {
 
     protected $model;
@@ -20,7 +19,7 @@ Class UserRepository implements RepositoryInterface, UserRepositoryInterface {
     public function all()
     {
         if($search = request('search')) {
-            $this->model->when($search, function ($q) use ($search) {
+            $this->model = $this->model->when($search, function ($q) use ($search) {
                 $q->where('name', 'like', '%'.$search.'%')
                     ->orWHere('email', 'like', '%'.$search.'%' )
                     ->orWhere('username', 'like', '%'.$search.'%');
