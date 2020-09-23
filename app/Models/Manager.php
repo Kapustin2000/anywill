@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Manager extends Model
 {
-    
+    protected $with = ['director'];
+
     public function director() {
-        return $this->belongsTo(User::class, 'director_id');
+        return $this->belongsTo(User::class);
     }
 
     public function cemeteries()
