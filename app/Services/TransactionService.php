@@ -17,13 +17,13 @@ Class TransactionService extends AbstractService
 
     public function save(TransactionDto $dto) : Transaction
     {
-        if($dto->data['type_id'] === 'transfer') {
-            $this->updateBalance($dto->data['user_id'], '-', $dto->data['size']);
-            $this->updateBalance($dto->data['user_to'], '+', $dto->data['size']);
-        }else if($dto->data['type_id'] === 'withdrawal') {
-            $this->updateBalance($dto->data['user_id'], '-', $dto->data['size']);
-        }else if($dto->data['type_id'] === 'deposit') {
-            $this->updateBalance($dto->data['user_id'], '+', $dto->data['size']);
+        if($dto->data['type'] === 'transfer') {
+            $this->updateBalance($dto->data['user_id'], $dto->data['size'], '-');
+            $this->updateBalance($dto->data['user_to'], $dto->data['size'], '+');
+        }else if($dto->data['type'] === 'withdrawal') {
+            $this->updateBalance($dto->data['user_id'], $dto->data['size'], '-');
+        }else if($dto->data['type'] === 'deposit') {
+            $this->updateBalance($dto->data['user_id'], $dto->data['size'], '+');
         }
 
         return $this->transaction;
@@ -31,7 +31,7 @@ Class TransactionService extends AbstractService
 
     protected function updateBalance($userId, $size, $action = '+')
     {
-        return User::find($userId)->update(['balance' => DB::raw('balance '.$action.$size)]);
+        return User::find($userId)->update(['balance' => DB::raw('`balance`'.$action.$size)]);
     }
 
 } 
