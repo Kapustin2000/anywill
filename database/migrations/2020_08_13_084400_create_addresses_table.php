@@ -16,10 +16,18 @@ class CreateAddressesTable extends Migration
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
             $table->morphs('addressable');
-            $table->unsignedInteger('country_id');
-            $table->unsignedInteger('region_id');
-            $table->string('address');
-            $table->integer('zip');
+            $table->string('administrative_area_level_1');
+            $table->string('administrative_area_level_2');
+            $table->string('country');
+            $table->string('latitude');
+            $table->string('longitude');
+            $table->string('name');
+            $table->string('locality');
+            $table->string('place_id');
+            $table->string('postal_code');
+            $table->string('route');
+            $table->string('street_number');
+            $table->string('formatted_address');
             $table->timestamps();
             $table->softDeletes();
 

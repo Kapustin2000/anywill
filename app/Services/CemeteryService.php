@@ -37,6 +37,7 @@ Class CemeteryService extends AbstractService implements CemeteryServiceInterfac
 
         $this->cemetery->media()->sync($dto->media);
 
+        $this->cemetery->address()->updateOrCreate($dto->address);
         //Maybe later
         //$cemetery->plots()->create($request->input('plots'));
 

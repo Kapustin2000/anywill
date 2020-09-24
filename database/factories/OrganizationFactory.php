@@ -24,10 +24,18 @@ $factory->afterCreating(Organization::class, function ($organization) {
     $organization->managers()->saveMany(factory(App\Models\Manager::class, 3)->make());
     $organization->address()->create(
         [
-            'country_id' => 1,
-            'region_id' => 1,
-            'address' => 1,
-            'zip' => 1,
+            "administrative_area_level_1" => "CA",
+            "administrative_area_level_2" =>"Orange County",
+            "country" => "United States",
+            "latitude" => 33.5866727,
+            "longitude" => 33.5866727,
+            "name" => "12 Conch Reef",
+            "locality" => "Aliso Viejo",
+            "place_id" => "ChIJR-UVKLHo3IARrFZ2ptDjcEc",
+            "postal_code" => "92656",
+            "route" => "Conch Reef",
+            "street_number" => "12",
+            "formatted_address" => "12 Conch Reef, Aliso Viejo, CA 92656, USA"
         ]
     );
 });
