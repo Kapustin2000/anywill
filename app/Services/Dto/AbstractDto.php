@@ -13,6 +13,8 @@ abstract class AbstractDto
     {
         $this->data = $data;
 
+        if(method_exists($this, 'beforeValidation')) $data = $this->beforeValidation($data);
+        
         $validator = Validator::make(
             $data,
             $this->configureValidatorRules()

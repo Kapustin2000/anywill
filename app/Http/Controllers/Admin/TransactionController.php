@@ -35,7 +35,6 @@ class TransactionController extends Controller
     public function store(Request $request)
     {
         return $this->service->transaction(new TransactionDto($request->all()));
-        return Transaction::create($request->all());
     }
 
     /**
