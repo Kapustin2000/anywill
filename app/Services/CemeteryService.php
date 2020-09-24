@@ -29,7 +29,7 @@ Class CemeteryService extends AbstractService implements CemeteryServiceInterfac
     {
         $this->cemetery->classifications()->sync($dto->classifications);
 
-        $this->cemetery->coordinates()->updateOrCreate($dto->coordinates);
+//        $this->cemetery->coordinates()->updateOrCreate($dto->coordinates);
 
         $this->persistOptions($this->cemetery, $dto->options);
 

@@ -44,7 +44,7 @@ class CemeteryDto extends AbstractDto implements DtoInterface
         ];
 
         $this->classifications = $data['classifications'];
-        $this->coordinates = ['coordinates' => json_encode($data['coordinates'])];
+//        $this->coordinates = ['coordinates' => json_encode($data['coordinates'])];
         $this->options = $data['options'];
         $this->media = $data['media'] ?? null;
         $this->managers = $data['managers'] ?? null;
