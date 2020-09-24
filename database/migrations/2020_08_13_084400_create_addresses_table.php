@@ -21,7 +21,9 @@ class CreateAddressesTable extends Migration
             $table->string('country');
             $table->string('latitude');
             $table->string('longitude');
-            $table->string('name');
+            $table->string('neighborhood')->nullable();
+            $table->string('name')->nullable();
+            $table->string('postal_code_suffix')->nullable();
             $table->string('locality');
             $table->string('place_id');
             $table->string('postal_code');
