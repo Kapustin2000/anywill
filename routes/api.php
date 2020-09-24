@@ -80,6 +80,7 @@ Route::group([
             Route::resource('users', 'Admin/UserController')->only('index', 'show', 'store', 'update', 'destroy');
         });
 
+        Route::resource('transactions', 'Admin\TransactionController')->only('index','store','show','update', 'destroy');
         Route::resource('organizations', 'Admin\ManagerController')->only('index','show','update', 'destroy');
         Route::resource('users', 'Admin\UserController')->only('index', 'show', 'store', 'update', 'destroy');
         Route::resource('managers', 'Admin\ManagerController')->only('index','show','update', 'destroy');

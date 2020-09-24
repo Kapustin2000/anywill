@@ -24,8 +24,9 @@ Class TransactionService extends AbstractService
 
     protected function persistTransaction(TransactionDto $dto) : Transaction
     {
-        if($dto->data['type'] === 'transaction'){
-            User::find($dto->data['user_to'])->update(['balance' => DB::raw('balance + 10')]);
+        if($dto->data['type_id'] === 'transfer'){
+            User::find($dto->data['user_id'])->update(['balance' => DB::raw('balance -'.$dto->data['size'])]);
+            User::find($dto->data['user_to'])->update(['balance' => DB::raw('balance +'.$dto->data['size'])]);
         }
         return $this->transaction;
     }
