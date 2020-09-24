@@ -16,7 +16,7 @@ Class CemeteryRepository implements RepositoryInterface, CemeteryRepositoryInter
     
     function __construct(Cemetery $model)
     {
-        $this->model = $model->with('classifications', 'options', 'coordinates');
+        $this->model = $model->with('classifications', 'options');
     }
 
     public function all()
