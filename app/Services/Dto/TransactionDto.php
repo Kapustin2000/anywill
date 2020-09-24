@@ -14,9 +14,9 @@ class TransactionDto extends AbstractDto implements DtoInterface
     {
         return [
             'name' => 'required',
-//            'from_user_id' => 'exists:users,id',
-//            'to_user_id' => 'exists:users,id',
-//            'from_user_id_balance_after_operation' => 'required|numeric|min:0'
+            'from_user_id' => 'exists:users,id',
+            'to_user_id' => 'exists:users,id',
+            'from_user_id_balance_after_operation' => 'required|numeric|min:0'
         ];
     }
 
@@ -50,8 +50,8 @@ class TransactionDto extends AbstractDto implements DtoInterface
     {
         $this->data = [
             'size' => $data['size'],
-            'user_id' => $data['user_id'] ?? null,
-            'user_to' =>  $data['to_user_id'] ?? null,
+            'from_user_id' => $data['from_user_id'] ?? null,
+            'to_user_id' =>  $data['to_user_id'] ?? null,
             'details' => json_encode($data['details']),
             'type' => $data['type']
         ];

@@ -17,7 +17,8 @@ class CreateTransactionsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('type_id')->nullable();
+//            $table->unsignedBigInteger('type')->nullable();
+            $table->string('type');
             $table->json('details');
             $table->timestamps();
         });
