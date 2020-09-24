@@ -1,8 +1,8 @@
 <?php
 return [
-    ['ID' => 1, 'name' => 'checkbox'],
-    ['ID' => 2, 'name' => 'radio'],
-    ['ID' => 3, 'name' => 'input'],
-    ['ID' => 4, 'name' => 'multiselect'],
-    ['ID' => 4, 'name' => 'select'],
+    ['id' => 1, 'name' => 'checkbox'],
+    ['id' => 2, 'name' => 'radio'],
+    ['id' => 3, 'name' => 'input'],
+    ['id' => 4, 'name' => 'multiselect'],
+    ['id' => 4, 'name' => 'select'],
 ];

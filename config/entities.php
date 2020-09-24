@@ -1,8 +1,8 @@
 <?php
 
 return [
-  ['ID' => 1, 'name' => 'general'],
-  ['ID' => 2, 'name' => 'cemetery'],
-  ['ID' => 3, 'name' => 'laboratory'],
-  ['ID' => 4, 'name' => 'funeral_home'],
+  ['id' => 1, 'name' => 'general'],
+  ['id' => 2, 'name' => 'cemetery'],
+  ['id' => 3, 'name' => 'laboratory'],
+  ['id' => 4, 'name' => 'funeral_home'],
 ];

@@ -21,10 +21,10 @@ class Cemetery extends Model
     protected $with = ['media'];
 
     const TYPES  = [
-       ['ID'=> 1, 'name' => 'public'],
-       ['ID'=> 2, 'name' => 'private'],
-       ['ID'=> 3, 'name' => 'state'],
-       ['ID'=> 4, 'name' => 'veteran'],
+       ['id'=> 1, 'name' => 'public'],
+       ['id'=> 2, 'name' => 'private'],
+       ['id'=> 3, 'name' => 'state'],
+       ['id'=> 4, 'name' => 'veteran'],
     ];
 
     public function owner()
