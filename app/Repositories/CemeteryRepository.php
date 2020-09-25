@@ -16,7 +16,7 @@ Class CemeteryRepository implements RepositoryInterface, CemeteryRepositoryInter
     
     function __construct(Cemetery $model)
     {
-        $this->model = $model->with('classifications:id', 'options', 'address', 'managers');
+        $this->model = $model->with('classifications:id', 'options', 'managers');
     }
 
     public function all()
@@ -26,13 +26,22 @@ Class CemeteryRepository implements RepositoryInterface, CemeteryRepositoryInter
                      ->orWhere('name', 'like' , '%'.$search.'%');
         });
 
-//        $this->model->when(request('lng') && request('lat'), function ($q) {
-//            $lat = request('lat');
-//            $lng = request('lng');
-//            $q->whereHas('address', function( $query ) use ( $lat, $lng ){
-//                $query->addSelect(sqlDistance($lat, $lng))->havingRaw('distance < 20');
-//            });
-//        });
+
+        if(request('lng') && request('lat')) {
+            $lat = request('lat');
+            $lng = request('lng');
+
+            $this->model->whereHas('address', function( $query ) use ( $lat, $lng ){
+                $query->selectRaw(sqlDistance($lat, $lng))->havingRaw('distance < 20');
+            });
+
+            $this->model->with(['address' => function($q) use ($lat, $lng) {
+                return $q->select('*')->selectRaw(sqlDistance($lat, $lng));
+            }]);
+
+        }else{
+            $this->model->with('address');
+        }
 
         return $this->model->paginate((int)request('per_page') ?? Cemetery::POSTS_PER_PAGE);
     }
