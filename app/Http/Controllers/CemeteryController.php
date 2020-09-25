@@ -69,7 +69,7 @@ class CemeteryController extends Controller
      */
     public function show(Cemetery $cemetery)
     {
-        return  $cemetery->load('classifications', 'options', 'coordinates');
+        return  $cemetery->load('classifications:id', 'options', 'address');
     }
 
     /**
