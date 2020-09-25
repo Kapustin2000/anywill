@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CemeteryRequest;
+use App\Models\Address;
 use App\Models\Cemetery;
 use App\Repositories\Interfaces\CemeteryRepositoryInterface;
 use App\Services\Dto\CemeteryDto;
@@ -31,14 +32,22 @@ class CemeteryController extends Controller
 //        $lat = 33.5866727;
 //        $lng =  33.5866727;
 //
-//        $sqlDistance = \Illuminate\Support\Facades\DB::raw('( 111.045 * acos( cos( radians(' . $lat. ') ) 
-//       * cos( radians( addresses.latitude ) ) 
-//       * cos( radians( addresses.longitude ) 
-//       - radians(' . $lng  . ') ) 
-//       + sin( radians(' . $lat  . ') ) 
-//       * sin( radians( addresses.latitude ) ) ) ) * 1.609344');
+//        $sqlDistance = \Illuminate\Support\Facades\DB::raw('( 111.045 * acos( cos( radians(' . $lat. ') )
+//       * cos( radians( addresses.latitude ) )
+//       * cos( radians( addresses.longitude )
+//       - radians(' . $lng  . ') )
+//       + sin( radians(' . $lat  . ') )
+//       * sin( radians( addresses.latitude ) ) ) )');
 //
 //
+//
+//        $sqlDistance = \Illuminate\Support\Facades\DB::raw('(((acos(sin((".$lat."*pi()/180)) * sin((`addresses.latitude`*pi()/180))+cos((".$lat."*pi()/180)) * cos((`addresses.latitude`*pi()/180)) * cos(((".$lng."- `addresses.longitude`)*pi()/180))))*180/pi())*60*1.1515*1.609344) as distance');
+//
+//
+//        $address = Address::select('name')
+//            ->selectRaw($sqlDistance. 'as distance')->get();
+//
+//        dd($address);
 //
 //        $cemetery = Cemetery::with('address')->whereHas('address', function ($query) use ($sqlDistance) {
 //            $query->selectRaw(
