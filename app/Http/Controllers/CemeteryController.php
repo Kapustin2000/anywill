@@ -7,6 +7,7 @@ use App\Models\Cemetery;
 use App\Repositories\Interfaces\CemeteryRepositoryInterface;
 use App\Services\Dto\CemeteryDto;
 use App\Services\Interfaces\CemeteryServiceInterface;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -27,6 +28,25 @@ class CemeteryController extends Controller
      */
     public function index()
     {
+//        $lat = 33.5866727;
+//        $lng =  33.5866727;
+//
+//        $sqlDistance = \Illuminate\Support\Facades\DB::raw('( 111.045 * acos( cos( radians(' . $lat. ') ) 
+//       * cos( radians( addresses.latitude ) ) 
+//       * cos( radians( addresses.longitude ) 
+//       - radians(' . $lng  . ') ) 
+//       + sin( radians(' . $lat  . ') ) 
+//       * sin( radians( addresses.latitude ) ) ) ) * 1.609344');
+//
+//
+//
+//        $cemetery = Cemetery::with('address')->whereHas('address', function ($query) use ($sqlDistance) {
+//            $query->selectRaw(
+//                $sqlDistance.' as distance'
+//            )->having('distance', '<', 500);
+//        })->get();
+//
+//        dd($cemetery);
         return $this->repo->all();
     }
 
