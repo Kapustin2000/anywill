@@ -16,7 +16,7 @@ Class CemeteryRepository implements RepositoryInterface, CemeteryRepositoryInter
     
     function __construct(Cemetery $model)
     {
-        $this->model = $model->with('classifications:id', 'options', 'address');
+        $this->model = $model->with('classifications:id', 'options', 'address', 'managers');
     }
 
     public function all()
@@ -25,6 +25,14 @@ Class CemeteryRepository implements RepositoryInterface, CemeteryRepositoryInter
             return $q->where('private_id', 'like' , '%'.$search.'%')
                      ->orWhere('name', 'like' , '%'.$search.'%');
         });
+
+//        $this->model->when(request('lng') && request('lat'), function ($q) {
+//            $lat = request('lat');
+//            $lng = request('lng');
+//            $q->whereHas('address', function( $query ) use ( $lat, $lng ){
+//                $query->addSelect(sqlDistance($lat, $lng))->havingRaw('distance < 20');
+//            });
+//        });
 
         return $this->model->paginate((int)request('per_page') ?? Cemetery::POSTS_PER_PAGE);
     }
