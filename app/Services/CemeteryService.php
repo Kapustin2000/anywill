@@ -20,8 +20,8 @@ Class CemeteryService extends AbstractService implements CemeteryServiceInterfac
 
     public function update(CemeteryDto $dto, Cemetery $cemetery) : Cemetery
     {
-        $this->cemetery = $cemetery->update($dto->data);
-
+        $this->cemetery = tap($cemetery)->update($dto->data);
+ 
         return $this->persistCemetery($dto);
     }
 

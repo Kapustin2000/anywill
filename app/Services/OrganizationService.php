@@ -20,7 +20,7 @@ Class OrganizationService extends AbstractService
 
     public function update(OrganizationDto $dto, Organization $organization) : Organization
     {
-        $this->organization = $organization->update($dto->data);
+        $this->organization = tap($organization)->update($dto->data);
 
         return $this->persistOrganization($dto);
     }

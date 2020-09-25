@@ -19,9 +19,7 @@ Class LaboratoryService extends TransactionAbstractService implements Laboratory
     
     public function update(LaboratoryDto $dto, Laboratory $laboratory = null) : Laboratory
     {
-        $this->laboratory = $laboratory;
-        
-        $this->laboratory->update($dto->data);
+        $this->laboratory = tap($laboratory)->update($dto->data);
         
         return $this->persistLaboratory($dto);
     }

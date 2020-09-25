@@ -21,9 +21,7 @@ Class CremationService extends TransactionAbstractService implements CremationSe
 
     public function update(CremationDto $dto, Cremation $cremation) : Cremation
     {
-        $this->cremation = $cremation;
-
-        $this->cremation->update($dto->data);
+        $this->cremation = tap($cremation)->update($dto->data);
 
         return $this->persistCremation($dto);
     }

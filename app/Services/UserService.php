@@ -21,7 +21,7 @@ Class UserService extends AbstractService implements UserServiceInterface
 
     public function update(UserDto $dto, User $user) : User
     {
-        $this->user = $user->update($dto->data);
+        $this->user = tap($user)->update($dto->data);
 
         return $this->persistUser($dto);
     }

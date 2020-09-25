@@ -18,7 +18,7 @@ Class ManagerService extends AbstractService
 
     public function update(ManagerDto $dto, Manager $manager) : Manager
     {
-        $manager->update($dto->data);
+        $this->manager = tap($manager)->update($dto->data);
 
         return $this->persistManager($dto);
     }
