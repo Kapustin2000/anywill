@@ -11,6 +11,13 @@ class Transaction extends Model
         'transfer',
         'output'
     ];
+
+    const PROVIDERS = [
+       'other',
+       'stripe',
+       'manual',
+       'bank'
+    ];
     
     protected $fillable = ['user_id', 'type', 'details'];
     

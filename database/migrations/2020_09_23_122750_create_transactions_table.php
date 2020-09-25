@@ -15,10 +15,16 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
+            $table->string('private_id',5)->unique();
+            $table->string('native_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 //            $table->unsignedBigInteger('type')->nullable();
             $table->string('type');
+            $table->smallInteger('provider');
+            $table->smallInteger('positive');
+            $table->string('card_country');
+            $table->integer('discount')->nullable();
             $table->json('details');
             $table->timestamps();
         });
