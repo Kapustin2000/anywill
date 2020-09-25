@@ -4,17 +4,19 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Manager;
+use App\Repositories\Admin\ManagerRepository;
 use App\Services\Dto\ManagerDto;
 use App\Services\ManagerService;
 use Illuminate\Http\Request;
 
 class ManagerController extends Controller
 {
-    protected $service;
+    protected $service, $repo;
 
-    public function __construct(ManagerService $service)
+    public function __construct(ManagerService $service, ManagerRepository $repo)
     {
         $this->service = $service;
+        $this->repo = $repo;
     }
     /**
      * Display a listing of the resource.
@@ -23,7 +25,7 @@ class ManagerController extends Controller
      */
     public function index()
     {
-        return Manager::all();
+        return $this->repo->all();
     }
 
     /**

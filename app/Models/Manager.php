@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Manager extends Model
 {
     protected $with = ['director'];
+    const POSTS_PER_PAGE = 15;
 
     public function director() {
         return $this->belongsTo(User::class);
