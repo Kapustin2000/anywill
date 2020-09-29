@@ -70,7 +70,8 @@ Route::group([
 
 
 
-    Route::prefix('admin')->middleware('admin')->group(function () {
+    Route::prefix('admin')->group(function () {
+        //->middleware('auth:api-admins')
         Route::prefix('funeral-homes')->group(function () {
             Route::get('/', 'FuneralHomeController@index');
             Route::get('/{home}', 'FuneralHomeController@show');

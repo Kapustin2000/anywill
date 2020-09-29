@@ -41,12 +41,6 @@ return [
             'provider' => 'users',
         ],
 
-        'api' => [
-            'driver' => 'passport',
-            'provider' => 'users',
-            'hash' => false,
-        ],
-
         'managers' => [
             'driver' => 'session',
             'provider' => 'managers',
@@ -61,6 +55,14 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
+
+
+        'api-admins' => [
+            'driver' => 'passport',
+            'provider' => 'admins',
+            'hash' => false,
+        ],
+        
     ],
 
     /*
