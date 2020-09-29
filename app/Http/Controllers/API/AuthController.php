@@ -60,7 +60,7 @@ class AuthController extends Controller
                 'message' => 'Unauthorized'
             ], 401);
 
-        $user = $request->user('managers') ?? $request->user();
+        $user = $request->user() ?? $request->user('managers') ?? $request->user('providers') ?? $request->user('admins');
         $tokenResult = $user->createToken('Personal Access Token');
         $token = $tokenResult->token;
         if ($request->remember_me)
