@@ -2,10 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Manager extends Model
+use Laravel\Passport\HasApiTokens;
+
+class Manager extends Authenticatable
 {
+    use HasApiTokens;
+
+    protected $guarded = 'managers';
     protected $with = ['director'];
     const POSTS_PER_PAGE = 15;
 
