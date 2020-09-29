@@ -62,6 +62,18 @@ return [
             'provider' => 'admins',
             'hash' => false,
         ],
+
+        'api-users' => [
+            'driver' => 'passport',
+            'provider' => 'users',
+            'hash' => false,
+        ],
+
+        'api-managers' => [
+            'driver' => 'passport',
+            'provider' => 'managers',
+            'hash' => false,
+        ],
         
     ],
 
