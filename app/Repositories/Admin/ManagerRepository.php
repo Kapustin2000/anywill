@@ -13,7 +13,7 @@ Class ManagerRepository implements RepositoryInterface, UserRepositoryInterface 
     
     function __construct(Manager $model)
     {
-        $this->model = $model;
+        $this->model = $model->with('permissions');
     }
 
     public function all()

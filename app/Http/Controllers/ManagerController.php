@@ -45,7 +45,7 @@ class ManagerController extends Controller
      */
     public function show(Manager $manager)
     {
-        return $manager;
+        return $manager->load('permissions');
     }
 
     /**
