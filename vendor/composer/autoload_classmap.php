@@ -39,6 +39,7 @@ return array(
     'App\\Http\\Controllers\\OrganizationController' => $baseDir . '/app/Http/Controllers/OrganizationController.php',
     'App\\Http\\Controllers\\PlotController' => $baseDir . '/app/Http/Controllers/PlotController.php',
     'App\\Http\\Controllers\\PlotTypesController' => $baseDir . '/app/Http/Controllers/PlotTypesController.php',
+    'App\\Http\\Controllers\\ProviderController' => $baseDir . '/app/Http/Controllers/ProviderController.php',
     'App\\Http\\Controllers\\ServiceController' => $baseDir . '/app/Http/Controllers/ServiceController.php',
     'App\\Http\\Controllers\\TransactionController' => $baseDir . '/app/Http/Controllers/TransactionController.php',
     'App\\Http\\Controllers\\UserController' => $baseDir . '/app/Http/Controllers/UserController.php',

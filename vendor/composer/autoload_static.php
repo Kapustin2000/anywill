@@ -643,6 +643,7 @@ class ComposerStaticInit7731c8d20ece076261bae8e61107aa87
         'App\\Http\\Controllers\\OrganizationController' => __DIR__ . '/../..' . '/app/Http/Controllers/OrganizationController.php',
         'App\\Http\\Controllers\\PlotController' => __DIR__ . '/../..' . '/app/Http/Controllers/PlotController.php',
         'App\\Http\\Controllers\\PlotTypesController' => __DIR__ . '/../..' . '/app/Http/Controllers/PlotTypesController.php',
+        'App\\Http\\Controllers\\ProviderController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProviderController.php',
         'App\\Http\\Controllers\\ServiceController' => __DIR__ . '/../..' . '/app/Http/Controllers/ServiceController.php',
         'App\\Http\\Controllers\\TransactionController' => __DIR__ . '/../..' . '/app/Http/Controllers/TransactionController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',

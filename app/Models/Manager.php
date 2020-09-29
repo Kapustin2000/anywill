@@ -50,6 +50,6 @@ class Manager extends Authenticatable
 
     public function permissions()
     {
-        return $this->morphMany(Permission::class, 'permissionable');
+        return $this->morphToMany(Permission::class, 'permissionable');
     }
 }

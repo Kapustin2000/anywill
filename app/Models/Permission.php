@@ -8,14 +8,10 @@ class Permission extends Model
 {
     protected $fillable = ['name'];
     public $timestamps = false;
+    protected $hidden = ['pivot'];
 
     public function permissionable()
     {
         return $this->morphTo();
-    }
-    
-    public function user()
-    {
-        return $this->belongsTo(User::class);
     }
 }
