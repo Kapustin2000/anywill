@@ -70,7 +70,7 @@ Route::group([
 
 
 
-    Route::prefix('admin')->group(function () {
+    Route::prefix('admin')->middleware('admin')->group(function () {
         Route::prefix('funeral-homes')->group(function () {
             Route::get('/', 'FuneralHomeController@index');
             Route::get('/{home}', 'FuneralHomeController@show');

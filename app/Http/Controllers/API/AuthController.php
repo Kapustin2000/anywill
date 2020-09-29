@@ -55,7 +55,7 @@ class AuthController extends Controller
         ]);
         $credentials = request(['email', 'password']);
 
-        if(!(Auth::guard('managers')->attempt($credentials) || Auth::attempt($credentials)))
+        if(!(Auth::attempt($credentials) || Auth::guard('managers')->attempt($credentials) || Auth::guard('admins')->attempt($credentials) || Auth::guard('providers')->attempt($credentials)))
             return response()->json([
                 'message' => 'Unauthorized'
             ], 401);
