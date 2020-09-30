@@ -46,7 +46,7 @@ class Organization extends Model
 
     public function managers()
     {
-        return $this->morphToMany(Manager::class, 'manageable');
+        return $this->morphToMany(User::class, 'manageable');
     }
 
     public function media()

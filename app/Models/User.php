@@ -47,21 +47,29 @@ class User extends Authenticatable
     
     public function cemeteries()
     {
+        if(request()->user()) return $this->morphedByMany(Cemetery::class, 'manageable');
+        
         return $this->morphMany(Cemetery::class, 'owner');
     }
 
     public function laboratories()
     {
+        if(request()->user()) return $this->morphedByMany(Laboratory::class, 'manageable');
+
         return $this->morphMany(Laboratory::class, 'owner');
     }
 
     public function funeral_homes()
     {
+        if(request()->user()) return $this->morphedByMany(FuneralHome::class, 'manageable');
+
         return $this->morphMany(FuneralHome::class, 'owner');
     }
 
     public function cremations()
     {
+        if(request()->user()) return $this->morphedByMany(Cremation::class, 'manageable');
+
         return $this->morphMany(Cremation::class, 'owner');
     }
 
@@ -85,7 +93,7 @@ class User extends Authenticatable
     }
 
     public function managers() {
-        return $this->hasMany(Manager::class, 'director_id');
+        return $this->hasMany(static::class, 'parent_id');
     }
 
     public function transactions()

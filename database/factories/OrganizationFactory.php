@@ -21,7 +21,7 @@ $factory->afterCreating(Organization::class, function ($organization) {
     $organization->laboratories()->saveMany(factory(App\Models\Laboratory::class, 3)->make());
     $organization->funeral_homes()->saveMany(factory(App\Models\FuneralHome::class, 3)->make());
     $organization->cremations()->saveMany(factory(App\Models\Cremation::class, 3)->make());
-    $organization->managers()->saveMany(factory(App\Models\Manager::class, 3)->make());
+    $organization->managers()->saveMany(factory(App\Models\User::class, 3)->make());
     $organization->address()->create(
         [
             "administrative_area_level_1" => "CA",

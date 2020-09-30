@@ -99,4 +99,8 @@ Route::group([
 Route::get('/permissions', function (){
     return \App\Models\Permission::all();
 });
- 
+
+
+Route::get('/user', function (){
+   return request()->user()->load('cemeteries');
+})->middleware('auth:api');
