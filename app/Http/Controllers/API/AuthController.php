@@ -65,12 +65,12 @@ class AuthController extends Controller
         
         $credentials = request()->only($login_type, 'password');
 
-        if(!(Auth::attempt($credentials) || Auth::guard('managers')->attempt($credentials) || Auth::guard('admins')->attempt($credentials) || Auth::guard('providers')->attempt($credentials)))
+        if(!(Auth::attempt($credentials) || Auth::guard('admins')->attempt($credentials)))
             return response()->json([
                 'message' => 'Unauthorized'
             ], 401);
 
-        $user = $request->user() ?? $request->user('managers') ?? $request->user('providers') ?? $request->user('admins');
+        $user = $request->user() ??  $request->user('admins');
         $tokenResult = $user->createToken('Personal Access Token');
         $token = $tokenResult->token;
         if ($request->remember_me)
