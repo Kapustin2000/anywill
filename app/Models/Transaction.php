@@ -2,10 +2,17 @@
 
 namespace App\Models;
 
+use App\Traits\UsesPrivateid;
 use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
 {
+    use UsesPrivateid;
+
+    protected $casts = [
+        'details' => 'array'
+    ];
+
     const TYPES = [
         'replenishment',
         'transfer',
@@ -19,7 +26,7 @@ class Transaction extends Model
        'bank'
     ];
     
-    protected $fillable = ['user_id', 'type', 'details'];
+    protected $fillable = ['from_user_id', 'to_user_id', 'size','provider','type', 'details'];
     
     public function user()
     {

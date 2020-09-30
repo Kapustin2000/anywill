@@ -54,6 +54,11 @@ Route::group([
     Route::get('/input-types', function (){
         return config('inputs');
     });
+
+    Route::get('/transaction-types', function (){
+        return config('transactions');
+    });
+
     Route::get('/orders/{order}/matching', 'OrderMatchingController');
 
     Route::prefix('funeral-homes')->group(function () {
@@ -88,6 +93,7 @@ Route::group([
         Route::resource('laboratories', 'LaboratoryController')->only('index', 'show', 'store', 'update', 'destroy');
         Route::resource('cremations', 'CremationController')->only('index', 'show', 'store', 'update', 'destroy');
         Route::resource('services', 'Admin\ServiceController')->only('index', 'show', 'store', 'update', 'destroy');
+        Route::resource('transactions', 'Admin\TransactionController')->only('index','store','show','update', 'destroy');
     });
 
 Route::get('/permissions', function (){

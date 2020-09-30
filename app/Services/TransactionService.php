@@ -22,37 +22,27 @@ Class TransactionService extends AbstractService
 
     public function save(TransactionDto $dto) : Transaction
     {
-        if($dto->data['type'] === 'transfer') {
+        $this->updateBalance($dto->transaction_from['from_user_id'], $dto->transaction_from['size']);
 
-            $this->updateBalance($dto->data['from_user_id'], $dto->data['size'], '-');
-            $this->createTransaction($dto->data['from_user_id'], 'transfer', $dto->data['size'], $dto->data['details']);
+        $this->transaction = $this->createTransaction($dto->transaction_from);
 
-            $this->updateBalance($dto->data['to_user_id'], $dto->data['size'], '+');
-            $this->createTransaction($dto->data['from_user_id'], 'transfer', $dto->data['size'], $dto->data['details']);
 
-        }else if($dto->data['type'] === 'withdrawal') {
-
-            $this->updateBalance($dto->data['from_user_id'], $dto->data['size'], '-');
-            $this->createTransaction($dto->data['from_user_id'], 'transfer', $dto->data['size'], $dto->data['details']);
-
-        }else if($dto->data['type'] === 'deposit') {
-
-            $this->updateBalance($dto->data['from_user_id'], $dto->data['size'], '+');
-            $this->createTransaction($dto->data['from_user_id'], 'deposit', $dto->data['size'], $dto->data['details']);
-            
+        if($dto->transaction_from['type'] === 1) {
+            $this->updateBalance($dto->transaction_to['to_user_id'], $dto->transaction_to['size']);
+            $this->createTransaction($dto->transaction_to);
         }
 
         return $this->transaction;
     }
 
-    protected function updateBalance($userId, $size, $action = '+')
+    protected function updateBalance($userId, $size)
     {
-        return User::find($userId)->update(['balance' => DB::raw('`balance`'.$action.$size)]);
+        return User::find($userId)->update(['balance' => DB::raw('`balance` + '.$size)]);
     }
 
-    protected function createTransaction($userId, $type, $size, $details)
+    protected function createTransaction($transaction)
     {
-        return Transaction::create(['user_id' => $userId, 'type' => $type, 'size' => $size, 'details' => $details]);
+        return Transaction::create($transaction);
     }
 
 } 

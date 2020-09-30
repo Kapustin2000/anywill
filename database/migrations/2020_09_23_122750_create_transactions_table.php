@@ -17,13 +17,15 @@ class CreateTransactionsTable extends Migration
             $table->id();
             $table->string('private_id',5)->unique();
             $table->string('native_id')->nullable();
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-//            $table->unsignedBigInteger('type')->nullable();
-            $table->string('type');
-            $table->smallInteger('provider');
-            $table->smallInteger('positive');
-            $table->string('card_country');
+            $table->unsignedBigInteger('from_user_id')->nullable();
+            $table->foreign('from_user_id')->references('id')->on('users')->onDelete('cascade');
+
+            $table->unsignedBigInteger('to_user_id')->nullable();
+            $table->foreign('to_user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('type');
+            $table->integer('size');
+            $table->smallInteger('provider')->default(0);
+            $table->string('card_country')->nullable();
             $table->integer('discount')->nullable();
             $table->json('details');
             $table->timestamps();
