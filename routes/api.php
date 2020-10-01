@@ -59,8 +59,9 @@ use Illuminate\Support\Facades\Route;
         Route::resource('cremations', 'CremationController')->only('index', 'show', 'store', 'update', 'destroy');
         Route::resource('services', 'ServiceController')->only('index', 'show', 'store', 'update', 'destroy');
         Route::resource('orders', 'OrderController')->only('index', 'show', 'store', 'update', 'destroy');
-        Route::resource('media', 'MediaController')->only('index', 'show', 'store', 'update', 'destroy');
 
+        Route::post('/media', 'MediaController@store');
+        Route::delete('/media/{media}', 'MediaController@destroy');
 
 
         Route::prefix('funeral-homes')->group(function () {
