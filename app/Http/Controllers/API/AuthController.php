@@ -21,11 +21,15 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $request->validate([
+            'username' => 'required|string|unique:users',
             'name' => 'required|string',
             'email' => 'required|string|email|unique:users',
-            'password' => 'required|string|confirmed'
+            'password' => 'required|min:6|confirmed',
+            'password_confirmation' => 'required|min:6'
         ]);
+
         $user = new User([
+            'username' => $request->username,
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password)

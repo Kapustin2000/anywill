@@ -7,7 +7,7 @@ class UserDto extends AbstractDto implements DtoInterface
 {
 
     /* @var string */
-    public  $classifications, $coordinates, $options, $media, $contacts;
+    public  $classifications, $coordinates, $options, $media, $contacts, $addresses;
 
     /* @return array */
     protected function configureValidatorRules(): array
@@ -25,10 +25,13 @@ class UserDto extends AbstractDto implements DtoInterface
          $this->data = [
             'name' => $data['name'],
             'email'=> $data['email'],
+            'username' => $data['username'],
             'password'=> Hash::make($data['password'])
         ];
 
         $this->contacts = $data['contacts'];
+        $this->addresses = $data['addresses'];
+
 
         return true;
     }

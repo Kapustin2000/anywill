@@ -6,7 +6,7 @@ class OrganizationDto extends AbstractDto implements DtoInterface
 {
 
     /* @var string */
-    public  $cemeteries, $laboratories, $funeral_homes, $cremations, $address, $media;
+    public  $addresses, $media;
 
     /* @return array */
     protected function configureValidatorRules(): array
@@ -24,16 +24,16 @@ class OrganizationDto extends AbstractDto implements DtoInterface
          $this->data = [
             'name' => $data['name'],
             'owner_type' => User::class,
-            'owner_id' => $data['user_id'] ?? auth()->user()->id,
+            'user_id' => $data['user_id'] ?? auth()->user()->id,
             'description' => $data['description'] ?? null
         ];
 
 
-        $this->cemeteries = $data['cemeteries'];
-        $this->laboratories = $data['laboratories'];
-        $this->funeral_homes = $data['funeral_homes'];
-        $this->cremations = $data['cremations'];
-        $this->address = $data['address'];
+//        $this->cemeteries = $data['cemeteries'];
+//        $this->laboratories = $data['laboratories'];
+//        $this->funeral_homes = $data['funeral_homes'];
+//        $this->cremations = $data['cremations'];
+        $this->addresses = $data['addresses'];
         $this->media = $data['media'];
 
         return true;

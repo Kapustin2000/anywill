@@ -29,6 +29,7 @@ Class UserService extends AbstractService implements UserServiceInterface
     protected function persistUser(UserDto $dto)
     {
         $this->persistRelation($this->user->contacts(), $dto->contacts);
+
         $this->persistRelation($this->user->addresses(), $dto->addresses);
 
 
