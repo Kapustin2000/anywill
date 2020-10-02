@@ -44,7 +44,7 @@ class FuneralHomeDto extends AbstractDto implements DtoInterface
 
         $this->rooms = $data['rooms'];
 
-        $this->options = compactOptions($data['options']);
+        $this->options = $data['options'];
 
         $this->addresses = $data['addresses'];
 
