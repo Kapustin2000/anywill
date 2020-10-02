@@ -93,6 +93,9 @@ use Illuminate\Support\Facades\Route;
         Route::get('/permissions', function (){
             return \App\Models\Permission::all();
         });
+        Route::get('/roles', function (){
+            return config('roles');
+        });
         Route::get('/input-types', function (){
             return config('inputs');
         });
