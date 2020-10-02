@@ -16,6 +16,8 @@ class UserDto extends AbstractDto implements DtoInterface
             'name' => 'required',
             'user_id' => 'sometimes|exists:users,id',
             'email' => 'email|unique:users',
+            'password' => 'required|min:6|confirmed',
+            'password_confirmation' => 'required|min:6'
         ];
     }
 
