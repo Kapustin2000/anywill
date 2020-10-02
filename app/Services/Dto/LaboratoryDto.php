@@ -7,7 +7,7 @@ class LaboratoryDto extends AbstractDto implements DtoInterface
 {
 
     /* @var string */
-    public  $options; 
+    public  $options,$addresses; 
 
     /* @return array */
     protected function configureValidatorRules(): array
@@ -40,7 +40,9 @@ class LaboratoryDto extends AbstractDto implements DtoInterface
         ];
 
         $this->options = compactOptions($data['options']);
-        
+
+        $this->addresses = $data['addresses'];
+
         return true;
     }
 }

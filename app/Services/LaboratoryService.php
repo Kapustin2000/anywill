@@ -28,6 +28,8 @@ Class LaboratoryService extends TransactionAbstractService implements Laboratory
     {
         $this->persistOptions($this->laboratory, $dto->options);
 
+        $this->persistRelation($this->laboratory->addresses(), $dto->addresses);
+
         return  $this->laboratory;
     }
 

@@ -31,6 +31,9 @@ Class CremationService extends TransactionAbstractService implements CremationSe
     { 
         $this->persistOptions($this->cremation, $dto->options);
 
+        $this->persistRelation($this->cremation->addresses(), $dto->addresses);
+
+
         return $this->cremation;
     }
 

@@ -7,7 +7,7 @@ class FuneralHomeDto extends AbstractDto implements DtoInterface
 {
 
     /* @var string */
-    public  $options = [];
+    public  $options = [], $addresses;
 
     /* @return array */
     protected function configureValidatorRules(): array
@@ -45,6 +45,9 @@ class FuneralHomeDto extends AbstractDto implements DtoInterface
         $this->rooms = $data['rooms'];
 
         $this->options = compactOptions($data['options']);
+
+        $this->addresses = $data['addresses'];
+
 
         return true;
     }

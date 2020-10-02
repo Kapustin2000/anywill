@@ -36,11 +36,11 @@ class FuneralHome extends Model
         return $this->hasMany(FuneralHomeRooms::class);
     }
 
-    public function address()
+    public function addresses()
     {
-        return $this->morphOne(Address::class, 'addressable');
+        return $this->morphMany(Address::class, 'addressable');
     }
-
+    
     public function managers()
     {
         return $this->morphToMany(User::class, 'manageable');

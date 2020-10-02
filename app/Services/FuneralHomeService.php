@@ -31,6 +31,9 @@ Class FuneralHomeService extends TransactionAbstractService implements FuneralHo
 
         $this->persistRooms($dto->rooms);
 
+        $this->persistRelation($this->funeralHome->addresses(), $dto->addresses);
+
+
         return $this->funeralHome;
     }
 
