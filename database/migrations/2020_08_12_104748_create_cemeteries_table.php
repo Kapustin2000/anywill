@@ -18,6 +18,7 @@ class CreateCemeteriesTable extends Migration
             $table->string('private_id',5)->unique();
             $table->morphs('owner');
             $table->string('name');
+            $table->text('description')->nullable();
             $table->unsignedInteger('type');
             $table->timestamps();
 
