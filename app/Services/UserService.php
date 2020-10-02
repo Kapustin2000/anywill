@@ -10,29 +10,18 @@ use App\Services\Interfaces\UserServiceInterface;
 Class UserService extends AbstractService implements UserServiceInterface
 {
 
-    protected $user;
-
-    public function save(UserDto $dto) : User
+    public function __construct(User $user)
     {
-        $this->user = $user = User::create($dto->data);
-
-        return $this->persistUser($dto);
+        $this->model = $user;
     }
 
-    public function update(UserDto $dto, User $user) : User
+    public function persist($dto)
     {
-        $this->user = tap($user)->update($dto->data);
+        $this->persistRelation($this->model->contacts(), $dto->contacts);
 
-        return $this->persistUser($dto);
-    }
-
-    protected function persistUser(UserDto $dto)
-    {
-        $this->persistRelation($this->user->contacts(), $dto->contacts);
-
-        $this->persistRelation($this->user->addresses(), $dto->addresses);
+        $this->persistRelation($this->model->addresses(), $dto->addresses);
 
 
-        return $this->user;
+        return $this->model;
     }
 } 

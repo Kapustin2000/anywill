@@ -3,45 +3,35 @@
 namespace App\Services;
 
 use App\Models\Cemetery;
+use App\Services\Dto\AbstractDto;
 use App\Services\Dto\CemeteryDto;
 use App\Services\Interfaces\CemeteryServiceInterface;
 
 Class CemeteryService extends AbstractService implements CemeteryServiceInterface
 {
 
-    protected $cemetery;
-
-    public function save(CemeteryDto $dto) : Cemetery
+    public function __construct(Cemetery $cemetery)
     {
-        $this->cemetery = $cemetery = Cemetery::create($dto->data);
-
-        return $this->persistCemetery($dto);
+        $this->model = $cemetery;
     }
 
-    public function update(CemeteryDto $dto, Cemetery $cemetery) : Cemetery
+    public function persist($dto) : Cemetery
     {
-        $this->cemetery = tap($cemetery)->update($dto->data);
- 
-        return $this->persistCemetery($dto);
-    }
-
-    protected function persistCemetery(CemeteryDto $dto) : Cemetery
-    {
-        $this->cemetery->classifications()->sync($dto->classifications);
+        $this->model->classifications()->sync($dto->classifications);
 
 //        $this->cemetery->coordinates()->updateOrCreate($dto->coordinates);
 
-        $this->persistOptions($this->cemetery, $dto->options);
+        $this->persistOptions($this->model, $dto->options);
 
-        $this->cemetery->managers()->sync($dto->managers);
+        $this->model->managers()->sync($dto->managers);
 
-        $this->cemetery->media()->sync($dto->media);
+        $this->model->media()->sync($dto->media);
 
-        $this->cemetery->address()->updateOrCreate($dto->address);
+        if($dto->address) $this->model->address()->updateOrCreate($dto->address);
         //Maybe later
         //$cemetery->plots()->create($request->input('plots'));
 
-        return $this->cemetery;
+        return $this->model;
     }
 
 } 

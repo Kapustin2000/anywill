@@ -6,7 +6,5 @@ use App\Services\Dto\FuneralHomeDto;
 use Illuminate\Http\Request;
 
 interface FuneralHomeServiceInterface{
-    public function save(FuneralHomeDto $dto) : FuneralHome;
-
-    public function update(FuneralHomeDto $data, FuneralHome $funeralHome) : FuneralHome;
+  
 }

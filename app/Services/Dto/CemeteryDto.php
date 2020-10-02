@@ -48,7 +48,7 @@ class CemeteryDto extends AbstractDto implements DtoInterface
         $this->options = $data['options'];
         $this->media = $data['media'] ?? null;
         $this->managers = $data['managers'] ?? null;
-        $this->address = $data['address'];
+        $this->address = $data['address'] ?? null;
 
         return true;
     }

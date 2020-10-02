@@ -7,34 +7,23 @@ use App\Models\Cremation;
 use App\Services\Dto\CremationDto;
 use App\Services\Interfaces\CremationServiceInterface;
 
-Class CremationService extends TransactionAbstractService implements CremationServiceInterface
+Class CremationService extends TransactionAbstractService implements  CremationServiceInterface
 {
-    protected $cremation;
-    
-    public function save(CremationDto $dto) : Cremation
+
+    public function __construct(Cremation $cremation)
     {
-        $this->cremation = Cremation::create($dto->data);
-        
-        return $this->persistCremation($dto);
+        $this->model = $cremation;
     }
 
 
-    public function update(CremationDto $dto, Cremation $cremation) : Cremation
-    {
-        $this->cremation = tap($cremation)->update($dto->data);
-
-        return $this->persistCremation($dto);
-    }
-    
-    
-    protected function persistCremation(CremationDto $dto) : Cremation
+    public function persist($dto) : Cremation
     { 
-        $this->persistOptions($this->cremation, $dto->options);
+        $this->persistOptions($this->model, $dto->options);
 
-        $this->persistRelation($this->cremation->addresses(), $dto->addresses);
+        $this->persistRelation($this->model->addresses(), $dto->addresses);
 
 
-        return $this->cremation;
+        return $this->model;
     }
 
 } 

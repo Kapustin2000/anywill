@@ -6,50 +6,24 @@ use App\Models\FuneralHome;
 use App\Services\Dto\FuneralHomeDto;;
 use App\Services\Interfaces\FuneralHomeServiceInterface;
 
-Class FuneralHomeService extends TransactionAbstractService implements FuneralHomeServiceInterface
+Class FuneralHomeService extends TransactionAbstractService
 {
-    protected $funeralHome;
-
-    public function save(FuneralHomeDto $dto) : FuneralHome
+    public function __construct(FuneralHome $home)
     {
-        $this->funeralHome =  FuneralHome::create($dto->data);
-        
-        return $this->persistFuneralHome($dto);
+        $this->model = $home;
     }
 
-    public function update(FuneralHomeDto $dto, FuneralHome $funeralHome) : FuneralHome
+    public function persist($dto)
     {
-        $this->funeralHome = tap($funeralHome)->update($dto->data);
-
-        return $this->persistFuneralHome($dto);
-    }
-
-
-    protected function persistFuneralHome(FuneralHomeDto $dto)
-    {
-        $this->persistOptions($this->funeralHome, $dto->options);
+        $this->persistOptions($this->model, $dto->options);
 
         $this->persistRooms($dto->rooms);
 
-        $this->persistRelation($this->funeralHome->addresses(), $dto->addresses);
+        $this->persistRelation($this->model->addresses(), $dto->addresses);
+        $this->persistRelation($this->model->rooms(), $dto->rooms);
 
 
-        return $this->funeralHome;
-    }
-
-    protected function persistRooms($rooms)
-    {
-        if($rooms) {
-            $needsUpdate = array_column($rooms, 'id');
-
-            $this->funeralHome->rooms()->whereNotIn('id', $needsUpdate)->delete();
-
-            foreach($rooms as $room) {
-                $this->funeralHome->rooms()->updateOrCreate(['id' => $room['id'] ?? null], $room);
-            }
-        }
-
-        return $this->funeralHome;
+        return $this->model;
     }
 
 } 
