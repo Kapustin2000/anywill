@@ -13,7 +13,9 @@ class UserDto extends AbstractDto implements DtoInterface
     protected function configureValidatorRules(): array
     {
         return [
-            'name' => 'required'
+            'name' => 'required',
+            'user_id' => 'sometimes|exists:users,id',
+            'email' => 'email|unique:users',
         ];
     }
 
@@ -25,6 +27,7 @@ class UserDto extends AbstractDto implements DtoInterface
          $this->data = [
             'name' => $data['name'],
             'email'=> $data['email'],
+            'parent_id' => $data['user_id'],
             'username' => $data['username'],
             'password'=> Hash::make($data['password'])
         ];
