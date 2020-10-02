@@ -37,4 +37,9 @@ class Transaction extends Model
     {
         return $this->belongsTo(TransactionType::class);
     }
+
+    public function files()
+    {
+        return $this->morphMany(File::class, 'owner');
+    }
 }

@@ -21,7 +21,13 @@ class Cremation extends Model
     {
         return $this->morphTo();
     }
-    
+
+    public function files()
+    {
+        return $this->morphMany(File::class, 'owner');
+    }
+
+
     public function user()
     {
         return $this->belongsTo(User::class);

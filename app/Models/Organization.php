@@ -53,4 +53,9 @@ class Organization extends Model
     {
         return $this->morphToMany(Media::class, 'mediable');
     }
+
+    public function files()
+    {
+        return $this->morphMany(File::class, 'owner');
+    }
 }

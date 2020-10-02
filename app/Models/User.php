@@ -100,4 +100,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Transaction::class);
     }
+
+    public function files()
+    {
+        return $this->morphMany(File::class, 'owner');
+    }
 }
