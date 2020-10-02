@@ -7,30 +7,19 @@ use App\Services\Dto\LaboratoryDto;
 use App\Services\Interfaces\LaboratoryServiceInterface;
 
 Class LaboratoryService extends TransactionAbstractService implements LaboratoryServiceInterface {
-    
-    protected $laboratory;
-    
-    public function save(LaboratoryDto $dto) : Laboratory
-    {
-        $this->laboratory = Laboratory::create($dto->data);
 
-        return $this->persistLaboratory($dto);
+    public function __construct(Laboratory $laboratory)
+    {
+        $this->model = $laboratory;
     }
     
-    public function update(LaboratoryDto $dto, Laboratory $laboratory = null) : Laboratory
+    public function persist($dto) : Laboratory
     {
-        $this->laboratory = tap($laboratory)->update($dto->data);
-        
-        return $this->persistLaboratory($dto);
-    }
-    
-    protected function persistLaboratory(LaboratoryDto $dto)
-    {
-        $this->persistOptions($this->laboratory, $dto->options);
+        $this->persistOptions($this->model, $dto->options);
 
-        $this->persistRelation($this->laboratory->addresses(), $dto->addresses);
+        $this->persistRelation($this->model->addresses(), $dto->addresses);
 
-        return  $this->laboratory;
+        return  $this->model;
     }
 
 } 

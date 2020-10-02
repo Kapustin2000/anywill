@@ -13,7 +13,7 @@ Class FuneralHomeService extends TransactionAbstractService
         $this->model = $home;
     }
 
-    public function persist($dto)
+    public function persist($dto) : FuneralHome
     {
         $this->persistOptions($this->model, $dto->options);
 

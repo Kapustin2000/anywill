@@ -15,7 +15,7 @@ Class UserService extends AbstractService implements UserServiceInterface
         $this->model = $user;
     }
 
-    public function persist($dto)
+    public function persist($dto) : User
     {
         $this->persistRelation($this->model->contacts(), $dto->contacts);
 
