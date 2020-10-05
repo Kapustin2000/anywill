@@ -100,5 +100,9 @@ use Illuminate\Support\Facades\Route;
         Route::get('/input-types', function (){
             return config('inputs');
         });
+
+        Route::get('/transaction-types', function (){
+            return config('transactions');
+        });
         Route::get('/orders/{order}/matching', 'OrderMatchingController');
     });
