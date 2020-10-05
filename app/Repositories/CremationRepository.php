@@ -20,14 +20,17 @@ Class CremationRepository implements RepositoryInterface, CremationRepositoryInt
     
     function __construct(Cremation $model)
     {
-        $this->model = $model->with('options');
+        $this->model = $model->with('options', 'addresses');
     }
 
     public function all()
     {
         $this->model->when($search = request('search'), function ($q) use ($search) {
             return $q->where('private_id', 'like' , '%'.$search.'%')
-                ->orWhere('name', 'like' , '%'.$search.'%');
+                ->orWhere('name', 'like' , '%'.$search.'%')
+                ->orWhereHas('addresses', function( $query ) use ( $search ){
+                    $query->where('name', 'like' ,'%'.$search.'%' ); //how to load only matches, no
+                });
         });
         
         return $this->model->paginate((int)request('per_page') ?? Cremation::POSTS_PER_PAGE);

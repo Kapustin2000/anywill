@@ -25,7 +25,10 @@ Class LaboratoryRepository implements RepositoryInterface, LaboratoryRepositoryI
     {
         $this->model->when($search = request('search'), function ($q) use ($search) {
             return $q->where('private_id', 'like' , '%'.$search.'%')
-                ->orWhere('name', 'like' , '%'.$search.'%');
+                ->orWhere('name', 'like' , '%'.$search.'%')
+                ->orWhereHas('addresses', function( $query ) use ( $search ){
+                    $query->where('name', 'like' ,'%'.$search.'%' ); //how to load only matches, no
+                });
         });
         
         return $this->model->paginate( (int) request('per_page') ?? Laboratory::POSTS_PER_PAGE);
