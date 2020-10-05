@@ -2,10 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Transaction;
+use App\Services\Dto\TransactionDto;
+use App\Services\TransactionService;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
+    protected $service;
+
+    public function __construct(TransactionService $service)
+    {
+        $this->service = $service;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,17 +22,9 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $user_id = auth()->user()->id;
+        
+        return Transaction::where('from_user', $user_id)->orWhere('to_user_id', $user_id)->get();
     }
 
     /**
@@ -34,7 +35,7 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $this->service->transaction(new TransactionDto($request->all()));
     }
 
     /**
@@ -43,29 +44,11 @@ class TransactionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Transaction $transaction)
     {
-        //
+        return $transaction;
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, $id)
     {
         //
