@@ -4,6 +4,7 @@ RUN apt update && apt install -y \
   libpng-dev \
   libmcrypt-dev \
   zip \
+  libzip-dev \
   libxml2-dev \
   libmagickwand-dev \
   libicu-dev \
