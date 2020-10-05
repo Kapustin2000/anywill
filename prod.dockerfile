@@ -1,9 +1,10 @@
-FROM php:7.2-fpm
+FROM php:7.4-fpm
  
 RUN apt update && apt install -y \
   libpng-dev \
   libmcrypt-dev \
   zip \
+  libzip-dev \
   libxml2-dev \
   libmagickwand-dev \
   libicu-dev \
