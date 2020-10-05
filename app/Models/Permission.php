@@ -10,8 +10,8 @@ class Permission extends Model
     public $timestamps = false;
     protected $hidden = ['pivot'];
 
-    public function permissionable()
+    public function users()
     {
-        return $this->morphTo();
+        return $this->belongsToMany(User::class);
     }
 }
