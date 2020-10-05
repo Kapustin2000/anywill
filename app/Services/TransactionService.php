@@ -10,7 +10,7 @@ use App\Services\Dto\TransactionDto;
 use App\Services\Interfaces\CemeteryServiceInterface;
 use Illuminate\Support\Facades\DB;
 
-Class TransactionService extends AbstractService
+Class TransactionService
 {
 
     protected $transaction;
