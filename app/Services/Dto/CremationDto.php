@@ -7,7 +7,7 @@ class CremationDto extends AbstractDto implements DtoInterface
 {
 
     /* @var string */
-    public $user_id , $options, $addresses; 
+    public $user_id , $options, $addresses, $comments; 
 
     /* @return array */
     protected function configureValidatorRules(): array
@@ -41,6 +41,7 @@ class CremationDto extends AbstractDto implements DtoInterface
         
         $this->options = compactOptions($data['options']);
         $this->addresses = $data['addresses'];
+        $this->comments = $data['comments'] ?? null;
 
 
         return true;

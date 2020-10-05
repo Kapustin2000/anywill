@@ -19,5 +19,6 @@ $factory->define(FuneralHome::class, function (Faker $faker) {
 $factory->afterCreating(FuneralHome::class, function ($home) {
     factory(App\Models\FuneralHomeRooms::class, 5)->create(['funeral_home_id' => $home->id]);
     $home->managers()->saveMany(factory(App\Models\User::class, 3)->make());
+    $home->comments()->saveMany(factory(App\Models\Comment::class, 3)->make());
 });
 

@@ -38,4 +38,7 @@ $factory->afterCreating(Organization::class, function ($organization) {
             "formatted_address" => "12 Conch Reef, Aliso Viejo, CA 92656, USA"
         ]
     );
+
+    $organization->comments()->saveMany(factory(App\Models\Comment::class, 3)->make());
+
 });

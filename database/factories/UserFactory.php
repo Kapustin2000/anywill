@@ -29,5 +29,6 @@ $factory->define(User::class, function (Faker $faker) {
 });
 
 $factory->afterCreating(User::class, function ($user) {
-    factory(App\Models\Manager::class, 3)->create(['user_id' => $user->id]);
+    //factory(App\Models\User::class, 3)->create(['parent_id' => $user->id]);
+    //$user->comments()->saveMany(factory(App\Models\Comment::class, 3)->make());
 });

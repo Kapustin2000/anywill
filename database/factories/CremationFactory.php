@@ -18,4 +18,6 @@ $factory->define(Cremation::class, function (Faker $faker) {
 
 $factory->afterCreating(Cremation::class, function ($cremation, $faker) {
     $cremation->managers()->saveMany(factory(App\Models\User::class, 3)->make());
+    $cremation->comments()->saveMany(factory(App\Models\Comment::class, 3)->make());
+
 });

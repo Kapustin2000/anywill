@@ -9,23 +9,12 @@ use App\Services\Interfaces\CemeteryServiceInterface;
 Class OrganizationService extends AbstractService
 {
 
-    protected $organization;
-
-    public function save(OrganizationDto $dto) : Organization
+    public function __construct(Organization $organization)
     {
-         $this->organization = Organization::create($dto->data);
-
-        return $this->persistOrganization($dto);
+        $this->model = $organization;
     }
 
-    public function update(OrganizationDto $dto, Organization $organization) : Organization
-    {
-        $this->organization = tap($organization)->update($dto->data);
-
-        return $this->persistOrganization($dto);
-    }
-
-    protected function persistOrganization(OrganizationDto $dto)
+    public function persist($dto) : Organization
     {
         //$this->organization->cemeteries()->sync($dto->cemeteries);
         //$this->organization->laboratories()->sync($dto->laboratories);
@@ -34,12 +23,17 @@ Class OrganizationService extends AbstractService
         $this->persistRelation($this->organization->addresses(), $dto->addresses);
 
         //$this->organization->managers()->sync($dto->managers);
-        $this->organization->media()->sync($dto->media);
+        $this->model->media()->sync($dto->media);
+
+        if($dto->comments) {
+            $this->persistRelation($this->model->comments(), $dto->comments);
+        }
+        
 //        $this->persistRelation($this->organization->managers(), $dto->managers);
 //        $this->persistRelation($this->organization->media(), $dto->media);
 
 
-        return $this->organization;
+        return $this->model;
     }
 
 } 

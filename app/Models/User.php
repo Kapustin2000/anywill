@@ -111,4 +111,9 @@ class User extends Authenticatable
     {
         return $this->morphToMany(Media::class, 'mediable');
     }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'owner');
+    }
 }

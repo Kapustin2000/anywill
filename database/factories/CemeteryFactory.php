@@ -23,4 +23,5 @@ $factory->afterCreating(Cemetery::class, function ($cemetery, $faker) {
     factory(App\Models\Plot::class, 5)->create(['cemetery_id' => $cemetery->id]);
 
     $cemetery->managers()->saveMany(factory(App\Models\User::class, 3)->make());
+    $cemetery->comments()->saveMany(factory(App\Models\Comment::class, 3)->make());
 });

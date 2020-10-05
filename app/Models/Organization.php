@@ -58,4 +58,9 @@ class Organization extends Model
     {
         return $this->morphMany(File::class, 'owner');
     }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'owner');
+    }
 }

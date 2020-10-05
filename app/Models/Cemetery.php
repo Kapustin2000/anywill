@@ -92,4 +92,9 @@ class Cemetery extends Model
     {
         return $this->morphToMany(Media::class, 'mediable');
     }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'owner');
+    }
 }

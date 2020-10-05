@@ -19,6 +19,9 @@ Class FuneralHomeService extends AbstractService implements FuneralHomeServiceIn
         $this->persistRelation($this->model->addresses(), $dto->addresses);
         $this->persistRelation($this->model->rooms(), $dto->rooms);
 
+        if($dto->comments) {
+            $this->persistRelation($this->model->comments(), $dto->comments);
+        }
 
         return $this->model;
     }

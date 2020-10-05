@@ -28,6 +28,11 @@ Class CemeteryService extends AbstractService implements CemeteryServiceInterfac
         $this->model->media()->sync($dto->media);
 
         if($dto->address) $this->model->address()->updateOrCreate($dto->address);
+
+        if($dto->comments) {
+            $this->persistRelation($this->model->comments(), $dto->comments);
+        }
+        
         //Maybe later
         //$cemetery->plots()->create($request->input('plots'));
 

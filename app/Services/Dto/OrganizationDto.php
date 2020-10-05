@@ -6,7 +6,7 @@ class OrganizationDto extends AbstractDto implements DtoInterface
 {
 
     /* @var string */
-    public  $addresses, $media;
+    public  $addresses, $media, $comments;
 
     /* @return array */
     protected function configureValidatorRules(): array
@@ -35,6 +35,7 @@ class OrganizationDto extends AbstractDto implements DtoInterface
 //        $this->cremations = $data['cremations'];
         $this->addresses = $data['addresses'];
         $this->media = $data['media'];
+        $this->comments = $data['comments'] ?? null;
 
         return true;
     }
