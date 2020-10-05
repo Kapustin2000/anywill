@@ -13,6 +13,7 @@ RUN apt update && apt install -y \
   libmcrypt-dev \
   libreadline-dev \
   libfreetype6-dev \
+  libonig-dev \
   git \
   g++
 
