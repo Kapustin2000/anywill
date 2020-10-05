@@ -7,9 +7,9 @@ use App\Services\Interfaces\ImageUploadServiceInterface;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
-Class ImageUploadService extends TransactionAbstractService implements ImageUploadServiceInterface {
+Class ImageUploadService implements  ImageUploadServiceInterface{
 
-    protected $model,$images = array();
+    public $model,$images = array();
 
     function __construct(Media $media)
     {

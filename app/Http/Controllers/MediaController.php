@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Media;
 use App\Services\Interfaces\ImageUploadServiceInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MediaController extends Controller
 {
@@ -23,7 +24,9 @@ class MediaController extends Controller
      */
     public function store(Request $request)
     {
-        return $this->service->handleImageUpload($request->file('files'));
+        return DB::transaction(function () use ($request) {
+            return $this->service->handleImageUpload($request->file('files'));
+        });
     }
 
     /**
