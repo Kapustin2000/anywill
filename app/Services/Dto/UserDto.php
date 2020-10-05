@@ -30,6 +30,7 @@ class UserDto extends AbstractDto implements DtoInterface
             'name' => $data['name'],
             'email'=> $data['email'],
             'parent_id' => $data['user_id'] ?? null,
+            'role' => $data['role'] ?? null,
             'username' => $data['username'],
             'password'=> Hash::make($data['password'])
         ];
@@ -37,6 +38,7 @@ class UserDto extends AbstractDto implements DtoInterface
         $this->contacts = $data['contacts'];
         $this->addresses = $data['addresses'];
 
+        $this->media = $data['media'] ?? null;
         $this->comments = $data['comments'] ?? null;
 
         return true;

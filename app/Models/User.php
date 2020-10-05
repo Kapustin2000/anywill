@@ -11,7 +11,7 @@ class User extends Authenticatable
 {
     use Notifiable, HasApiTokens;
 
-    protected $with = ['contacts','media', 'addresses', 'permissions'];
+    protected $with = ['contacts','media', 'addresses', 'permissions', 'comments'];
     const POSTS_PER_PAGE = 15;
 
     /**
@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name',  'username', 'email', 'password', 'parent_id', 'balance'
+        'name',  'username', 'email', 'password', 'parent_id', 'balance', 'role'
     ];
 
     /**

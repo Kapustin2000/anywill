@@ -21,6 +21,9 @@ Class UserService extends AbstractService implements UserServiceInterface
 
         $this->persistRelation($this->model->addresses(), $dto->addresses);
 
+        $this->persistRelation($this->model->comments(), $dto->comments);
+
+        $this->model->media()->sync($dto->media);
 
         return $this->model;
     }

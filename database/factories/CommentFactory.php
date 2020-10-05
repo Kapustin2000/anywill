@@ -11,7 +11,6 @@ $factory->define(Comment::class, function (Faker $faker) {
         'owner_id' => function() {
             return factory(App\Models\User::class)->create()->id;
         },
-        'title' => $faker->title,
         'comment' => $faker->text,
 
     ];
