@@ -7,7 +7,7 @@ class UserDto extends AbstractDto implements DtoInterface
 {
 
     /* @var string */
-    public  $classifications, $coordinates, $options, $media, $contacts, $addresses, $comments;
+    public  $classifications, $coordinates, $options, $permissions, $media, $contacts, $addresses, $comments;
 
     /* @return array */
     protected function configureValidatorRules(): array
@@ -40,6 +40,7 @@ class UserDto extends AbstractDto implements DtoInterface
 
         $this->media = $data['media'] ?? null;
         $this->comments = $data['comments'] ?? null;
+        $this->permissions = $data['permissions'] ?? [];
 
         return true;
     }

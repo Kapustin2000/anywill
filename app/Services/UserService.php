@@ -25,6 +25,9 @@ Class UserService extends AbstractService implements UserServiceInterface
 
         $this->model->media()->sync($dto->media);
 
-        return $this->model;
+        $this->model->permissions()->sync($dto->permissions);
+
+
+        return $this->model->load($this->model->with);
     }
 } 

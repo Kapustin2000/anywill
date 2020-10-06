@@ -12,8 +12,8 @@ use Laravel\Passport\HasApiTokens;
 class User extends Authenticatable
 {
     use Notifiable, HasApiTokens, HasMedia, HasFiles;
-
-    protected $with = ['contacts','media', 'addresses', 'permissions', 'comments'];
+    
+    public $with = ['contacts','media', 'addresses', 'permissions', 'comments'];
     const POSTS_PER_PAGE = 15;
 
     /**
@@ -88,7 +88,7 @@ class User extends Authenticatable
 
     public function permissions()
     {
-        return $this->belongsToMany(Permission::class);
+        return $this->belongsToMany(Permission::class, 'user_permission');
     }
 
     public function director() {
