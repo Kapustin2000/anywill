@@ -9,9 +9,9 @@ trait HasFiles
     {
         static::saved(function ($model) {
 
-            if(!$model->files) return;
+            if(!$file_ids = request('media')) return;
 
-            $files_files = File::whereIn('id', $model->files)->whereNull('url')->get();
+            $files_files = File::whereIn('id', $file_ids)->whereNull('url')->get();
 
             $model_name = strtolower((new \ReflectionClass($model))->getShortName());
 

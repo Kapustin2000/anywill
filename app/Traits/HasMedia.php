@@ -8,10 +8,10 @@ trait HasMedia
     protected static function bootHasMedia()
     {
         static::saved(function ($model) {
+            
+            if(!$media_ids = request('media')) return;
 
-            if(!$model->media) return;
-
-            $media_files = Media::whereIn('id', $model->media)->whereNull('url')->get();
+            $media_files = Media::whereIn('id', $media_ids)->whereNull('url')->get();
 
             $model_name = strtolower((new \ReflectionClass($model))->getShortName());
 
