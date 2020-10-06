@@ -2,6 +2,7 @@
 namespace App\Services\Dto;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class UserDto extends AbstractDto implements DtoInterface
 {
@@ -14,8 +15,14 @@ class UserDto extends AbstractDto implements DtoInterface
     {
         return [
             'name' => 'required',
-            'user_id' => 'sometimes|exists:users,id',
-            'email' => 'email|unique:users',
+            'email' => [
+                'email',
+                Rule::unique('users')->ignore(request('id')),
+            ],
+            'username' => [
+                'string',
+                Rule::unique('users')->ignore(request('id')),
+            ],
             'password' => 'required|min:6|confirmed',
             'password_confirmation' => 'required|min:6'
         ];

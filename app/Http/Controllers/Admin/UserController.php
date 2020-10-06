@@ -59,7 +59,7 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        return $this->service->transaction(new UserDto($request->all()), $user);
+        return $this->service->transaction(new UserDto($request->merge(['id' => $user->id])->toArray()), $user);
     }
 
     /**
