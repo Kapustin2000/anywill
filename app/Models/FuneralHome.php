@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use App\Models\Pivot\OptionAble;
+use App\Traits\HasMedia;
 use App\Traits\UsesPrivateid;
 use Illuminate\Database\Eloquent\Model;
 
 class FuneralHome extends Model
 {
-    use UsesPrivateid;
+    use UsesPrivateid, HasMedia;
     
     protected $fillable = ['name', 'description', 'total_capacity', 'owner_type', 'owner_id'];
     protected $with = ['media'];

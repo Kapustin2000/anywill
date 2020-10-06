@@ -3,13 +3,14 @@
 namespace App\Models;
 
 use App\Models\Pivot\OptionAble;
+use App\Traits\HasMedia;
 use App\Traits\UsesPrivateid;
 use App\Traits\UsesUuid;
 use Illuminate\Database\Eloquent\Model;
 
 class Cremation extends Model
 {
-    use UsesPrivateid;
+    use UsesPrivateid, HasMedia;
 
     const POSTS_PER_PAGE = 15;
     

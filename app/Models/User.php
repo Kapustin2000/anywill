@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Traits\HasFiles;
+use App\Traits\HasMedia;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -9,7 +11,7 @@ use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use Notifiable, HasApiTokens;
+    use Notifiable, HasApiTokens, HasMedia, HasFiles;
 
     protected $with = ['contacts','media', 'addresses', 'permissions', 'comments'];
     const POSTS_PER_PAGE = 15;

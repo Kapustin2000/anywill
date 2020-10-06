@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use App\Models\Pivot\OptionAble;
+use App\Traits\HasFiles;
+use App\Traits\HasMedia;
 use App\Traits\UsesPrivateid;
 use Illuminate\Database\Eloquent\Model;
 
 class Laboratory extends Model
 {
-    use UsesPrivateid;
+    use UsesPrivateid, HasMedia, HasFiles;
     protected $with = ['media'];
 
     const POSTS_PER_PAGE = 15;
