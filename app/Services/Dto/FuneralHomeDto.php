@@ -1,5 +1,6 @@
 <?php
 namespace App\Services\Dto;
+use App\Models\Cemetery;
 use App\Models\Organization;
 use App\Models\User;
 
@@ -30,6 +31,9 @@ class FuneralHomeDto extends AbstractDto implements DtoInterface
         } elseif($data['organization_id']) {
             $owner_type = Organization::class;
             $owner_id = (int) $data['organization_id'];
+        } elseif($data['cemetery_id']) {
+            $owner_type = Cemetery::class;
+            $owner_id = (int) $data['cemetery_id'];
         }
         
         $total_capacity = array_sum(array_column($data['rooms'], 'capacity'));
