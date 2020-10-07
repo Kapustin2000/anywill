@@ -21,7 +21,7 @@ Class CemeteryRepository implements RepositoryInterface, CemeteryRepositoryInter
 
     public function all()
     {
-        $this->model->when($search = request('search'), function ($q) use ($search) {
+        $this->model = $this->model->when($search = request('search'), function ($q) use ($search) {
             return $q->where('private_id', 'like' , '%'.$search.'%')
                      ->orWhere('name', 'like' , '%'.$search.'%');
         });
@@ -31,11 +31,11 @@ Class CemeteryRepository implements RepositoryInterface, CemeteryRepositoryInter
             $lat = request('lat');
             $lng = request('lng');
 
-            $this->model->whereHas('address', function( $query ) use ( $lat, $lng ){
+            $this->model = $this->model->whereHas('address', function( $query ) use ( $lat, $lng ){
                 $query->selectRaw(sqlDistance($lat, $lng))->havingRaw('distance < '. request('radius') ?? 10);
             });
 
-            $this->model->with(['address' => function($q) use ($lat, $lng) {
+            $this->model = $this->model->with(['address' => function($q) use ($lat, $lng) {
                 return $q->select('*')->selectRaw(sqlDistance($lat, $lng));
             }]);
 
