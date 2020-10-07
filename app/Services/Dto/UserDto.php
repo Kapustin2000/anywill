@@ -14,6 +14,7 @@ class UserDto extends AbstractDto implements DtoInterface
     protected function configureValidatorRules(): array
     {
         return [
+            'id' => 'sometimes|exists:users',
             'name' => 'required',
             'email' => [
                 'email',
@@ -23,8 +24,8 @@ class UserDto extends AbstractDto implements DtoInterface
                 'string',
                 Rule::unique('users')->ignore(request('id')),
             ],
-            'password' => 'required|min:6|confirmed',
-            'password_confirmation' => 'required|min:6'
+            'password' => 'required_unless:id|min:6|confirmed',
+            'password_confirmation' => 'required_unless:id|min:6'
         ];
     }
 
