@@ -32,7 +32,7 @@ Class CemeteryRepository implements RepositoryInterface, CemeteryRepositoryInter
             $lng = request('lng');
 
             $this->model->whereHas('address', function( $query ) use ( $lat, $lng ){
-                $query->selectRaw(sqlDistance($lat, $lng))->havingRaw('distance < 20');
+                $query->selectRaw(sqlDistance($lat, $lng))->havingRaw('distance < '. request('radius') ?? 10);
             });
 
             $this->model->with(['address' => function($q) use ($lat, $lng) {
