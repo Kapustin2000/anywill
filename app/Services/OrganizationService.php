@@ -20,7 +20,7 @@ Class OrganizationService extends AbstractService
         //$this->organization->laboratories()->sync($dto->laboratories);
         //$this->organization->funeral_homes()->sync($dto->funeral_homes);
         //$this->organization->cremations()->sync($dto->cremations);
-        $this->persistRelation($this->organization->addresses(), $dto->addresses);
+        $this->persistRelation($this->model->addresses(), $dto->addresses);
 
         //$this->organization->managers()->sync($dto->managers);
         $this->model->media()->sync($dto->media);
