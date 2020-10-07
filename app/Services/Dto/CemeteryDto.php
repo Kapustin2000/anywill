@@ -8,7 +8,7 @@ class CemeteryDto extends AbstractDto implements DtoInterface
 {
 
     /* @var string */
-    public  $classifications, $coordinates, $options, $media, $managers, $address, $comments;
+    public  $classifications, $coordinates, $options, $media, $managers, $address, $comments, $files;
 
     /* @return array */
     protected function configureValidatorRules(): array
@@ -50,6 +50,7 @@ class CemeteryDto extends AbstractDto implements DtoInterface
         $this->managers = $data['managers'] ?? null;
         $this->address = $data['address'] ?? null;
         $this->comments = $data['comments'] ?? null;
+        $this->files = $data['files'] ?? null;
 
 
         return true;
