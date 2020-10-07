@@ -24,8 +24,8 @@ class UserDto extends AbstractDto implements DtoInterface
                 'string',
                 Rule::unique('users')->ignore(request('id')),
             ],
-            'password' => 'required_unless:id|min:6|confirmed',
-            'password_confirmation' => 'required_unless:id|min:6'
+            'password' => 'required_unless:id,null|min:6|confirmed',
+            'password_confirmation' => 'required_unless:id,null|min:6'
         ];
     }
 
