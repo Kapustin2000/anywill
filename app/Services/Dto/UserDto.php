@@ -31,8 +31,7 @@ class UserDto extends AbstractDto implements DtoInterface
 
 
     protected function beforeValidation($data) {
-
-        if(isset($data['password']) && !$data['password']) {
+        if(is_null($data['password']) && !$data['password']) {
             unset($data['password']);
             unset($data['password_confirmation']);
         }
