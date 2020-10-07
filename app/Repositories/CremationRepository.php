@@ -20,7 +20,7 @@ Class CremationRepository implements RepositoryInterface, CremationRepositoryInt
     
     function __construct(Cremation $model)
     {
-        $this->model = $model->with('options', 'addresses');
+        $this->model = $model;
     }
 
     public function all()
