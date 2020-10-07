@@ -43,7 +43,7 @@ use Illuminate\Support\Facades\Route;
         Route::resource('transactions', 'Admin\TransactionController')->only('index', 'store','show','update', 'destroy');
         Route::resource('organizations', 'Admin\OrganizationController')->only('index', 'store','show','update', 'destroy');
         Route::resource('users', 'Admin\UserController')->only('index', 'show', 'store', 'update', 'destroy');
-        Route::resource('managers', 'Admin\ManagerController')->only('index','show','update', 'destroy');
+        Route::get('/managers', 'Admin\ManagerController');
         Route::resource('cemeteries', 'CemeteryController')->only('index', 'show', 'store', 'update', 'destroy');
         Route::resource('laboratories', 'LaboratoryController')->only('index', 'show', 'store', 'update', 'destroy');
         Route::resource('cremations', 'CremationController')->only('index', 'show', 'store', 'update', 'destroy');
@@ -75,7 +75,7 @@ use Illuminate\Support\Facades\Route;
 
         Route::resource('organizations', 'OrganizationController')->only('index','store','show','update', 'destroy');
         Route::resource('users', 'UserController')->only('show','update', 'destroy');
-        Route::resource('managers', 'ManagerController')->only('index','show','update', 'destroy');
+        Route::get('/managers', 'ManagerController');
     });
 
 

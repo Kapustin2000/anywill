@@ -21,7 +21,7 @@ Class OrganizationRepository implements RepositoryInterface {
     
     function __construct(Organization $model)
     {
-        $this->model = $model->with('options');
+        $this->model = $model;
     }
 
     public function all()
