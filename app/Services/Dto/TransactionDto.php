@@ -28,11 +28,11 @@ class TransactionDto extends AbstractDto implements DtoInterface
         if(isset($data['from_user_id'])) {
             $data['from_user_balance'] = (int) User::findOrFail($data['from_user_id'])->balance;
 
-            if($data['type']  === 1) $data['from_user_balance_after_operation'] = ($data['from_user_balance'] - (int) $data['size']);
+            if($data['type']  === 1) $data['from_user_balance_after_operation'] = ($data['from_user_balance'] - (int) $data['amount']);
 
-            if($data['type']  ===  2) $data['from_user_balance_after_operation'] = ($data['from_user_balance'] + (int) $data['size']);
+            if($data['type']  ===  2) $data['from_user_balance_after_operation'] = ($data['from_user_balance'] + (int) $data['amount']);
 
-            if($data['type']  === 3) $data['from_user_balance_after_operation'] = ($data['from_user_balance'] + (int) $data['size']);
+            if($data['type']  === 3) $data['from_user_balance_after_operation'] = ($data['from_user_balance'] + (int) $data['amount']);
 
             $data['details']['user_balance_before_operation'] = $data['from_user_balance'];
         }
@@ -49,7 +49,7 @@ class TransactionDto extends AbstractDto implements DtoInterface
     protected function map(array $data): bool
     {
         $this->transaction_from = [
-            'size' => $data['size'],
+            'amount' => $data['amount'],
             'from_user_id' => $data['from_user_id'] ?? null,
             'to_user_id' =>  $data['to_user_id'] ?? null,
             'provider' => $data['provider'] ?? null,
@@ -64,7 +64,7 @@ class TransactionDto extends AbstractDto implements DtoInterface
             $this->transaction_to['details']['user_balance_before_operation'] = (int) User::findOrFail($data['to_user_id'])->balance;
         }
 
-        if($this->transaction_from['type'] === 1 || $this->transaction_from['type'] === 3) $this->transaction_from['size'] *=-1;
+        if($this->transaction_from['type'] === 1 || $this->transaction_from['type'] === 3) $this->transaction_from['amount'] *=-1;
         
         return true;
     }
