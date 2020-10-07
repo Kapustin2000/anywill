@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Service extends Model
 {
     const POSTS_PER_PAGE = 15;
-    protected $with = ['options.services'];
+    public $with = ['options.services'];
     protected $fillable = ['name', 'description', 'entity_id', 'parent_id'];
     protected $appends = ['entity', 'type'];
     protected $hidden = ['input_type_id', 'entity_id'];

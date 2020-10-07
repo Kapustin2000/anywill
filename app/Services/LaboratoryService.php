@@ -24,7 +24,7 @@ Class LaboratoryService extends TransactionAbstractService implements Laboratory
             $this->persistRelation($this->model->comments(), $dto->comments);
         }
         
-        return  $this->model;
+        return  $this->model->load($this->model->with);
     }
 
 } 

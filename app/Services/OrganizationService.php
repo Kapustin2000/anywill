@@ -33,7 +33,7 @@ Class OrganizationService extends AbstractService
 //        $this->persistRelation($this->organization->media(), $dto->media);
 
 
-        return $this->model;
+        return $this->model->load($this->model->with);
     }
 
 } 

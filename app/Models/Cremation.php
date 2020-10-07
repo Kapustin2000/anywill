@@ -15,7 +15,7 @@ class Cremation extends Model
     const POSTS_PER_PAGE = 15;
     
     protected $fillable = ['user_id', 'description', 'name'];
-    protected $with = ['media'];
+    public $with = ['media'];
 
 
     public function owner()

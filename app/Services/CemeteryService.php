@@ -42,7 +42,7 @@ Class CemeteryService extends AbstractService implements CemeteryServiceInterfac
         //Maybe later
         //$cemetery->plots()->create($request->input('plots'));
 
-        return $this->model;
+        return $this->model->load($this->model->with);
     }
 
 } 

@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 class Laboratory extends Model
 {
     use UsesPrivateid, HasMedia, HasFiles;
-    protected $with = ['media'];
+    public $with = ['media'];
 
     const POSTS_PER_PAGE = 15;
 
