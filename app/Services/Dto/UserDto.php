@@ -24,8 +24,8 @@ class UserDto extends AbstractDto implements DtoInterface
                 'string',
                 Rule::unique('users')->ignore(request('id')),
             ],
-            'password' => 'required_unless:id,null|min:6|confirmed',
-            'password_confirmation' => 'required_unless:id,null|min:6'
+            'password' => 'required_if:id,null|min:6|confirmed',
+            'password_confirmation' => 'required_if:id,null|min:6'
         ];
     }
 
@@ -40,8 +40,11 @@ class UserDto extends AbstractDto implements DtoInterface
             'parent_id' => $data['user_id'] ?? null,
             'role' => $data['role'] ?? null,
             'username' => $data['username'],
-            'password'=> Hash::make($data['password'])
         ];
+
+        if(isset($data['password'])) {
+            $this->data['password'] = Hash::make($data['password']);
+        }
 
         $this->contacts = $data['contacts'];
         $this->addresses = $data['addresses'];
