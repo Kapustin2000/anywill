@@ -25,7 +25,7 @@ Class CemeteryService extends AbstractService implements CemeteryServiceInterfac
 
         $this->model->managers()->sync($dto->managers);
 
-        if($dto->files) {
+        if($dto->media) {
             $this->model->media()->sync($dto->media);
         }
 
