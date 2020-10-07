@@ -25,7 +25,7 @@ class UserDto extends AbstractDto implements DtoInterface
                 Rule::unique('users')->ignore(request('id')),
             ],
             'password' => 'required_without:id|min:6|confirmed',
-            'password_confirmation' => 'required_without:id,null|min:6'
+            'password_confirmation' => 'required_without:id|min:6'
         ];
     }
 
@@ -36,7 +36,7 @@ class UserDto extends AbstractDto implements DtoInterface
             unset($data['password']);
             unset($data['password_confirmation']);
         }
-        
+
         return $data;
     }
 
