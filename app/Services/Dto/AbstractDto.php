@@ -13,10 +13,10 @@ abstract class AbstractDto
     {
         $this->data = $data;
 
-        if(method_exists($this, 'beforeValidation')) $data = $this->beforeValidation($data);
-        
+        if(method_exists($this, 'beforeValidation')) $this->data = $this->beforeValidation($data);
+
         $validator = Validator::make(
-            $data,
+            $this->data,
             $this->configureValidatorRules()
         );
 
@@ -26,7 +26,7 @@ abstract class AbstractDto
             );
         }
 
-        if (!$this->map($data)) {
+        if (!$this->map($this->data)) {
             throw new InvalidArgumentException('The mapping failed');
         }
     }
