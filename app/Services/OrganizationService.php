@@ -25,6 +25,8 @@ Class OrganizationService extends AbstractService
         //$this->organization->managers()->sync($dto->managers);
         $this->model->media()->sync($dto->media);
 
+        $this->model->managers()->sync($dto->managers);
+
         if($dto->comments) {
             $this->persistRelation($this->model->comments(), $dto->comments);
         }
