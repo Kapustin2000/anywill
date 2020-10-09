@@ -21,9 +21,9 @@ Class CemeteryService extends AbstractService implements CemeteryServiceInterfac
 
 //        $this->cemetery->coordinates()->updateOrCreate($dto->coordinates);
 
-        $this->persistOptions($this->model, $dto->options);
+        if($dto->options) $this->persistOptions($this->model, $dto->options);
 
-        $this->model->managers()->sync($dto->managers);
+        if($dto->managers) $this->model->managers()->sync($dto->managers);
 
         if($dto->media) {
             $this->model->media()->sync($dto->media);
@@ -42,7 +42,7 @@ Class CemeteryService extends AbstractService implements CemeteryServiceInterfac
         //Maybe later
         //$cemetery->plots()->create($request->input('plots'));
 
-        return $this->model->load($this->model->with);
+        return $this->model;
     }
 
 } 
