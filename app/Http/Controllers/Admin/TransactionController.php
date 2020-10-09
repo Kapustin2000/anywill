@@ -23,7 +23,7 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        return Transaction::all();
+        return Transaction::paginate(25);
     }
 
     /**
