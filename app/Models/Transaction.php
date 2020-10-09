@@ -26,7 +26,7 @@ class Transaction extends Model
        'bank'
     ];
 
-    public $with = ['from', 'to'];
+    public $with = ['from_user', 'to_user'];
     protected $fillable = ['from_user_id', 'to_user_id', 'amount','provider','type', 'details', 'description'];
     
     public function from_user()
