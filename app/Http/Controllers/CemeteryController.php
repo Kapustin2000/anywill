@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Cemetery\CemeteryCollectionResource;
+use App\Http\Resources\Cemetery\CemeterySingleResource;
+use App\Http\Resources\CemeteryResource;
 use App\Models\Cemetery;
 use App\Repositories\Interfaces\CemeteryRepositoryInterface;
 use App\Services\CemeteryService;
@@ -26,7 +29,7 @@ class CemeteryController extends Controller
      */
     public function index()
     {
-        return $this->repo->all();
+        return CemeteryCollectionResource::collection(($this->repo->all()));
     }
 
     /**
@@ -48,7 +51,7 @@ class CemeteryController extends Controller
      */
     public function show(Cemetery $cemetery)
     {
-        return  $cemetery->load('classifications:id', 'options', 'address', 'managers');
+        return new CemeterySingleResource($cemetery, true);
     }
 
     /**

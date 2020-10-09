@@ -12,8 +12,8 @@ use Laravel\Passport\HasApiTokens;
 class User extends Authenticatable
 {
     use Notifiable, HasApiTokens, HasMedia, HasFiles;
-    
-    public $with = ['contacts','media', 'addresses', 'permissions', 'comments'];
+
+    public $with = [];
     const POSTS_PER_PAGE = 15;
 
     /**
@@ -31,7 +31,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'pivot'
     ];
 
     /**
