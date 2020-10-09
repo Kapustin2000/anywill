@@ -26,9 +26,9 @@ class Transaction extends Model
        'bank'
     ];
 
-    public $with = ['from_user', 'to_user'];
+    public $with = ['from_user', 'to_user', 'currency'];
     protected $fillable = ['from_user_id', 'to_user_id','currency_id', 'amount','provider','type', 'details', 'description'];
-    protected $hidden = ['from_user_id', 'to_user_id'];
+    protected $hidden = ['from_user_id', 'to_user_id', 'currency_id'];
 
     public function from_user()
     {
@@ -53,5 +53,10 @@ class Transaction extends Model
     public function comments()
     {
         return $this->morphMany(Comment::class, 'owner');
+    }
+
+    public function currency()
+    {
+        return $this->belongsTo(Currency::class);
     }
 }
