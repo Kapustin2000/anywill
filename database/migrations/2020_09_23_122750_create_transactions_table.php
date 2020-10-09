@@ -24,6 +24,7 @@ class CreateTransactionsTable extends Migration
             $table->foreign('to_user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('type');
             $table->integer('amount');
+            $table->unsignedBigInteger('currency_id')->default(1);
             $table->smallInteger('provider')->default(0);
             $table->string('card_country')->nullable();
             $table->integer('discount')->nullable();

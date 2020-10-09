@@ -105,4 +105,8 @@ use Illuminate\Support\Facades\Route;
             return config('transactions');
         });
         Route::get('/orders/{order}/matching', 'OrderMatchingController');
+
+        Route::get('/currencies', function (){
+            return \App\Models\Currency::all();
+        });
     });

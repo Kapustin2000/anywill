@@ -27,7 +27,7 @@ class Transaction extends Model
     ];
 
     public $with = ['from_user', 'to_user'];
-    protected $fillable = ['from_user_id', 'to_user_id', 'amount','provider','type', 'details', 'description'];
+    protected $fillable = ['from_user_id', 'to_user_id','currency_id', 'amount','provider','type', 'details', 'description'];
     protected $hidden = ['from_user_id', 'to_user_id'];
 
     public function from_user()

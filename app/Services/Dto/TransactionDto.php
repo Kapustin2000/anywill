@@ -53,6 +53,10 @@ class TransactionDto extends AbstractDto implements DtoInterface
             'type' =>  $data['type']
         ];
 
+        if(isset($data['currency_id'])) {
+            $this->transaction_from['currency_id'] = $data['currency_id'];
+        }
+
         if($this->transaction_from['type'] === "transfer") {
             
             $this->transaction_to = $this->transaction_from;
