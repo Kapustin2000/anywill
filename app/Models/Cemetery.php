@@ -18,7 +18,7 @@ class Cemetery extends Model
     ];
 
     protected $fillable = ['name','description','type', 'owner_type', 'owner_id'];
-    public $with = ['media', 'comments', 'address'];
+    public $with = ['owner','media', 'comments', 'address'];
 
     const TYPES  = [
        ['id'=> 1, 'name' => 'public'],
