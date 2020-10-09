@@ -17,7 +17,7 @@ class CreateTransactionsTable extends Migration
             $table->id();
             $table->string('private_id',5)->unique();
             $table->string('native_id')->nullable();
-            $table->unsignedBigInteger('from_user_id')->nullable();
+            $table->unsignedBigInteger('from_user_id');
             $table->foreign('from_user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->unsignedBigInteger('to_user_id')->nullable();

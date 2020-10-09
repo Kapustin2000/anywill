@@ -14,7 +14,7 @@ class TransactionDto extends AbstractDto implements DtoInterface
     {
         return [
             'from_user_id' => 'exists:users,id',
-            'to_user_id' => 'exists:users,id',
+            'to_user_id' => 'sometimes|exists:users,id',
             'from_user_balance_after_operation' => 'required|numeric|min:0'
         ];
     }
@@ -37,10 +37,6 @@ class TransactionDto extends AbstractDto implements DtoInterface
             $data['details']['user_balance_before_operation'] = $data['from_user_balance'];
         }
 
-        if($data['type'] === "deposit" || $data['type'] === "withdrawal") {
-            $data['to_user_id']  = $data['from_user_id'];
-        }
-
         return $data;
 
     }
@@ -50,7 +46,7 @@ class TransactionDto extends AbstractDto implements DtoInterface
     {
         $this->transaction_from = [
             'amount' => $data['amount'],
-            'from_user_id' => $data['from_user_id'] ?? null,
+            'from_user_id' => $data['from_user_id'],
             'to_user_id' =>  $data['to_user_id'] ?? null,
             'provider' => $data['provider'] ?? null,
             'details' => $data['details'],
@@ -64,7 +60,7 @@ class TransactionDto extends AbstractDto implements DtoInterface
             $this->transaction_to['details']['user_balance_before_operation'] = (int) User::findOrFail($data['to_user_id'])->balance;
         }
 
-        if($this->transaction_from['type'] === 1 || $this->transaction_from['type'] === 3) $this->transaction_from['amount'] *=-1;
+        if($this->transaction_from['type'] === "transfer" || $this->transaction_from['type'] === "withdrawal") $this->transaction_from['amount'] *=-1;
         
         return true;
     }

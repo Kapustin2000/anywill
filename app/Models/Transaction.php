@@ -28,7 +28,8 @@ class Transaction extends Model
 
     public $with = ['from_user', 'to_user'];
     protected $fillable = ['from_user_id', 'to_user_id', 'amount','provider','type', 'details', 'description'];
-    
+    protected $hidden = ['from_user_id', 'to_user_id'];
+
     public function from_user()
     {
         return $this->belongsTo(User::class, 'from_user_id');
