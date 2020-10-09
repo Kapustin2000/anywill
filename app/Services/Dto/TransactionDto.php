@@ -28,19 +28,19 @@ class TransactionDto extends AbstractDto implements DtoInterface
         if(isset($data['from_user_id'])) {
             $data['from_user_balance'] = (int) User::findOrFail($data['from_user_id'])->balance;
 
-            if($data['type']  === 1) $data['from_user_balance_after_operation'] = ($data['from_user_balance'] - (int) $data['amount']);
+            if($data['type']  === "transfer") $data['from_user_balance_after_operation'] = ($data['from_user_balance'] - (int) $data['amount']);
 
-            if($data['type']  ===  2) $data['from_user_balance_after_operation'] = ($data['from_user_balance'] + (int) $data['amount']);
+            if($data['type']  ===  "deposit") $data['from_user_balance_after_operation'] = ($data['from_user_balance'] + (int) $data['amount']);
 
-            if($data['type']  === 3) $data['from_user_balance_after_operation'] = ($data['from_user_balance'] + (int) $data['amount']);
+            if($data['type']  === "withdrawal") $data['from_user_balance_after_operation'] = ($data['from_user_balance'] - (int) $data['amount']);
 
             $data['details']['user_balance_before_operation'] = $data['from_user_balance'];
         }
 
-        if($data['type'] === 2 || $data['type'] === 3) {
+        if($data['type'] === "deposit" || $data['type'] === "withdrawal") {
             $data['to_user_id']  = $data['from_user_id'];
         }
-        
+
         return $data;
 
     }
@@ -54,10 +54,10 @@ class TransactionDto extends AbstractDto implements DtoInterface
             'to_user_id' =>  $data['to_user_id'] ?? null,
             'provider' => $data['provider'] ?? null,
             'details' => $data['details'],
-            'type' => (int) $data['type']
+            'type' =>  $data['type']
         ];
 
-        if($this->transaction_from['type'] === 1) {
+        if($this->transaction_from['type'] === "transfer") {
             
             $this->transaction_to = $this->transaction_from;
 

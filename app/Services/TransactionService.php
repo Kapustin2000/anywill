@@ -27,7 +27,7 @@ Class TransactionService
         $this->transaction = $this->createTransaction($dto->transaction_from);
 
 
-        if($dto->transaction_from['type'] === 1) {
+        if($dto->transaction_from['type'] === "transfer") {
             $this->updateBalance($dto->transaction_to['to_user_id'], $dto->transaction_to['amount']);
             $this->createTransaction($dto->transaction_to);
         }

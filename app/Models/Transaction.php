@@ -25,12 +25,18 @@ class Transaction extends Model
        'manual',
        'bank'
     ];
+
+    public $with = ['from', 'to'];
+    protected $fillable = ['from_user_id', 'to_user_id', 'amount','provider','type', 'details', 'description'];
     
-    protected $fillable = ['from_user_id', 'to_user_id', 'amount','provider','type', 'details'];
-    
-    public function user()
+    public function from_user()
     {
-        return $this->belongsTo(Transaction::class);
+        return $this->belongsTo(User::class, 'from_user_id');
+    }
+
+    public function to_user()
+    {
+        return $this->belongsTo(User::class, 'to_user_id');
     }
     
     public function type()

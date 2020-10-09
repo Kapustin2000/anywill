@@ -22,12 +22,13 @@ class CreateTransactionsTable extends Migration
 
             $table->unsignedBigInteger('to_user_id')->nullable();
             $table->foreign('to_user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('type');
+            $table->string('type');
             $table->integer('amount');
             $table->smallInteger('provider')->default(0);
             $table->string('card_country')->nullable();
             $table->integer('discount')->nullable();
             $table->json('details');
+            $table->string('description')->nullable();
             $table->timestamps();
         });
 
